@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://txxl5taplfe0"
-path="res://.godot/imported/german_tiger_merged1.png-b7a0ff3fb5c0faee6386e5f0aa24d5cf.ctex"
+uid="uid://ct0u7awww075g"
+path="res://.godot/imported/Fences.png-b126666d8821e206e2724df18d7c7498.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_tiger_merged1.png"
-dest_files=["res://.godot/imported/german_tiger_merged1.png-b7a0ff3fb5c0faee6386e5f0aa24d5cf.ctex"]
+source_file="res://asset/Tilesets/Fences.png"
+dest_files=["res://.godot/imported/Fences.png-b126666d8821e206e2724df18d7c7498.ctex"]
 
 [params]
 

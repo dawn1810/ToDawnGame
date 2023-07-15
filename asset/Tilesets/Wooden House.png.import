@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfn80ddb5m7pe"
-path="res://.godot/imported/german_panther_merged1.png-d235cb4cd88a90d5621c04c9fee57081.ctex"
+uid="uid://vg868fnif8se"
+path="res://.godot/imported/Wooden House.png-acb08bddb4e2053904b123cd49125eaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_panther_merged1.png"
-dest_files=["res://.godot/imported/german_panther_merged1.png-d235cb4cd88a90d5621c04c9fee57081.ctex"]
+source_file="res://asset/Tilesets/Wooden House.png"
+dest_files=["res://.godot/imported/Wooden House.png-acb08bddb4e2053904b123cd49125eaa.ctex"]
 
 [params]
 

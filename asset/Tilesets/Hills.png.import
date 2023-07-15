@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc184pp1g32vg"
-path="res://.godot/imported/german_hanomag1.png-377bc46cdc21b712278910cb3d7308c4.ctex"
+uid="uid://4okj0brh2yp5"
+path="res://.godot/imported/Hills.png-a10bb5af812ec24d629dc19682cee125.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_hanomag1.png"
-dest_files=["res://.godot/imported/german_hanomag1.png-377bc46cdc21b712278910cb3d7308c4.ctex"]
+source_file="res://asset/Tilesets/Hills.png"
+dest_files=["res://.godot/imported/Hills.png-a10bb5af812ec24d629dc19682cee125.ctex"]
 
 [params]
 

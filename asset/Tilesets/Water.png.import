@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mvkamo2encju"
-path="res://.godot/imported/german_panzer4_merged1.png-cffb3215555240cd491c6b184f5ad9a3.ctex"
+uid="uid://dsor1nla54vkc"
+path="res://.godot/imported/Water.png-d4ef30e3bebb653df030392fe3800b6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_panzer4_merged1.png"
-dest_files=["res://.godot/imported/german_panzer4_merged1.png-cffb3215555240cd491c6b184f5ad9a3.ctex"]
+source_file="res://asset/Tilesets/Water.png"
+dest_files=["res://.godot/imported/Water.png-d4ef30e3bebb653df030392fe3800b6b.ctex"]
 
 [params]
 

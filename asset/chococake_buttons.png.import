@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyue07qfwu0j4"
-path="res://.godot/imported/german_hummel1.png-5966e12c31c5711aa180577afb3a5d3c.ctex"
+uid="uid://dfe4itgsxl3rx"
+path="res://.godot/imported/chococake_buttons.png-6be06a9aa700a16c3eadb32cb8c1c670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_hummel1.png"
-dest_files=["res://.godot/imported/german_hummel1.png-5966e12c31c5711aa180577afb3a5d3c.ctex"]
+source_file="res://asset/chococake_buttons.png"
+dest_files=["res://.godot/imported/chococake_buttons.png-6be06a9aa700a16c3eadb32cb8c1c670.ctex"]
 
 [params]
 

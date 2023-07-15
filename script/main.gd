@@ -2,7 +2,11 @@
 
 extends Node2D
 
-const ENEMIES = ['basic_enemy']
+const ENEMIES = [
+	'basic_enemy', 'basic_enemy', 'basic_enemy',
+	'fast_enemy',
+	'strong_enemy',
+]
 
 func _ready():
 	pass # Replace with function body.
@@ -18,10 +22,10 @@ func _on_enrmies_apeartime_timeout():
 	var instance = spawn_enermy.instantiate()
 	var pick_pos = pos_list.pick_random()
 	
-	add_child(instance)
-	
 	instance.z_index = pick_pos.get_z_index()
 	instance.global_position = pick_pos.global_position
+	
+	add_child(instance)
 
 
 

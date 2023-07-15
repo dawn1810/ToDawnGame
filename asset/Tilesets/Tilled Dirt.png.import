@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://440f5jj4lqfj"
-path="res://.godot/imported/german_panzer2_merged1.png-8b8701194d97987aba185de22d0b8b5b.ctex"
+uid="uid://k0ba7ici342y"
+path="res://.godot/imported/Tilled Dirt.png-7aee7d8ff0d1e6092485eb1edc7c4978.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_panzer2_merged1.png"
-dest_files=["res://.godot/imported/german_panzer2_merged1.png-8b8701194d97987aba185de22d0b8b5b.ctex"]
+source_file="res://asset/Tilesets/Tilled Dirt.png"
+dest_files=["res://.godot/imported/Tilled Dirt.png-7aee7d8ff0d1e6092485eb1edc7c4978.ctex"]
 
 [params]
 

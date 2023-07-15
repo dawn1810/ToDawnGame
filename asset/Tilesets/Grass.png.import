@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bipgk0co0qnm3"
-path="res://.godot/imported/german_stug1.png-fe629aa59622393b7cd1c458abc4a2e0.ctex"
+uid="uid://cctwse8mk1uq5"
+path="res://.godot/imported/Grass.png-65c1b84fb6a0a91f68e23c9c84342189.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/tank/german_stug1.png"
-dest_files=["res://.godot/imported/german_stug1.png-fe629aa59622393b7cd1c458abc4a2e0.ctex"]
+source_file="res://asset/Tilesets/Grass.png"
+dest_files=["res://.godot/imported/Grass.png-65c1b84fb6a0a91f68e23c9c84342189.ctex"]
 
 [params]
 

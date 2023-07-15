@@ -1,22 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://ccfpe2b07n5lq"]
+[gd_scene load_steps=23 format=3 uid="uid://rrw0vvenfaip"]
 
-[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_a5lh1"]
-[ext_resource type="Script" path="res://script/enemy.gd" id="2_rtv4l"]
-[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="3_oaa21"]
-[ext_resource type="Texture2D" uid="uid://wr7p6nhx6nq1" path="res://asset/Explosion/1.png" id="5_4oovj"]
-[ext_resource type="Texture2D" uid="uid://b85no2ensqrya" path="res://asset/Explosion/2.png" id="6_ovxom"]
-[ext_resource type="Texture2D" uid="uid://byl3un41epmq2" path="res://asset/Explosion/3.png" id="7_amji1"]
-[ext_resource type="Texture2D" uid="uid://b4wei7ajk8jor" path="res://asset/Explosion/4.png" id="8_iq54l"]
-[ext_resource type="Texture2D" uid="uid://bpbkarfmmr8dk" path="res://asset/Explosion/5.png" id="9_5prlg"]
-[ext_resource type="Texture2D" uid="uid://bbkp5oeol8a2p" path="res://asset/Explosion/6.png" id="10_lp076"]
-[ext_resource type="Texture2D" uid="uid://d2osvfwcn6v2q" path="res://asset/Explosion/7.png" id="11_2rbfj"]
-[ext_resource type="Texture2D" uid="uid://btpndvk8cynsw" path="res://asset/Explosion/8.png" id="12_ilkqs"]
-[ext_resource type="Texture2D" uid="uid://i7upid0pxsmd" path="res://asset/Explosion/9.png" id="13_f64fn"]
-[ext_resource type="Texture2D" uid="uid://bhc54ihp4gyjx" path="res://asset/Explosion/10.png" id="14_2x1ef"]
-[ext_resource type="Texture2D" uid="uid://us1uo5oflqr1" path="res://asset/Explosion/11.png" id="15_1s6tk"]
-[ext_resource type="Texture2D" uid="uid://cw1syhxyq7sff" path="res://asset/Explosion/12.png" id="16_o2i45"]
+[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_jtqca"]
+[ext_resource type="Script" path="res://script/enemy.gd" id="2_il5ir"]
+[ext_resource type="Texture2D" uid="uid://wr7p6nhx6nq1" path="res://asset/Explosion/1.png" id="2_r3b8m"]
+[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="2_rnfqn"]
+[ext_resource type="Texture2D" uid="uid://b85no2ensqrya" path="res://asset/Explosion/2.png" id="4_76t2q"]
+[ext_resource type="Texture2D" uid="uid://byl3un41epmq2" path="res://asset/Explosion/3.png" id="5_xg0ib"]
+[ext_resource type="Texture2D" uid="uid://b4wei7ajk8jor" path="res://asset/Explosion/4.png" id="6_ydywc"]
+[ext_resource type="Texture2D" uid="uid://bpbkarfmmr8dk" path="res://asset/Explosion/5.png" id="7_x8pbr"]
+[ext_resource type="Texture2D" uid="uid://bbkp5oeol8a2p" path="res://asset/Explosion/6.png" id="8_urd0g"]
+[ext_resource type="Texture2D" uid="uid://d2osvfwcn6v2q" path="res://asset/Explosion/7.png" id="9_jfm0v"]
+[ext_resource type="Texture2D" uid="uid://btpndvk8cynsw" path="res://asset/Explosion/8.png" id="10_m522f"]
+[ext_resource type="Texture2D" uid="uid://i7upid0pxsmd" path="res://asset/Explosion/9.png" id="11_66rer"]
+[ext_resource type="Texture2D" uid="uid://bhc54ihp4gyjx" path="res://asset/Explosion/10.png" id="12_dyygt"]
+[ext_resource type="Texture2D" uid="uid://us1uo5oflqr1" path="res://asset/Explosion/11.png" id="13_tsnc7"]
+[ext_resource type="Texture2D" uid="uid://cw1syhxyq7sff" path="res://asset/Explosion/12.png" id="14_ap1kk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd6vy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yy5f"]
 size = Vector2(64, 52)
 
 [sub_resource type="Animation" id="Animation_uh32u"]
@@ -91,7 +91,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_4oovj")]
+"values": [ExtResource("2_r3b8m")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -144,7 +144,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("5_4oovj"), ExtResource("6_ovxom"), ExtResource("7_amji1"), ExtResource("8_iq54l"), ExtResource("9_5prlg"), ExtResource("10_lp076"), ExtResource("11_2rbfj"), ExtResource("12_ilkqs"), ExtResource("13_f64fn"), ExtResource("14_2x1ef"), ExtResource("15_1s6tk"), ExtResource("16_o2i45")]
+"values": [ExtResource("2_r3b8m"), ExtResource("4_76t2q"), ExtResource("5_xg0ib"), ExtResource("6_ydywc"), ExtResource("7_x8pbr"), ExtResource("8_urd0g"), ExtResource("9_jfm0v"), ExtResource("10_m522f"), ExtResource("11_66rer"), ExtResource("12_dyygt"), ExtResource("13_tsnc7"), ExtResource("14_ap1kk")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -259,7 +259,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_oaa21")]
+"values": [ExtResource("2_rnfqn")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -348,7 +348,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_oaa21")]
+"values": [ExtResource("2_rnfqn")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -371,18 +371,24 @@ _data = {
 "idle_2": SubResource("Animation_vc5x4")
 }
 
-[node name="basicEnemy" groups=["enemy"] instance=ExtResource("1_a5lh1")]
-script = ExtResource("2_rtv4l")
-speed = 100.0
-attack_amount = 10
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgl51"]
+size = Vector2(51, 52)
+
+[node name="fastEnemy" groups=["enemy"] instance=ExtResource("1_jtqca")]
+script = ExtResource("2_il5ir")
+speed = 180.0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)
-texture = ExtResource("5_4oovj")
+texture = ExtResource("2_r3b8m")
 region_enabled = true
 region_rect = Rect2(96, 0, 16, 16)
 
-[node name="key" type="Node2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_5yy5f")
+
+[node name="key" type="Node2D" parent="." index="2"]
 
 [node name="Label" type="Label" parent="key" index="0"]
 modulate = Color(0, 0, 0, 1)
@@ -395,12 +401,17 @@ text = "K"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_rd6vy")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_xmj83")
 }
+
+[node name="buffSpeed" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="buffSpeed" index="0"]
+position = Vector2(-25.5, 6)
+shape = SubResource("RectangleShape2D_lgl51")
+debug_color = Color(0, 0.643137, 0.337255, 0.419608)
+
+[connection signal="body_entered" from="buffSpeed" to="." method="_on_buff_speed_body_entered"]

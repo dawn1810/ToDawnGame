@@ -10,38 +10,33 @@ size = Vector2(20, 569)
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_gsg8t")
 
-[node name="Sprite2D8" type="Sprite2D" parent="."]
-position = Vector2(0, -272)
-scale = Vector2(2, 2)
-texture = ExtResource("2_xjoep")
-
 [node name="Sprite2D9" type="Sprite2D" parent="."]
-position = Vector2(0, -184)
+position = Vector2(-2, -291)
 scale = Vector2(2, 2)
 texture = ExtResource("2_xjoep")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(0, -96)
+position = Vector2(-2, -203)
 scale = Vector2(2, 2)
 texture = ExtResource("2_xjoep")
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(-2, -115)
 scale = Vector2(2, 2)
 texture = ExtResource("2_xjoep")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(-2, -27)
 scale = Vector2(2, 2)
 texture = ExtResource("2_xjoep")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, 167)
+position = Vector2(-2, 60)
 scale = Vector2(2, 2)
 texture = ExtResource("2_xjoep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 287)
+position = Vector2(-2, 180)
 scale = Vector2(2, 2)
 texture = ExtResource("2_rwwxx")
 
