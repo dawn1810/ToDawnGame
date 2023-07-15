@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccfpe2b07n5lq"]
+
+[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_a5lh1"]
+[ext_resource type="Script" path="res://script/enemy.gd" id="2_rtv4l"]
+[ext_resource type="Texture2D" uid="uid://bjbbrqv5ht0gi" path="res://asset/tank/Hummel_export/german_hummel1.png" id="3_c60dg"]
+[ext_resource type="Texture2D" uid="uid://cj5wf8qvt2pjs" path="res://asset/pixil-frame-0 (1).png" id="4_ocosx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd6vy"]
+size = Vector2(151, 54)
+
+[sub_resource type="Animation" id="Animation_whlbh"]
+resource_name = "run"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 0.5), Vector2(0, 1), Vector2(0, 0), Vector2(0, 2), Vector2(0, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0174533, 0.0349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_oc7vk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmj83"]
+_data = {
+"RESET": SubResource("Animation_oc7vk"),
+"run": SubResource("Animation_whlbh")
+}
+
+[node name="basicEnemy" groups=["enemy"] instance=ExtResource("1_a5lh1")]
+script = ExtResource("2_rtv4l")
+attack_amount = 10
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_c60dg")
+
+[node name="text" type="Sprite2D" parent="." index="1"]
+position = Vector2(91, -52)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ocosx")
+flip_h = true
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-7.5, -2)
+shape = SubResource("RectangleShape2D_rd6vy")
+
+[node name="Label" type="Label" parent="." index="3"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 86.0
+offset_top = -71.0
+offset_right = 97.0
+offset_bottom = -45.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "run"
+libraries = {
+"": SubResource("AnimationLibrary_xmj83")
+}
