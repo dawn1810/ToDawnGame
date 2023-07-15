@@ -12,7 +12,6 @@ func _process(delta):
 
 func damnge(amount):
 	health -= amount
-	$AnimationPlayer.play("attacked")
 #	if health <= 0:
 #		print('game over')
 #	elif health <= 20:
