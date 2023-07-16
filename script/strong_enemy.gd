@@ -21,7 +21,7 @@ func _ready():
 func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
-		if event.pressed && OS.get_keycode_string(event.keycode) == rand_letter:
+		if event.is_released() && OS.get_keycode_string(event.keycode) == rand_letter:
 			power -= 1
 			label.text = rand_letter + ' x ' + str(power)
 			if power <= 0:
@@ -38,7 +38,3 @@ func generate_word(chars, length):
 		word += chars[randi()% n_char]
 	return word
 
-
-func _on_buff_speed_body_entered(body):
-	if body.is_in_group('enemy') && body != self:
-		body.speed = speed

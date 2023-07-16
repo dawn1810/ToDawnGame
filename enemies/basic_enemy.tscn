@@ -373,7 +373,7 @@ _data = {
 
 [node name="basicEnemy" groups=["enemy"] instance=ExtResource("1_a5lh1")]
 script = ExtResource("2_rtv4l")
-speed = 100.0
+speed = 180.0
 attack_amount = 10
 
 [node name="Sprite2D" parent="." index="0"]

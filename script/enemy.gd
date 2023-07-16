@@ -1,10 +1,10 @@
 extends ENEMIES
 
-@onready var label = $key/Label
 
 var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 var colors = ['idle', 'idle_2']
 
+@onready var label = $key/Label
 @onready var anim = $AnimationPlayer
 
 func _ready():

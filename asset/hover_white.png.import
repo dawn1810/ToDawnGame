@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj5wf8qvt2pjs"
-path="res://.godot/imported/pixil-frame-0 (1).png-f056506be395d5d596670fd78e440f48.ctex"
+uid="uid://c064cmtsft7h8"
+path="res://.godot/imported/hover_white.png-f38e0b217e43e486313233cf52998036.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/pixil-frame-0 (1).png"
-dest_files=["res://.godot/imported/pixil-frame-0 (1).png-f056506be395d5d596670fd78e440f48.ctex"]
+source_file="res://asset/hover_white.png"
+dest_files=["res://.godot/imported/hover_white.png-f38e0b217e43e486313233cf52998036.ctex"]
 
 [params]
 

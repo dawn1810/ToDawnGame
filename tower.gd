@@ -25,5 +25,5 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group('enemy'):
 # lose some health
 		damnge(body.attack_amount)
-# make enermis disappear after 0.2 second
+# make enermis disappear
 		body.dead()

@@ -376,7 +376,7 @@ size = Vector2(51, 52)
 
 [node name="fastEnemy" groups=["enemy"] instance=ExtResource("1_jtqca")]
 script = ExtResource("2_il5ir")
-speed = 180.0
+speed = 280.0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)

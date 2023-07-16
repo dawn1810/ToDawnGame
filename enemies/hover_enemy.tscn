@@ -1,22 +1,24 @@
-[gd_scene load_steps=22 format=3 uid="uid://ct2dxbxvt1xsh"]
+[gd_scene load_steps=24 format=3 uid="uid://lhsp1rb7agqx"]
 
-[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_qmjlb"]
-[ext_resource type="Texture2D" uid="uid://wr7p6nhx6nq1" path="res://asset/Explosion/1.png" id="2_uje3b"]
-[ext_resource type="Script" path="res://script/strong_enemy.gd" id="2_xuhom"]
-[ext_resource type="Texture2D" uid="uid://b85no2ensqrya" path="res://asset/Explosion/2.png" id="3_bi47o"]
-[ext_resource type="Texture2D" uid="uid://byl3un41epmq2" path="res://asset/Explosion/3.png" id="4_lt2wj"]
-[ext_resource type="Texture2D" uid="uid://b4wei7ajk8jor" path="res://asset/Explosion/4.png" id="5_cwwu1"]
-[ext_resource type="Texture2D" uid="uid://bpbkarfmmr8dk" path="res://asset/Explosion/5.png" id="6_0mbl4"]
-[ext_resource type="Texture2D" uid="uid://bbkp5oeol8a2p" path="res://asset/Explosion/6.png" id="7_kue4t"]
-[ext_resource type="Texture2D" uid="uid://d2osvfwcn6v2q" path="res://asset/Explosion/7.png" id="8_xac0l"]
-[ext_resource type="Texture2D" uid="uid://btpndvk8cynsw" path="res://asset/Explosion/8.png" id="9_r03kp"]
-[ext_resource type="Texture2D" uid="uid://i7upid0pxsmd" path="res://asset/Explosion/9.png" id="10_wybto"]
-[ext_resource type="Texture2D" uid="uid://bhc54ihp4gyjx" path="res://asset/Explosion/10.png" id="11_dhy01"]
-[ext_resource type="Texture2D" uid="uid://us1uo5oflqr1" path="res://asset/Explosion/11.png" id="12_30eob"]
-[ext_resource type="Texture2D" uid="uid://cw1syhxyq7sff" path="res://asset/Explosion/12.png" id="13_sq813"]
-[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="14_88vth"]
+[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_npt84"]
+[ext_resource type="Script" path="res://script/hover_enemy.gd" id="2_r350b"]
+[ext_resource type="Texture2D" uid="uid://wr7p6nhx6nq1" path="res://asset/Explosion/1.png" id="2_uwlxo"]
+[ext_resource type="Texture2D" uid="uid://b85no2ensqrya" path="res://asset/Explosion/2.png" id="3_wqaad"]
+[ext_resource type="Texture2D" uid="uid://dnj0iyt8k2y0w" path="res://asset/hover_brown.png" id="4_4ng3l"]
+[ext_resource type="Texture2D" uid="uid://byl3un41epmq2" path="res://asset/Explosion/3.png" id="4_7aeu0"]
+[ext_resource type="Texture2D" uid="uid://c064cmtsft7h8" path="res://asset/hover_white.png" id="4_klfgi"]
+[ext_resource type="Texture2D" uid="uid://b4wei7ajk8jor" path="res://asset/Explosion/4.png" id="5_g2fut"]
+[ext_resource type="Texture2D" uid="uid://bpbkarfmmr8dk" path="res://asset/Explosion/5.png" id="6_o8ugo"]
+[ext_resource type="Texture2D" uid="uid://bbkp5oeol8a2p" path="res://asset/Explosion/6.png" id="7_2b2tv"]
+[ext_resource type="Texture2D" uid="uid://d2osvfwcn6v2q" path="res://asset/Explosion/7.png" id="8_ltwm8"]
+[ext_resource type="Texture2D" uid="uid://btpndvk8cynsw" path="res://asset/Explosion/8.png" id="9_o76vq"]
+[ext_resource type="Texture2D" uid="uid://i7upid0pxsmd" path="res://asset/Explosion/9.png" id="10_873pw"]
+[ext_resource type="Texture2D" uid="uid://bhc54ihp4gyjx" path="res://asset/Explosion/10.png" id="11_5mlrr"]
+[ext_resource type="Texture2D" uid="uid://us1uo5oflqr1" path="res://asset/Explosion/11.png" id="12_oin1e"]
+[ext_resource type="Texture2D" uid="uid://cw1syhxyq7sff" path="res://asset/Explosion/12.png" id="13_0pk8v"]
+[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="14_5xrqy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0bc5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auay4"]
 size = Vector2(64, 52)
 
 [sub_resource type="Animation" id="Animation_uh32u"]
@@ -91,7 +93,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_uje3b")]
+"values": [ExtResource("2_uwlxo")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -104,6 +106,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("key/TextureRect:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4ng3l")]
 }
 
 [sub_resource type="Animation" id="Animation_shswt"]
@@ -144,7 +158,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_uje3b"), ExtResource("3_bi47o"), ExtResource("4_lt2wj"), ExtResource("5_cwwu1"), ExtResource("6_0mbl4"), ExtResource("7_kue4t"), ExtResource("8_xac0l"), ExtResource("9_r03kp"), ExtResource("10_wybto"), ExtResource("11_dhy01"), ExtResource("12_30eob"), ExtResource("13_sq813")]
+"values": [ExtResource("2_uwlxo"), ExtResource("3_wqaad"), ExtResource("4_7aeu0"), ExtResource("5_g2fut"), ExtResource("6_o8ugo"), ExtResource("7_2b2tv"), ExtResource("8_ltwm8"), ExtResource("9_o76vq"), ExtResource("10_873pw"), ExtResource("11_5mlrr"), ExtResource("12_oin1e"), ExtResource("13_0pk8v")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -259,7 +273,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_88vth")]
+"values": [ExtResource("14_5xrqy")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -272,6 +286,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("key/TextureRect:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4ng3l")]
 }
 
 [sub_resource type="Animation" id="Animation_vc5x4"]
@@ -348,7 +374,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_88vth")]
+"values": [ExtResource("14_5xrqy")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -362,6 +388,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("key/TextureRect:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_klfgi")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmj83"]
 _data = {
@@ -371,20 +409,33 @@ _data = {
 "idle_2": SubResource("Animation_vc5x4")
 }
 
-[node name="strongEnemy" groups=["enemy"] instance=ExtResource("1_qmjlb")]
-script = ExtResource("2_xuhom")
-power = 0
+[node name="hoverEnemy" groups=["enemy"] instance=ExtResource("1_npt84")]
+script = ExtResource("2_r350b")
 speed = 180.0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)
-texture = ExtResource("2_uje3b")
+texture = ExtResource("2_uwlxo")
 region_enabled = true
 region_rect = Rect2(96, 0, 16, 16)
 
 [node name="key" type="Node2D" parent="." index="1"]
 
-[node name="Label" type="Label" parent="key" index="0"]
+[node name="TextureRect" type="TextureRect" parent="key" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4ng3l")
+
+[node name="Label" type="Label" parent="key" index="1"]
 modulate = Color(0, 0, 0, 1)
 offset_left = -32.0
 offset_top = -32.0
@@ -397,10 +448,30 @@ vertical_alignment = 1
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_h0bc5")
+shape = SubResource("RectangleShape2D_auay4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_xmj83")
 }
+
+[node name="deadTimer" type="Timer" parent="." index="4"]
+
+[node name="deadBar" type="ProgressBar" parent="." index="5"]
+modulate = Color(0.941176, 0.211765, 0.290196, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -31.5
+offset_right = 31.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 3
+show_percentage = false
+
+[connection signal="timeout" from="deadTimer" to="." method="_on_dead_timer_timeout"]

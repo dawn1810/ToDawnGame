@@ -6,11 +6,12 @@ const ENEMIES = [
 	'basic_enemy', 'basic_enemy', 'basic_enemy',
 	'fast_enemy',
 	'strong_enemy',
+	'hover_enemy',
 ]
+
 
 func _ready():
 	pass # Replace with function body.
-
 
 func _process(delta):
 	pass
