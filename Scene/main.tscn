@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnkp07x5ey6n7"]
+[gd_scene load_steps=16 format=3 uid="uid://cnkp07x5ey6n7"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_rid71"]
 [ext_resource type="PackedScene" uid="uid://bdsu0nv0rjwvy" path="res://tower/tower.tscn" id="2_hodn3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://4okj0brh2yp5" path="res://asset/Tilesets/Hills.png" id="4_oq72n"]
 [ext_resource type="Texture2D" uid="uid://dsor1nla54vkc" path="res://asset/Tilesets/Water.png" id="5_ul43n"]
 [ext_resource type="Texture2D" uid="uid://vg868fnif8se" path="res://asset/Tilesets/Wooden House.png" id="6_kk04r"]
+[ext_resource type="Texture2D" uid="uid://b4axik6whyjxy" path="res://asset/processbar/pixil-frame-0.png" id="8_5ufhs"]
+[ext_resource type="Texture2D" uid="uid://dspb05pwdco0x" path="res://asset/processbar/pixil-frame-1.png" id="9_lfrrg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d3rn"]
 texture = ExtResource("3_b4fie")
@@ -235,7 +237,6 @@ sources/4 = SubResource("TileSetAtlasSource_lyge0")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rid71")
-metadata/_edit_vertical_guides_ = [1300.0]
 
 [node name="spawnPositions" type="Node2D" parent="."]
 
@@ -275,7 +276,7 @@ position = Vector2(1300, 492)
 z_index = 8
 position = Vector2(1300, 556)
 
-[node name="enrmiesApeartime" type="Timer" parent="."]
+[node name="enemiesApeartime" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
@@ -288,6 +289,30 @@ layer_0/tile_data = PackedInt32Array(17, 131073, 0, 65553, 131073, 1, 131089, 13
 [node name="Tower" parent="." instance=ExtResource("2_hodn3")]
 position = Vector2(35, 321)
 
-[node name="Node" type="Node" parent="."]
+[node name="Ontop" type="CanvasLayer" parent="."]
+layer = 18
 
-[connection signal="timeout" from="enrmiesApeartime" to="." method="_on_enrmies_apeartime_timeout"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Ontop"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = 261.0
+offset_right = 313.0
+offset_bottom = 881.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("9_lfrrg")
+texture_over = ExtResource("8_5ufhs")
+texture_progress = ExtResource("9_lfrrg")
+tint_progress = Color(0.929412, 0.87451, 0.290196, 1)
+
+[node name="progressTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="enemiesApeartime" to="." method="_on_enrmies_apeartime_timeout"]
+[connection signal="timeout" from="progressTimer" to="." method="_on_progress_timer_timeout"]

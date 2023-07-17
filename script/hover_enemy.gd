@@ -28,12 +28,12 @@ func _unhandled_input(event):
 		if event.is_pressed() && OS.get_keycode_string(event.keycode) == label.text:
 			if !running:
 				timer.start()
+				bar.visible = true
+				running = true
 				if tween:
 					tween.kill() # Abort the previous animation.
 				tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 				tween.tween_property(bar, 'value', 100, timer.wait_time - 0.1)
-				bar.visible = true
-				running = true
 		if event.is_released() && OS.get_keycode_string(event.keycode) == label.text:
 #			reset timer
 			if running:
@@ -60,5 +60,4 @@ func generate_word(chars, length):
 
 func _on_dead_timer_timeout():
 	running = false
-	bar.visible = false
 	dead()
