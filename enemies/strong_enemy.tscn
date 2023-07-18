@@ -375,6 +375,7 @@ _data = {
 script = ExtResource("2_xuhom")
 power = 0
 speed = 180.0
+attack_amount = 15
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)

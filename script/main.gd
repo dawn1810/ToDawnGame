@@ -3,25 +3,27 @@
 extends Node2D
 
 const ENEMIES = [
-	'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy',
-	'fast_enemy',
-	'strong_enemy',
+#	'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy',
+#	'fast_enemy', 'fast_enemy',
+#	'strong_enemy', 'strong_enemy',
+	'secret_box'
 ]
 
 const ENEMIES_2 = [
-	'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy',
-	'fast_enemy',
-	'strong_enemy',
-	'hover_enemy',
-	'rand_letter_enemy',
-]
-
-const ENEMIES_3 = [
 	'basic_enemy', 'basic_enemy', 'basic_enemy',
 	'fast_enemy', 'fast_enemy',
 	'strong_enemy', 'strong_enemy',
 	'hover_enemy',
 	'rand_letter_enemy',
+	'secret_box'
+]
+
+const ENEMIES_3 = [
+	'fast_enemy', 'fast_enemy', 'fast_enemy',
+	'strong_enemy', 'strong_enemy', 'strong_enemy',
+	'hover_enemy',
+	'rand_letter_enemy',
+	'secret_box'
 ]
 
 @onready var spawn_timer = $enemiesApeartime
@@ -53,8 +55,9 @@ func _on_progress_timer_timeout():
 	if stage == 1:
 		enemies = ENEMIES_2
 	elif stage == 3:
-		spawn_timer.set_wait_time(1.2)
+		spawn_timer.set_wait_time(1)
 	elif  stage == 4:
+		spawn_timer.set_wait_time(1.2)
 		enemies = ENEMIES_3
 	elif  stage == 6:
 		print('boss fight')

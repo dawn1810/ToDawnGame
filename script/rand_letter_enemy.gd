@@ -2,12 +2,13 @@ extends ENEMIES
 
 @export var power = 0
 
-var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var colors = ['idle', 'idle_2']
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const colors = ['idle', 'idle_2']
+
+var rand_letter = generate_word(characters, 1)
 
 @onready var label = $key/Label
 @onready var anim = $AnimationPlayer
-@onready var rand_letter = generate_word(characters, 1)
 
 
 func _ready():
@@ -27,12 +28,11 @@ func _unhandled_input(event):
 				dead()
 			else :
 				anim.play("change_letter")
-				await anim.animation_finished
-				anim.play(colors.pick_random())
-				# rerandom letter after one time;
+				# re-random letter after every time;
 				rand_letter = generate_word(characters, 1)
 				label.text = rand_letter
-				
+				await anim.animation_finished
+				anim.play(colors.pick_random())
 
 func dead():
 	anim.play("explose")

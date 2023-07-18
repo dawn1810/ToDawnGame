@@ -19,9 +19,14 @@ func damnge(amount):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group('enemy'):
-# play animation attacked
-		anim.play("attacked")
-# lose some health
-		damnge(body.attack_amount)
 # make enermis disappear
 		body.dead()
+		if !body.is_in_group('box'):
+# play animation attacked
+			anim.play("attacked")
+# lose some health
+			damnge(body.attack_amount)
+		else:
+# chest do not queue free after dead function
+			await body.anim.animation_finished
+			body.queue_free()

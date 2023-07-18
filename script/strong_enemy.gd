@@ -2,13 +2,13 @@ extends ENEMIES
 
 @export var power = 0
 
-var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var colors = ['idle', 'idle_2']
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const colors = ['idle', 'idle_2']
+
+var rand_letter = generate_word(characters, 1)
 
 @onready var label = $key/Label
 @onready var anim = $AnimationPlayer
-@onready var rand_letter = generate_word(characters, 1)
-
 
 func _ready():
 # make random colar for key:

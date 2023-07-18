@@ -412,6 +412,7 @@ _data = {
 [node name="hoverEnemy" groups=["enemy"] instance=ExtResource("1_npt84")]
 script = ExtResource("2_r350b")
 speed = 180.0
+attack_amount = 20
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)
