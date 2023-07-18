@@ -3,9 +3,9 @@
 extends Node2D
 
 const ENEMIES = [
-#	'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy',
-#	'fast_enemy', 'fast_enemy',
-#	'strong_enemy', 'strong_enemy',
+	'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy',
+	'fast_enemy', 'fast_enemy',
+	'strong_enemy', 'strong_enemy',
 	'secret_box'
 ]
 
