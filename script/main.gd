@@ -4,23 +4,25 @@ extends Node2D
 
 const ENEMIES = [
 	'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy', 'basic_enemy',
-	'fast_enemy', 'fast_enemy',
-	'strong_enemy', 'strong_enemy',
+	'fast_enemy', 'fast_enemy', 'fast_enemy',
 	'secret_box'
+	
 ]
 
 const ENEMIES_2 = [
 	'basic_enemy', 'basic_enemy', 'basic_enemy',
 	'fast_enemy', 'fast_enemy',
 	'strong_enemy', 'strong_enemy',
+	'hidden_enemy', 'hidden_enemy',
 	'hover_enemy',
 	'rand_letter_enemy',
 	'secret_box'
 ]
 
 const ENEMIES_3 = [
-	'fast_enemy', 'fast_enemy', 'fast_enemy',
-	'strong_enemy', 'strong_enemy', 'strong_enemy',
+	'fast_enemy', 'fast_enemy',
+	'strong_enemy', 'strong_enemy',
+	'hidden_enemy', 'hidden_enemy',
 	'hover_enemy',
 	'rand_letter_enemy',
 	'secret_box'

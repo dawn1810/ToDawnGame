@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://rrw0vvenfaip"]
+[gd_scene load_steps=22 format=3 uid="uid://rrw0vvenfaip"]
 
 [ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_jtqca"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="2_il5ir"]
@@ -371,9 +371,6 @@ _data = {
 "idle_2": SubResource("Animation_vc5x4")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgl51"]
-size = Vector2(51, 52)
-
 [node name="fastEnemy" groups=["enemy"] instance=ExtResource("1_jtqca")]
 script = ExtResource("2_il5ir")
 speed = 350.0
@@ -407,12 +404,3 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_xmj83")
 }
-
-[node name="buffSpeed" type="Area2D" parent="." index="4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="buffSpeed" index="0"]
-position = Vector2(-25.5, 6)
-shape = SubResource("RectangleShape2D_lgl51")
-debug_color = Color(0, 0.643137, 0.337255, 0.419608)
-
-[connection signal="body_entered" from="buffSpeed" to="." method="_on_buff_speed_body_entered"]
