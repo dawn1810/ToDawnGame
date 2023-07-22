@@ -237,7 +237,7 @@ sources/4 = SubResource("TileSetAtlasSource_lyge0")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rid71")
-metadata/_edit_horizontal_guides_ = [301.0]
+metadata/_edit_horizontal_guides_ = [300.0]
 
 [node name="spawnPositions" type="Node2D" parent="."]
 
