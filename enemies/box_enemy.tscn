@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://be77o1e6q8tge"]
+
+[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_7c16l"]
+
+[node name="boxEnemy" instance=ExtResource("1_7c16l")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]

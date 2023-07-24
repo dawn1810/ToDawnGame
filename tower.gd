@@ -7,7 +7,7 @@ extends Node2D
 
 func damnge(amount):
 	health -= amount
-	print(health)
+#	print(health)
 #	if health <= 0:
 #		print('game over')
 #	elif health <= 20:
@@ -19,14 +19,22 @@ func damnge(amount):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group('enemy'):
-# make enermis disappear
-		body.dead()
-		if !body.is_in_group('box'):
-# play animation attacked
+		if body.get_parent().name == 'RandBoss':
+			body.get_parent().dead()
+			# play animation attacked
 			anim.play("attacked")
-# lose some health
-			damnge(body.attack_amount)
+			# game over
+			damnge(100)
 		else:
-# chest do not queue free after dead function
-			await body.anim.animation_finished
-			body.queue_free()
+			# make enermis disappear
+			body.dead()
+		# play animation attacked
+		anim.play("attacked")
+		# lose some health
+		damnge(body.attack_amount)
+	if body.is_in_group('boss'):
+		body.dead()
+		# play animation attacked
+		anim.play("attacked")
+		# game over
+		damnge(100)

@@ -1,185 +1,494 @@
-[gd_scene load_steps=5 format=3 uid="uid://dednuef68i3i3"]
+[gd_scene load_steps=32 format=3 uid="uid://dednuef68i3i3"]
 
 [ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_e580t"]
-[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="2_i026d"]
+[ext_resource type="Script" path="res://script/rand_boss.gd" id="2_bmwvg"]
 [ext_resource type="Texture2D" uid="uid://chxrn7dfrb2q5" path="res://asset/chest/pixil-frame-0.png" id="2_ui76n"]
+[ext_resource type="PackedScene" uid="uid://ccfpe2b07n5lq" path="res://enemies/basic_enemy.tscn" id="3_hmdrk"]
+[ext_resource type="Texture2D" uid="uid://bwhalp1hoyeqh" path="res://asset/smoke/FX001_01.png" id="4_cnw72"]
+[ext_resource type="PackedScene" uid="uid://rrw0vvenfaip" path="res://enemies/fast_enemy.tscn" id="4_ordd3"]
+[ext_resource type="PackedScene" uid="uid://ct2dxbxvt1xsh" path="res://enemies/strong_enemy.tscn" id="5_rjui8"]
+[ext_resource type="Texture2D" uid="uid://d3lrowfnnwyc" path="res://asset/smoke/FX001_02.png" id="5_u3b6k"]
+[ext_resource type="PackedScene" uid="uid://bwt64g0faunq0" path="res://enemies/hidden_enemy.tscn" id="6_pwio6"]
+[ext_resource type="Texture2D" uid="uid://c6xto16if3wni" path="res://asset/smoke/FX001_03.png" id="6_uyylw"]
+[ext_resource type="PackedScene" uid="uid://lhsp1rb7agqx" path="res://enemies/hover_enemy.tscn" id="7_0a4v8"]
+[ext_resource type="Texture2D" uid="uid://dtjsihjx0y3vs" path="res://asset/smoke/FX001_04.png" id="7_7bp5i"]
+[ext_resource type="PackedScene" uid="uid://b1x44iker38lw" path="res://enemies/rand_letter_enemy.tscn" id="8_3w8oq"]
+[ext_resource type="Texture2D" uid="uid://r50pyetjnory" path="res://asset/smoke/FX001_05.png" id="8_mfrtq"]
+[ext_resource type="Texture2D" uid="uid://cwbadcss44obh" path="res://asset/chest/pixil-frame-1.png" id="9_hd8br"]
+[ext_resource type="Texture2D" uid="uid://byp2udshquwv" path="res://asset/Nuclear_explosion/Nuclear_explosion1.png" id="15_ftdcd"]
+[ext_resource type="Texture2D" uid="uid://bcl86333vnrq7" path="res://asset/Nuclear_explosion/Nuclear_explosion2.png" id="16_c28a5"]
+[ext_resource type="Texture2D" uid="uid://drbg3n6gc285c" path="res://asset/Nuclear_explosion/Nuclear_explosion3.png" id="17_2ooyq"]
+[ext_resource type="Texture2D" uid="uid://bdgptllwv5c01" path="res://asset/Nuclear_explosion/Nuclear_explosion4.png" id="18_tuv6s"]
+[ext_resource type="Texture2D" uid="uid://cmqjitq1wk8nw" path="res://asset/Nuclear_explosion/Nuclear_explosion5.png" id="19_lltb3"]
+[ext_resource type="Texture2D" uid="uid://cvts7hq3pjuun" path="res://asset/Nuclear_explosion/Nuclear_explosion6.png" id="20_ihwwk"]
+[ext_resource type="Texture2D" uid="uid://ycdke6erjys0" path="res://asset/Nuclear_explosion/Nuclear_explosion7.png" id="21_j81wq"]
+[ext_resource type="Texture2D" uid="uid://cipeky52y55hq" path="res://asset/Nuclear_explosion/Nuclear_explosion8.png" id="22_0mbxo"]
+[ext_resource type="Texture2D" uid="uid://30a6jgcqtr7c" path="res://asset/Nuclear_explosion/Nuclear_explosion9.png" id="23_m8pjo"]
+[ext_resource type="Texture2D" uid="uid://dgkhe6f60q33p" path="res://asset/Nuclear_explosion/Nuclear_explosion10.png" id="24_8qjjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dwwj"]
+size = Vector2(33, 28)
 
-[node name="RandBoss" instance=ExtResource("1_e580t")]
-script = null
+[sub_resource type="Animation" id="Animation_6jld6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ui76n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("key:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("key:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("buffSpeeda/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qfxmr"]
+resource_name = "change_letter"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("key:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_cnw72"), ExtResource("5_u3b6k"), ExtResource("6_uyylw"), ExtResource("7_7bp5i"), ExtResource("8_mfrtq")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a27ja"]
+resource_name = "explose"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("key:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("buffSpeeda/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15_ftdcd"), ExtResource("16_c28a5"), ExtResource("17_2ooyq"), ExtResource("18_tuv6s"), ExtResource("19_lltb3"), ExtResource("20_ihwwk"), ExtResource("21_j81wq"), ExtResource("22_0mbxo"), ExtResource("23_m8pjo"), ExtResource("24_8qjjg")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, -80)]
+}
+
+[sub_resource type="Animation" id="Animation_56cq1"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_ui76n"), ExtResource("9_hd8br")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("key:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("key:position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, 0), Vector2(128, 4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("buffSpeeda/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01mp4"]
+_data = {
+"RESET": SubResource("Animation_6jld6"),
+"change_letter": SubResource("Animation_qfxmr"),
+"explose": SubResource("Animation_a27ja"),
+"idle": SubResource("Animation_56cq1")
+}
+
+[node name="RandBoss" groups=["boss"] instance=ExtResource("1_e580t")]
+collision_layer = 2
+script = ExtResource("2_bmwvg")
+basic = ExtResource("3_hmdrk")
+fast = ExtResource("4_ordd3")
+strong = ExtResource("5_rjui8")
+hide = ExtResource("6_pwio6")
+hover = ExtResource("7_0a4v8")
+rand = ExtResource("8_3w8oq")
+speed = 35.0
+metadata/_edit_vertical_guides_ = [-3.0, 62.0, 193.0, 258.0]
+metadata/_edit_horizontal_guides_ = [-64.0, 63.0, 127.0, -128.0]
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(128, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("2_ui76n")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="key" type="Node2D" parent="." index="1"]
+position = Vector2(128, 0)
+
+[node name="Label" type="Label" parent="key" index="0"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(111.5, 0)
 shape = SubResource("RectangleShape2D_2dwwj")
+debug_color = Color(0.898039, 0, 0.768627, 0.419608)
 
-[node name="Sprite2D4" type="Sprite2D" parent="." index="3"]
-position = Vector2(0, 127)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="buffSpeeda" parent="." index="3"]
+position = Vector2(128, 0)
 
-[node name="Sprite2D5" type="Sprite2D" parent="." index="4"]
-position = Vector2(0, -128)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="CollisionShape2D" parent="buffSpeeda" index="0"]
+disabled = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="." index="5"]
-position = Vector2(64, -128)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Node2D" type="Node2D" parent="." index="4"]
 
-[node name="Sprite2D7" type="Sprite2D" parent="." index="6"]
+[node name="Marker2D2" type="Marker2D" parent="Node2D" index="0" groups=["boss_pos"]]
+position = Vector2(-3, -128)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D" index="1" groups=["boss_pos"]]
+position = Vector2(62, -128)
+
+[node name="Marker2D4" type="Marker2D" parent="Node2D" index="2" groups=["boss_pos"]]
 position = Vector2(128, -128)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
 
-[node name="Sprite2D8" type="Sprite2D" parent="." index="7"]
-position = Vector2(256, -128)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D5" type="Marker2D" parent="Node2D" index="3" groups=["boss_pos"]]
+position = Vector2(258, -128)
 
-[node name="Sprite2D9" type="Sprite2D" parent="." index="8"]
-position = Vector2(192, -128)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D6" type="Marker2D" parent="Node2D" index="4" groups=["boss_pos"]]
+position = Vector2(193, -128)
 
-[node name="Sprite2D14" type="Sprite2D" parent="." index="9"]
-position = Vector2(0, -64)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D7" type="Marker2D" parent="Node2D" index="5" groups=["boss_pos"]]
+position = Vector2(-3, -64)
 
-[node name="Sprite2D15" type="Sprite2D" parent="." index="10"]
-position = Vector2(64, -64)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D8" type="Marker2D" parent="Node2D" index="6" groups=["boss_pos"]]
+position = Vector2(62, -64)
 
-[node name="Sprite2D16" type="Sprite2D" parent="." index="11"]
+[node name="Marker2D9" type="Marker2D" parent="Node2D" index="7" groups=["boss_pos"]]
 position = Vector2(128, -64)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
 
-[node name="Sprite2D17" type="Sprite2D" parent="." index="12"]
-position = Vector2(256, -64)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D10" type="Marker2D" parent="Node2D" index="8" groups=["boss_pos"]]
+position = Vector2(258, -64)
 
-[node name="Sprite2D18" type="Sprite2D" parent="." index="13"]
-position = Vector2(192, -64)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D11" type="Marker2D" parent="Node2D" index="9" groups=["boss_pos"]]
+position = Vector2(193, -64)
 
-[node name="Sprite2D19" type="Sprite2D" parent="." index="14"]
-position = Vector2(0, 63)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D12" type="Marker2D" parent="Node2D" index="10" groups=["boss_pos"]]
+position = Vector2(-3, 63)
 
-[node name="Sprite2D20" type="Sprite2D" parent="." index="15"]
-position = Vector2(64, 63)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D17" type="Marker2D" parent="Node2D" index="11" groups=["boss_pos"]]
+position = Vector2(62, 63)
 
-[node name="Sprite2D21" type="Sprite2D" parent="." index="16"]
+[node name="Marker2D18" type="Marker2D" parent="Node2D" index="12" groups=["boss_pos"]]
 position = Vector2(128, 63)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
 
-[node name="Sprite2D22" type="Sprite2D" parent="." index="17"]
-position = Vector2(256, 63)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D19" type="Marker2D" parent="Node2D" index="13" groups=["boss_pos"]]
+position = Vector2(258, 63)
 
-[node name="Sprite2D23" type="Sprite2D" parent="." index="18"]
-position = Vector2(192, 63)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D20" type="Marker2D" parent="Node2D" index="14" groups=["boss_pos"]]
+position = Vector2(193, 63)
 
-[node name="Sprite2D25" type="Sprite2D" parent="." index="19"]
-position = Vector2(64, -1)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D21" type="Marker2D" parent="Node2D" index="15" groups=["boss_pos"]]
+position = Vector2(-3, 127)
 
-[node name="Sprite2D26" type="Sprite2D" parent="." index="20"]
-position = Vector2(128, -1)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+[node name="Marker2D22" type="Marker2D" parent="Node2D" index="16" groups=["boss_pos"]]
+position = Vector2(62, 127)
 
-[node name="Sprite2D27" type="Sprite2D" parent="." index="21"]
-position = Vector2(256, -1)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Sprite2D28" type="Sprite2D" parent="." index="22"]
-position = Vector2(192, -1)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Sprite2D10" type="Sprite2D" parent="." index="23"]
-position = Vector2(256, 127)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Sprite2D11" type="Sprite2D" parent="." index="24"]
-position = Vector2(192, 127)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Sprite2D12" type="Sprite2D" parent="." index="25"]
-position = Vector2(64, 127)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Sprite2D13" type="Sprite2D" parent="." index="26"]
+[node name="Marker2D23" type="Marker2D" parent="Node2D" index="17" groups=["boss_pos"]]
 position = Vector2(128, 127)
-scale = Vector2(4, 4)
-texture = ExtResource("2_i026d")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Marker2D24" type="Marker2D" parent="Node2D" index="18" groups=["boss_pos"]]
+position = Vector2(258, 127)
+
+[node name="Marker2D25" type="Marker2D" parent="Node2D" index="19" groups=["boss_pos"]]
+position = Vector2(193, 127)
+
+[node name="Marker2D13" type="Marker2D" parent="Node2D" index="20" groups=["boss_pos"]]
+position = Vector2(62, 0)
+
+[node name="Marker2D14" type="Marker2D" parent="Node2D" index="21" groups=["boss_pos"]]
+position = Vector2(-3, 0)
+
+[node name="Marker2D15" type="Marker2D" parent="Node2D" index="22" groups=["boss_pos"]]
+position = Vector2(258, 0)
+
+[node name="Marker2D16" type="Marker2D" parent="Node2D" index="23" groups=["boss_pos"]]
+position = Vector2(193, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_01mp4")
+}
