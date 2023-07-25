@@ -379,6 +379,7 @@ hide = ExtResource("6_pwio6")
 hover = ExtResource("7_0a4v8")
 rand = ExtResource("8_3w8oq")
 speed = 35.0
+attack_amount = 100
 metadata/_edit_vertical_guides_ = [-3.0, 62.0, 193.0, 258.0]
 metadata/_edit_horizontal_guides_ = [-64.0, 63.0, 127.0, -128.0]
 

@@ -22,6 +22,8 @@ window/stretch/mode="viewport"
 [layer_names]
 
 2d_physics/layer_1="enemies"
+2d_physics/layer_2="boss"
+2d_physics/layer_3="tower"
 
 [rendering]
 

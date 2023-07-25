@@ -12,22 +12,27 @@ extends Node2D
 
 # boss
 @export var rand_boss = preload("res://enemies/rand_boss.tscn")
+@export var box_boss = preload("res://enemies/box_enemy.tscn")
+@export var mouse_boss = preload("res://enemies/mouse_boss.tscn")
+@export var path_boss = preload("res://enemies/path_boss.tscn")
 
 # propability to generate thoes enemies
 var freq = [.7, .4]
 var cst = 2.0
+var pos_list = []
+var enemies = ENEMIES
+var stage = 0
+var tween: Tween
 
 @onready var spawn_timer = $enemiesApeartime
 @onready var progress_timer = $progressTimer
 @onready var bar = $Ontop/TextureProgressBar
 @onready var center_point = $spawnPositions/Marker2D5
 
-var enemies = ENEMIES
-var stage = 0
-var tween: Tween
 
 func _ready():
 	spawn_timer.set_wait_time(cst)
+	pos_list = get_tree().get_nodes_in_group('spawn')
 	if (tween):
 		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
@@ -60,12 +65,55 @@ func reset_tween():
 func boss_render():
 	# stop spawn enemies first
 	spawn_timer.stop()
+	# spawn less enemies in boss face: 
+	spawn_timer.set_wait_time(cst * 2)
 	# stop process bar because it make stage + one every boss stage
 	progress_timer.stop()
 	
 	var spawn_boss: PackedScene
-	match randi_range(0, 0):
-		0: spawn_boss = rand_boss
+	match randi_range(3, 3):
+		0: 
+			spawn_boss = rand_boss
+			pos_list = [
+				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D8,
+				$spawnPositions/Marker2D9
+				]
+			spawn_timer.start()
+		1: 
+			spawn_boss = box_boss
+			pos_list = [
+				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D3, 
+				$spawnPositions/Marker2D4,
+				$spawnPositions/Marker2D6, 
+				$spawnPositions/Marker2D7,
+				$spawnPositions/Marker2D8,
+				$spawnPositions/Marker2D9
+				]
+			spawn_timer.start()
+		2: 
+			spawn_boss = mouse_boss
+			pos_list = [
+				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D3, 
+				$spawnPositions/Marker2D7,
+				$spawnPositions/Marker2D8,
+				$spawnPositions/Marker2D9
+				]
+			spawn_timer.start()
+		3:
+			spawn_boss = path_boss
+			pos_list = [
+				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D8,
+				$spawnPositions/Marker2D9
+				]
+			spawn_timer.start()
 	
 	var instance = spawn_boss.instantiate()
 	
@@ -74,13 +122,8 @@ func boss_render():
 	
 	add_child(instance)
 	
-	await  get_tree().create_timer(8.0).timeout
-	spawn_timer.start()
-	
-	# have 30 minute to finish boss before reset tween:
-	await get_tree().create_timer(22.0).timeout
-	progress_timer.start()
-	reset_tween()
+	# connect to dead signal
+	instance.deaded.connect(_on_boss_deaded)
 
 func _on_enrmies_apeartime_timeout():
 	var spawn_enermy: PackedScene
@@ -91,7 +134,6 @@ func _on_enrmies_apeartime_timeout():
 		3: spawn_enermy = hide
 		4: spawn_enermy = hover
 		5: spawn_enermy = rand
-	var pos_list = get_tree().get_nodes_in_group('spawn')
 	
 	var instance = spawn_enermy.instantiate()
 	var pick_pos = pos_list.pick_random()
@@ -122,3 +164,8 @@ func _on_progress_timer_timeout():
 		else:
 			spawn_timer.set_wait_time(cst * 2/3)
 
+func _on_boss_deaded():
+	progress_timer.start()
+	# reset pos_list (position spawn enemies)
+	pos_list = get_tree().get_nodes_in_group('spawn')
+	reset_tween()

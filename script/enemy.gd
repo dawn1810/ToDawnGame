@@ -1,8 +1,8 @@
 extends ENEMIES
 
 
-var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var colors = ['idle', 'idle_2']
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const colors = ['idle', 'idle_2']
 
 @onready var label = $key/Label
 @onready var anim = $AnimationPlayer

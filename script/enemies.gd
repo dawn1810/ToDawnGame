@@ -15,7 +15,6 @@ func _physics_process(delta):
 func dead():
 # add dead animation here
 	print('dead')
-	queue_free()
 
 func _on_buff_speed_body_entered(body):
 	if body.is_in_group('enemy') && body != self && body.speed < self.speed:

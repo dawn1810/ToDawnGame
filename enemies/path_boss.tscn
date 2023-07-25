@@ -1,0 +1,429 @@
+[gd_scene load_steps=20 format=3 uid="uid://rmh1j3hmmtmt"]
+
+[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_vanig"]
+[ext_resource type="Script" path="res://script/path_boss.gd" id="2_ef1dm"]
+[ext_resource type="Texture2D" uid="uid://d1ejgv4f8k8k2" path="res://asset/SimpleCharacter/Girl-Sheet.png" id="3_2g75e"]
+[ext_resource type="FontFile" uid="uid://dwrscdgtyyyoe" path="res://asset/Fonts/m6x11.ttf" id="3_bi7py"]
+[ext_resource type="Texture2D" uid="uid://byp2udshquwv" path="res://asset/Nuclear_explosion/Nuclear_explosion1.png" id="5_f5kjr"]
+[ext_resource type="Texture2D" uid="uid://bcl86333vnrq7" path="res://asset/Nuclear_explosion/Nuclear_explosion2.png" id="6_4gkms"]
+[ext_resource type="Texture2D" uid="uid://drbg3n6gc285c" path="res://asset/Nuclear_explosion/Nuclear_explosion3.png" id="7_h7svk"]
+[ext_resource type="Texture2D" uid="uid://bdgptllwv5c01" path="res://asset/Nuclear_explosion/Nuclear_explosion4.png" id="8_ye0es"]
+[ext_resource type="Texture2D" uid="uid://cmqjitq1wk8nw" path="res://asset/Nuclear_explosion/Nuclear_explosion5.png" id="9_kp53w"]
+[ext_resource type="Texture2D" uid="uid://cvts7hq3pjuun" path="res://asset/Nuclear_explosion/Nuclear_explosion6.png" id="10_w2jdu"]
+[ext_resource type="Texture2D" uid="uid://ycdke6erjys0" path="res://asset/Nuclear_explosion/Nuclear_explosion7.png" id="11_eacr1"]
+[ext_resource type="Texture2D" uid="uid://cipeky52y55hq" path="res://asset/Nuclear_explosion/Nuclear_explosion8.png" id="12_bju1l"]
+[ext_resource type="Texture2D" uid="uid://30a6jgcqtr7c" path="res://asset/Nuclear_explosion/Nuclear_explosion9.png" id="13_822qi"]
+[ext_resource type="Texture2D" uid="uid://dgkhe6f60q33p" path="res://asset/Nuclear_explosion/Nuclear_explosion10.png" id="14_f7e48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahlt6"]
+size = Vector2(324, 308)
+
+[sub_resource type="Animation" id="Animation_3g38g"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_2g75e")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("key:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("extraSprites:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x6ypc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_2g75e")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("key:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("extraSprites:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_u6r8d"]
+resource_name = "explose"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_f5kjr"), ExtResource("6_4gkms"), ExtResource("7_h7svk"), ExtResource("8_ye0es"), ExtResource("9_kp53w"), ExtResource("10_w2jdu"), ExtResource("11_eacr1"), ExtResource("12_bju1l"), ExtResource("13_822qi"), ExtResource("14_f7e48")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("extraSprites:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("key:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13dx6"]
+_data = {
+"RESET": SubResource("Animation_x6ypc"),
+"explose": SubResource("Animation_u6r8d"),
+"idle": SubResource("Animation_3g38g")
+}
+
+[node name="pathBoss" groups=["boss"] instance=ExtResource("1_vanig")]
+script = ExtResource("2_ef1dm")
+speed = 20.0
+
+[node name="extraSprites" type="Node2D" parent="." index="0"]
+
+[node name="posList" type="Node2D" parent="." index="1"]
+
+[node name="Marker2D" type="Marker2D" parent="posList" index="0"]
+position = Vector2(-130, -130)
+
+[node name="Marker2D2" type="Marker2D" parent="posList" index="1"]
+position = Vector2(-65, -130)
+
+[node name="Marker2D3" type="Marker2D" parent="posList" index="2"]
+position = Vector2(0, -130)
+
+[node name="Marker2D4" type="Marker2D" parent="posList" index="3"]
+position = Vector2(65, -130)
+
+[node name="Marker2D5" type="Marker2D" parent="posList" index="4"]
+position = Vector2(130, -130)
+
+[node name="Marker2D6" type="Marker2D" parent="posList" index="5"]
+position = Vector2(-130, -65)
+
+[node name="Marker2D7" type="Marker2D" parent="posList" index="6"]
+position = Vector2(-65, -65)
+
+[node name="Marker2D8" type="Marker2D" parent="posList" index="7"]
+position = Vector2(0, -65)
+
+[node name="Marker2D9" type="Marker2D" parent="posList" index="8"]
+position = Vector2(65, -65)
+
+[node name="Marker2D10" type="Marker2D" parent="posList" index="9"]
+position = Vector2(130, -65)
+
+[node name="Marker2D11" type="Marker2D" parent="posList" index="10"]
+position = Vector2(-130, 0)
+
+[node name="Marker2D12" type="Marker2D" parent="posList" index="11"]
+position = Vector2(-65, 0)
+
+[node name="Marker2D13" type="Marker2D" parent="posList" index="12"]
+
+[node name="Marker2D14" type="Marker2D" parent="posList" index="13"]
+position = Vector2(65, 0)
+
+[node name="Marker2D15" type="Marker2D" parent="posList" index="14"]
+position = Vector2(130, 0)
+
+[node name="Marker2D16" type="Marker2D" parent="posList" index="15"]
+position = Vector2(-130, 65)
+
+[node name="Marker2D17" type="Marker2D" parent="posList" index="16"]
+position = Vector2(-65, 65)
+
+[node name="Marker2D18" type="Marker2D" parent="posList" index="17"]
+position = Vector2(0, 65)
+
+[node name="Marker2D19" type="Marker2D" parent="posList" index="18"]
+position = Vector2(65, 65)
+
+[node name="Marker2D20" type="Marker2D" parent="posList" index="19"]
+position = Vector2(130, 65)
+
+[node name="Marker2D21" type="Marker2D" parent="posList" index="20"]
+position = Vector2(-130, 130)
+
+[node name="Marker2D22" type="Marker2D" parent="posList" index="21"]
+position = Vector2(-65, 130)
+
+[node name="Marker2D23" type="Marker2D" parent="posList" index="22"]
+position = Vector2(0, 130)
+
+[node name="Marker2D24" type="Marker2D" parent="posList" index="23"]
+position = Vector2(65, 130)
+
+[node name="Marker2D25" type="Marker2D" parent="posList" index="24"]
+position = Vector2(130, 130)
+
+[node name="key" type="Node2D" parent="." index="2"]
+
+[node name="Label" type="Label" parent="key" index="0"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = -97.0
+offset_right = 33.0
+offset_bottom = -48.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_bi7py")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="key" index="1"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -97.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_bi7py")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="key" index="2"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = -32.0
+offset_right = 98.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_bi7py")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="key" index="3"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = 33.0
+offset_right = 33.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_bi7py")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" parent="." index="3"]
+scale = Vector2(3, 3)
+texture = ExtResource("3_2g75e")
+offset = Vector2(0, -12)
+hframes = 44
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ahlt6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_13dx6")
+}

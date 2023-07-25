@@ -1,5 +1,7 @@
 extends ENEMIES
 
+signal deaded
+
 @export var basic = preload("res://enemies/basic_enemy.tscn")
 @export var fast = preload("res://enemies/fast_enemy.tscn")
 @export var strong = preload("res://enemies/strong_enemy.tscn")
@@ -7,16 +9,16 @@ extends ENEMIES
 @export var hover = preload("res://enemies/hover_enemy.tscn")
 @export var rand = preload("res://enemies/rand_letter_enemy.tscn")
 
-var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 var freq = [.5, .3, .2, .2, .1, .1]
-var can_kill = false
 
 @onready var label = $key/Label
 @onready var anim = $AnimationPlayer
 
 func _ready():
 # random text for character:
-	label.text = generate_word(characters, 1);
+	label.text = generate_word(characters, 1)
 	
 	var pos_list = get_tree().get_nodes_in_group('boss_pos')
 	
@@ -60,6 +62,8 @@ func _unhandled_input(event):
 			dead()
 
 func dead():
+	emit_signal("deaded")
+	
 	anim.play("explose")
 	speed = 0
 	

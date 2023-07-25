@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://script/enemies.gd" id="1_w6k3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h7j5"]
-size = Vector2(127, 29)
+size = Vector2(64, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgrgc"]
 size = Vector2(39, 52)
