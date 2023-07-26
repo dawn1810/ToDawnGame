@@ -107,13 +107,6 @@ func boss_render():
 			spawn_timer.start()
 		3:
 			spawn_boss = path_boss
-			pos_list = [
-				$spawnPositions/Marker2D, 
-				$spawnPositions/Marker2D2, 
-				$spawnPositions/Marker2D8,
-				$spawnPositions/Marker2D9
-				]
-			spawn_timer.start()
 	
 	var instance = spawn_boss.instantiate()
 	
@@ -165,6 +158,8 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 
 func _on_boss_deaded():
+	if spawn_timer.is_stopped():
+		spawn_timer.start()
 	progress_timer.start()
 	# reset pos_list (position spawn enemies)
 	pos_list = get_tree().get_nodes_in_group('spawn')
