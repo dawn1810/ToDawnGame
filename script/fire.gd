@@ -11,5 +11,5 @@ func _on_area_2d_body_entered(body):
 		body.dead()
 	
 	if health <= 0:
-		anim.play("disappear")
+		anim.call_deferred('play', 'disappear')
 

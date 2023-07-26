@@ -35,7 +35,7 @@ func _unhandled_input(event):
 				anim.play(colors.pick_random())
 
 func dead():
-	anim.play("explose")
+	anim.call_deferred('play', 'explose')
 	speed = 0
 
 func generate_word(chars, length):

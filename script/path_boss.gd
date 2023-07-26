@@ -36,26 +36,30 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		# left
 		if event.pressed:
-			print(sprites.get_child_count())
 			if sprites.get_child_count() == 2:
 				dead()
+			
 			if OS.get_keycode_string(event.keycode) == keys.get_child(1).text:
-				_move(curr_index - 1)
+				if (curr_index  % 5) - 1 >= 0 && matrix[curr_index - 1] != null:
+					_move(curr_index - 1)
 				generate_dir_letter()
 			elif OS.get_keycode_string(event.keycode) == keys.get_child(2).text:
-				_move(curr_index + 1)
+				if (curr_index  % 5) + 1 < 5 && matrix[curr_index + 1] != null:
+					_move(curr_index + 1)
 				generate_dir_letter()
 			elif OS.get_keycode_string(event.keycode) == keys.get_child(0).text:
-				_move(curr_index - 5)
+				if curr_index - 5 >= 0 && matrix[curr_index - 5] != null:
+					_move(curr_index - 5)
 				generate_dir_letter()
 			elif OS.get_keycode_string(event.keycode) == keys.get_child(3).text:
-				_move(curr_index + 5)
+				if curr_index + 5 < 25 && matrix[curr_index + 5] != null:
+					_move(curr_index + 5)
 				generate_dir_letter()
 
 func dead():
 	emit_signal("deaded")
-	
-	anim.play("explose")
+	anim.call_deferred('stop')
+	anim.call_deferred('play', 'destroy')
 	speed = 0
 	
 	# clear all enemies on stage
@@ -103,15 +107,13 @@ func rand_next_index(curr_index: int, dirs) -> int:
 	return rand_next_index(curr_index, dirs)
 
 func _move(update_index):
-	# set up start position
-	if matrix[update_index] != null:
-		# destroy current box
-		matrix[curr_index].anim.play("explose")
-		matrix[curr_index] = null
-		# update posion of character
-		curr_index = update_index
-		sprite.position = pos_list.get_child(update_index).position
-		keys.position = pos_list.get_child(update_index).position
+	# destroy current box
+	matrix[curr_index].anim.play("explose")
+	matrix[curr_index] = null
+	# update posion of character
+	curr_index = update_index
+	sprite.position = pos_list.get_child(update_index).position
+	keys.position = pos_list.get_child(update_index).position
 
 func create_map(start_index):
 	# set up start position

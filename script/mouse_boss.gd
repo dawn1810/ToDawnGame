@@ -54,8 +54,8 @@ func dead():
 	disappear.stop()
 	heal = 0
 	
-	anim.play("explose")
-	control_anim.play("disappear")
+	anim.call_deferred('play', 'explose')
+	control_anim.call_deferred('play', 'disappear')
 	speed = 0
 	
 	# clear all enemies on stage

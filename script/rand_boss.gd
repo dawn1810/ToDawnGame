@@ -64,7 +64,7 @@ func _unhandled_input(event):
 func dead():
 	emit_signal("deaded")
 	
-	anim.play("explose")
+	anim.call_deferred('play', 'explose')
 	speed = 0
 	
 	# clear all enemies on stage

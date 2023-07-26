@@ -9,4 +9,4 @@ func _ready():
 	rock.frame = randi_range(0, 5)
 
 func _on_timer_timeout():
-	anim.play("disappear")
+	anim.call_deferred('play', 'disappear')

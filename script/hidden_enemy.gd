@@ -24,7 +24,7 @@ func _unhandled_input(event):
 			dead()
 
 func dead():
-	anim.play("explose")
+	anim.call_deferred('play', 'explose')
 	speed = 0
 
 func generate_word(chars, length):
