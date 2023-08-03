@@ -3,55 +3,57 @@ extends ENEMIES
 signal deaded
 
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var face = 1
 
+var freq = [.5, .3, .2, .2, .1, .1]
+var answer_text: Array
 var enter_text: String
-var rand_text: String
+var click = false
 
+@onready var keys = $key
 @onready var anim = $AnimationPlayer
+@onready var sprites = $exrtaSprites
 @onready var control_anim = $CanvasLayer/Control/AnimationPlayer
 @onready var key_board = $CanvasLayer/Control/TextEdit
-@onready var key = $key
-@onready var extra_sprites = $extraSprintes
 
 func _ready():
-# random text for character:
-	rand_text = generate_word(characters, face);
-	key.get_child(0).text = rand_text
-# set beuty full for text
-	update_key_board("Type all letters > Enter to attack / Backspace to delete")
+	for i in keys.get_children():
+		i.text = generate_word(characters, 1)
+		answer_text.append(i.text)
+		answer_text.sort()
 
 func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == 4194308 && enter_text.length() > 0: # Backspace key
+				# appear letter for easier order letters
+				print(enter_text[-1])
+				for i in range(keys.get_child_count()-1,0,-1): # loop from backwards
+					if keys.get_child(i).text == enter_text[-1] && !keys.get_child(i).visible:
+						keys.get_child(i).show()
+						break
+
 				enter_text = enter_text.erase(enter_text.length() - 1, 1)
 				update_key_board(enter_text)
+				
 			elif event.keycode == 4194309: # Enter key
-				if enter_text == rand_text:
-					face += 1
-					if face > 9:
-						dead()
-					else:
-						rand_text = generate_word(characters, face);
-						# change letter for main sprite
-						change_letter()
-						key.get_child(0).text = rand_text[0]
-						for i in range(1, rand_text.length()):
-							extra_sprites.get_child(i-1).visible = true
-							extra_sprites.get_child(i-1).change_letter()
-							key.get_child(i).text = rand_text[i]
-							
-				enter_text = ""
-				update_key_board(enter_text)
+				if enter_text == str(answer_text):
+					dead()
+				else:
+					update_key_board("")
 			elif event.keycode in range(65, 91): # is letter
 				enter_text += OS.get_keycode_string(event.keycode)
 				update_key_board(enter_text)
+				# hide letter for easier order letters
+				print(OS.get_keycode_string(event.keycode))
+				for i in keys.get_children():
+					if i.text == OS.get_keycode_string(event.keycode) and i.visible:
+						i.hide()
+						break
 
 func dead():
 	emit_signal("deaded")
-	control_anim.play("disappear")
+	
 	anim.call_deferred('play', 'explose')
 	speed = 0
 	
@@ -60,11 +62,6 @@ func dead():
 	if (len(enemies_appear) > 0):
 		for enemy in enemies_appear:
 			enemy.dead()
-
-func change_letter():
-	anim.play("change_letter")
-	await anim.animation_finished
-	anim.play("idle")
 
 func update_key_board(enter_text):
 	key_board.text = " >> " +  enter_text

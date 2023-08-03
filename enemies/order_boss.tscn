@@ -1,0 +1,608 @@
+[gd_scene load_steps=23 format=3 uid="uid://dmuu34ok78w2s"]
+
+[ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_1ilfu"]
+[ext_resource type="PackedScene" uid="uid://1t6sjarkayia" path="res://Scene/extra_sprite.tscn" id="2_8c61m"]
+[ext_resource type="Script" path="res://script/order_boss.gd" id="2_8dhh7"]
+[ext_resource type="Texture2D" uid="uid://byp2udshquwv" path="res://asset/Nuclear_explosion/Nuclear_explosion1.png" id="6_h1one"]
+[ext_resource type="Texture2D" uid="uid://bcl86333vnrq7" path="res://asset/Nuclear_explosion/Nuclear_explosion2.png" id="7_h6yoy"]
+[ext_resource type="Texture2D" uid="uid://drbg3n6gc285c" path="res://asset/Nuclear_explosion/Nuclear_explosion3.png" id="8_frbdu"]
+[ext_resource type="Texture2D" uid="uid://bdgptllwv5c01" path="res://asset/Nuclear_explosion/Nuclear_explosion4.png" id="9_l2mha"]
+[ext_resource type="Texture2D" uid="uid://cmqjitq1wk8nw" path="res://asset/Nuclear_explosion/Nuclear_explosion5.png" id="10_pj44e"]
+[ext_resource type="Texture2D" uid="uid://cvts7hq3pjuun" path="res://asset/Nuclear_explosion/Nuclear_explosion6.png" id="11_ck0xh"]
+[ext_resource type="Texture2D" uid="uid://ycdke6erjys0" path="res://asset/Nuclear_explosion/Nuclear_explosion7.png" id="12_nmgvm"]
+[ext_resource type="Texture2D" uid="uid://cipeky52y55hq" path="res://asset/Nuclear_explosion/Nuclear_explosion8.png" id="13_ovs57"]
+[ext_resource type="Texture2D" uid="uid://30a6jgcqtr7c" path="res://asset/Nuclear_explosion/Nuclear_explosion9.png" id="14_1rqo6"]
+[ext_resource type="FontFile" uid="uid://dwrscdgtyyyoe" path="res://asset/Fonts/m6x11.ttf" id="14_hccsk"]
+[ext_resource type="Texture2D" uid="uid://dgkhe6f60q33p" path="res://asset/Nuclear_explosion/Nuclear_explosion10.png" id="15_v0em0"]
+
+[sub_resource type="Animation" id="Animation_1jmic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l26h7"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 54), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6wq7o"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 54)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fqly3"]
+_data = {
+"RESET": SubResource("Animation_1jmic"),
+"appear": SubResource("Animation_l26h7"),
+"disappear": SubResource("Animation_6wq7o")
+}
+
+[sub_resource type="Animation" id="Animation_82q6p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("key:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4u3rx"]
+resource_name = "explose"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("key:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_h1one"), ExtResource("7_h6yoy"), ExtResource("8_frbdu"), ExtResource("9_l2mha"), ExtResource("10_pj44e"), ExtResource("11_ck0xh"), ExtResource("12_nmgvm"), ExtResource("13_ovs57"), ExtResource("14_1rqo6"), ExtResource("15_v0em0")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -107)]
+}
+
+[sub_resource type="Animation" id="Animation_6pwa3"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("key:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("key:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o13tl"]
+_data = {
+"RESET": SubResource("Animation_82q6p"),
+"explose": SubResource("Animation_4u3rx"),
+"idle": SubResource("Animation_6pwa3")
+}
+
+[node name="orderBoss" instance=ExtResource("1_1ilfu")]
+position = Vector2(583, 304)
+script = ExtResource("2_8dhh7")
+speed = 0.0
+
+[node name="exrtaSprites" type="Node2D" parent="." index="0"]
+
+[node name="extraSprite" parent="exrtaSprites" index="0" instance=ExtResource("2_8c61m")]
+position = Vector2(-130, -130)
+
+[node name="extraSprite2" parent="exrtaSprites" index="1" instance=ExtResource("2_8c61m")]
+position = Vector2(-65, -130)
+
+[node name="extraSprite3" parent="exrtaSprites" index="2" instance=ExtResource("2_8c61m")]
+position = Vector2(0, -130)
+
+[node name="extraSprite4" parent="exrtaSprites" index="3" instance=ExtResource("2_8c61m")]
+position = Vector2(65, -130)
+
+[node name="extraSprite5" parent="exrtaSprites" index="4" instance=ExtResource("2_8c61m")]
+position = Vector2(130, -130)
+
+[node name="extraSprite6" parent="exrtaSprites" index="5" instance=ExtResource("2_8c61m")]
+position = Vector2(-130, -65)
+
+[node name="extraSprite7" parent="exrtaSprites" index="6" instance=ExtResource("2_8c61m")]
+position = Vector2(-65, -65)
+
+[node name="extraSprite8" parent="exrtaSprites" index="7" instance=ExtResource("2_8c61m")]
+position = Vector2(0, -65)
+
+[node name="extraSprite9" parent="exrtaSprites" index="8" instance=ExtResource("2_8c61m")]
+position = Vector2(65, -65)
+
+[node name="extraSprite10" parent="exrtaSprites" index="9" instance=ExtResource("2_8c61m")]
+position = Vector2(130, -65)
+
+[node name="extraSprite11" parent="exrtaSprites" index="10" instance=ExtResource("2_8c61m")]
+position = Vector2(-130, 0)
+
+[node name="extraSprite12" parent="exrtaSprites" index="11" instance=ExtResource("2_8c61m")]
+position = Vector2(-65, 0)
+
+[node name="extraSprite13" parent="exrtaSprites" index="12" instance=ExtResource("2_8c61m")]
+
+[node name="extraSprite14" parent="exrtaSprites" index="13" instance=ExtResource("2_8c61m")]
+position = Vector2(65, 0)
+
+[node name="extraSprite15" parent="exrtaSprites" index="14" instance=ExtResource("2_8c61m")]
+position = Vector2(130, 0)
+
+[node name="extraSprite16" parent="exrtaSprites" index="15" instance=ExtResource("2_8c61m")]
+position = Vector2(-130, 65)
+
+[node name="extraSprite17" parent="exrtaSprites" index="16" instance=ExtResource("2_8c61m")]
+position = Vector2(-65, 65)
+
+[node name="extraSprite18" parent="exrtaSprites" index="17" instance=ExtResource("2_8c61m")]
+position = Vector2(0, 65)
+
+[node name="extraSprite19" parent="exrtaSprites" index="18" instance=ExtResource("2_8c61m")]
+position = Vector2(65, 65)
+
+[node name="extraSprite20" parent="exrtaSprites" index="19" instance=ExtResource("2_8c61m")]
+position = Vector2(130, 65)
+
+[node name="extraSprite21" parent="exrtaSprites" index="20" instance=ExtResource("2_8c61m")]
+position = Vector2(-130, 130)
+
+[node name="extraSprite22" parent="exrtaSprites" index="21" instance=ExtResource("2_8c61m")]
+position = Vector2(-65, 130)
+
+[node name="extraSprite23" parent="exrtaSprites" index="22" instance=ExtResource("2_8c61m")]
+position = Vector2(0, 130)
+
+[node name="extraSprite24" parent="exrtaSprites" index="23" instance=ExtResource("2_8c61m")]
+position = Vector2(65, 130)
+
+[node name="extraSprite25" parent="exrtaSprites" index="24" instance=ExtResource("2_8c61m")]
+position = Vector2(130, 130)
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(4, 4)
+texture = null
+
+[node name="key" type="Node2D" parent="." index="2"]
+
+[node name="Label" type="Label" parent="key" index="0"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -162.0
+offset_top = -162.0
+offset_right = -97.0
+offset_bottom = -113.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="key" index="1"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -97.0
+offset_top = -162.0
+offset_right = -32.0
+offset_bottom = -113.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="key" index="2"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = -162.0
+offset_right = 33.0
+offset_bottom = -113.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="key" index="3"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = -162.0
+offset_right = 98.0
+offset_bottom = -113.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="key" index="4"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 98.0
+offset_top = -162.0
+offset_right = 163.0
+offset_bottom = -113.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="key" index="5"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -162.0
+offset_top = -97.0
+offset_right = -97.0
+offset_bottom = -48.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="key" index="6"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -97.0
+offset_top = -97.0
+offset_right = -32.0
+offset_bottom = -48.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="key" index="7"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = -97.0
+offset_right = 33.0
+offset_bottom = -48.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="key" index="8"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = -97.0
+offset_right = 98.0
+offset_bottom = -48.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="key" index="9"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 98.0
+offset_top = -97.0
+offset_right = 163.0
+offset_bottom = -48.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="key" index="10"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -162.0
+offset_top = -32.0
+offset_right = -97.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="key" index="11"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -97.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="key" index="12"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="key" index="13"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = -32.0
+offset_right = 98.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="key" index="14"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 98.0
+offset_top = -32.0
+offset_right = 163.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label16" type="Label" parent="key" index="15"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -162.0
+offset_top = 33.0
+offset_right = -97.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label17" type="Label" parent="key" index="16"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -97.0
+offset_top = 33.0
+offset_right = -32.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label18" type="Label" parent="key" index="17"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = 33.0
+offset_right = 33.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label19" type="Label" parent="key" index="18"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = 33.0
+offset_right = 98.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label20" type="Label" parent="key" index="19"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 98.0
+offset_top = 33.0
+offset_right = 163.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label21" type="Label" parent="key" index="20"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -162.0
+offset_top = 98.0
+offset_right = -97.0
+offset_bottom = 147.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label22" type="Label" parent="key" index="21"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -97.0
+offset_top = 98.0
+offset_right = -32.0
+offset_bottom = 147.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label23" type="Label" parent="key" index="22"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -32.0
+offset_top = 98.0
+offset_right = 33.0
+offset_bottom = 147.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label24" type="Label" parent="key" index="23"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 33.0
+offset_top = 98.0
+offset_right = 98.0
+offset_bottom = 147.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label25" type="Label" parent="key" index="24"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 98.0
+offset_top = 98.0
+offset_right = 163.0
+offset_bottom = 147.0
+size_flags_horizontal = 4
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+layer = 19
+
+[node name="Control" type="Node2D" parent="CanvasLayer" index="0"]
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Control" index="0"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 594.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_hccsk")
+theme_override_font_sizes/font_size = 48
+placeholder_text = "Enter your text here"
+editable = false
+scroll_fit_content_height = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control" index="1"]
+autoplay = "appear"
+libraries = {
+"": SubResource("AnimationLibrary_fqly3")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_o13tl")
+}

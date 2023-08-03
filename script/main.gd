@@ -76,8 +76,6 @@ func boss_render():
 			spawn_boss = rand_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
-				$spawnPositions/Marker2D2, 
-				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -86,9 +84,7 @@ func boss_render():
 			pos_list = [
 				$spawnPositions/Marker2D, 
 				$spawnPositions/Marker2D2, 
-				$spawnPositions/Marker2D3, 
-				$spawnPositions/Marker2D4,
-				$spawnPositions/Marker2D6, 
+				$spawnPositions/Marker2D3,  
 				$spawnPositions/Marker2D7,
 				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
@@ -99,8 +95,6 @@ func boss_render():
 			pos_list = [
 				$spawnPositions/Marker2D, 
 				$spawnPositions/Marker2D2, 
-				$spawnPositions/Marker2D3, 
-				$spawnPositions/Marker2D7,
 				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
