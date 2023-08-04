@@ -15,6 +15,7 @@ extends Node2D
 @export var box_boss = preload("res://enemies/box_enemy.tscn")
 @export var mouse_boss = preload("res://enemies/mouse_boss.tscn")
 @export var path_boss = preload("res://enemies/path_boss.tscn")
+@export var order_boss = preload("res://enemies/order_boss.tscn")
 
 # propability to generate thoes enemies
 var freq = [.7, .4]
@@ -71,7 +72,7 @@ func boss_render():
 	progress_timer.stop()
 	
 	var spawn_boss: PackedScene
-	match randi_range(3, 3):
+	match randi_range(4, 4):
 		0: 
 			spawn_boss = rand_boss
 			pos_list = [
@@ -101,6 +102,15 @@ func boss_render():
 			spawn_timer.start()
 		3:
 			spawn_boss = path_boss
+		4: 
+			spawn_boss = order_boss
+			pos_list = [
+				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D8,
+				$spawnPositions/Marker2D9
+				]
+			spawn_timer.start()
 	
 	var instance = spawn_boss.instantiate()
 	

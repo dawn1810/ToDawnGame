@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmuu34ok78w2s"]
+[gd_scene load_steps=24 format=3 uid="uid://dmuu34ok78w2s"]
 
 [ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_1ilfu"]
 [ext_resource type="PackedScene" uid="uid://1t6sjarkayia" path="res://Scene/extra_sprite.tscn" id="2_8c61m"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://30a6jgcqtr7c" path="res://asset/Nuclear_explosion/Nuclear_explosion9.png" id="14_1rqo6"]
 [ext_resource type="FontFile" uid="uid://dwrscdgtyyyoe" path="res://asset/Fonts/m6x11.ttf" id="14_hccsk"]
 [ext_resource type="Texture2D" uid="uid://dgkhe6f60q33p" path="res://asset/Nuclear_explosion/Nuclear_explosion10.png" id="15_v0em0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyr2f"]
+size = Vector2(194, 194)
 
 [sub_resource type="Animation" id="Animation_1jmic"]
 length = 0.001
@@ -107,6 +110,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("exrtaSprites:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4u3rx"]
 resource_name = "explose"
@@ -162,6 +201,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, -107)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("exrtaSprites:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_6pwa3"]
 resource_name = "idle"
@@ -203,6 +278,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("exrtaSprites:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o13tl"]
 _data = {
@@ -211,99 +322,53 @@ _data = {
 "idle": SubResource("Animation_6pwa3")
 }
 
-[node name="orderBoss" instance=ExtResource("1_1ilfu")]
+[node name="orderBoss" groups=["boss"] instance=ExtResource("1_1ilfu")]
 position = Vector2(583, 304)
+collision_layer = 2
 script = ExtResource("2_8dhh7")
-speed = 0.0
+speed = 20.0
 
 [node name="exrtaSprites" type="Node2D" parent="." index="0"]
 
 [node name="extraSprite" parent="exrtaSprites" index="0" instance=ExtResource("2_8c61m")]
-position = Vector2(-130, -130)
-
-[node name="extraSprite2" parent="exrtaSprites" index="1" instance=ExtResource("2_8c61m")]
-position = Vector2(-65, -130)
-
-[node name="extraSprite3" parent="exrtaSprites" index="2" instance=ExtResource("2_8c61m")]
-position = Vector2(0, -130)
-
-[node name="extraSprite4" parent="exrtaSprites" index="3" instance=ExtResource("2_8c61m")]
-position = Vector2(65, -130)
-
-[node name="extraSprite5" parent="exrtaSprites" index="4" instance=ExtResource("2_8c61m")]
-position = Vector2(130, -130)
-
-[node name="extraSprite6" parent="exrtaSprites" index="5" instance=ExtResource("2_8c61m")]
-position = Vector2(-130, -65)
-
-[node name="extraSprite7" parent="exrtaSprites" index="6" instance=ExtResource("2_8c61m")]
 position = Vector2(-65, -65)
 
-[node name="extraSprite8" parent="exrtaSprites" index="7" instance=ExtResource("2_8c61m")]
+[node name="extraSprite2" parent="exrtaSprites" index="1" instance=ExtResource("2_8c61m")]
 position = Vector2(0, -65)
 
-[node name="extraSprite9" parent="exrtaSprites" index="8" instance=ExtResource("2_8c61m")]
+[node name="extraSprite3" parent="exrtaSprites" index="2" instance=ExtResource("2_8c61m")]
 position = Vector2(65, -65)
 
-[node name="extraSprite10" parent="exrtaSprites" index="9" instance=ExtResource("2_8c61m")]
-position = Vector2(130, -65)
-
-[node name="extraSprite11" parent="exrtaSprites" index="10" instance=ExtResource("2_8c61m")]
-position = Vector2(-130, 0)
-
-[node name="extraSprite12" parent="exrtaSprites" index="11" instance=ExtResource("2_8c61m")]
+[node name="extraSprite4" parent="exrtaSprites" index="3" instance=ExtResource("2_8c61m")]
 position = Vector2(-65, 0)
 
-[node name="extraSprite13" parent="exrtaSprites" index="12" instance=ExtResource("2_8c61m")]
+[node name="extraSprite5" parent="exrtaSprites" index="4" instance=ExtResource("2_8c61m")]
 
-[node name="extraSprite14" parent="exrtaSprites" index="13" instance=ExtResource("2_8c61m")]
+[node name="extraSprite6" parent="exrtaSprites" index="5" instance=ExtResource("2_8c61m")]
 position = Vector2(65, 0)
 
-[node name="extraSprite15" parent="exrtaSprites" index="14" instance=ExtResource("2_8c61m")]
-position = Vector2(130, 0)
-
-[node name="extraSprite16" parent="exrtaSprites" index="15" instance=ExtResource("2_8c61m")]
-position = Vector2(-130, 65)
-
-[node name="extraSprite17" parent="exrtaSprites" index="16" instance=ExtResource("2_8c61m")]
+[node name="extraSprite7" parent="exrtaSprites" index="6" instance=ExtResource("2_8c61m")]
 position = Vector2(-65, 65)
 
-[node name="extraSprite18" parent="exrtaSprites" index="17" instance=ExtResource("2_8c61m")]
+[node name="extraSprite8" parent="exrtaSprites" index="7" instance=ExtResource("2_8c61m")]
 position = Vector2(0, 65)
 
-[node name="extraSprite19" parent="exrtaSprites" index="18" instance=ExtResource("2_8c61m")]
+[node name="extraSprite9" parent="exrtaSprites" index="8" instance=ExtResource("2_8c61m")]
 position = Vector2(65, 65)
 
-[node name="extraSprite20" parent="exrtaSprites" index="19" instance=ExtResource("2_8c61m")]
-position = Vector2(130, 65)
-
-[node name="extraSprite21" parent="exrtaSprites" index="20" instance=ExtResource("2_8c61m")]
-position = Vector2(-130, 130)
-
-[node name="extraSprite22" parent="exrtaSprites" index="21" instance=ExtResource("2_8c61m")]
-position = Vector2(-65, 130)
-
-[node name="extraSprite23" parent="exrtaSprites" index="22" instance=ExtResource("2_8c61m")]
-position = Vector2(0, 130)
-
-[node name="extraSprite24" parent="exrtaSprites" index="23" instance=ExtResource("2_8c61m")]
-position = Vector2(65, 130)
-
-[node name="extraSprite25" parent="exrtaSprites" index="24" instance=ExtResource("2_8c61m")]
-position = Vector2(130, 130)
-
 [node name="Sprite2D" parent="." index="1"]
+visible = false
 scale = Vector2(4, 4)
-texture = null
+texture = ExtResource("6_h1one")
 
 [node name="key" type="Node2D" parent="." index="2"]
 
 [node name="Label" type="Label" parent="key" index="0"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -162.0
-offset_top = -162.0
-offset_right = -97.0
-offset_bottom = -113.0
+offset_left = -97.0
+offset_top = -97.0
+offset_right = -32.0
+offset_bottom = -48.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -311,10 +376,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="key" index="1"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -97.0
-offset_top = -162.0
-offset_right = -32.0
-offset_bottom = -113.0
+offset_left = -32.0
+offset_top = -97.0
+offset_right = 33.0
+offset_bottom = -48.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -322,10 +387,10 @@ vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="key" index="2"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -32.0
-offset_top = -162.0
-offset_right = 33.0
-offset_bottom = -113.0
+offset_left = 33.0
+offset_top = -97.0
+offset_right = 98.0
+offset_bottom = -48.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -333,10 +398,10 @@ vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="key" index="3"]
 modulate = Color(0, 0, 0, 1)
-offset_left = 33.0
-offset_top = -162.0
-offset_right = 98.0
-offset_bottom = -113.0
+offset_left = -97.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = 17.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -344,10 +409,10 @@ vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="key" index="4"]
 modulate = Color(0, 0, 0, 1)
-offset_left = 98.0
-offset_top = -162.0
-offset_right = 163.0
-offset_bottom = -113.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 17.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -355,10 +420,10 @@ vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="key" index="5"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -162.0
-offset_top = -97.0
-offset_right = -97.0
-offset_bottom = -48.0
+offset_left = 33.0
+offset_top = -32.0
+offset_right = 98.0
+offset_bottom = 17.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -367,9 +432,9 @@ vertical_alignment = 1
 [node name="Label7" type="Label" parent="key" index="6"]
 modulate = Color(0, 0, 0, 1)
 offset_left = -97.0
-offset_top = -97.0
+offset_top = 33.0
 offset_right = -32.0
-offset_bottom = -48.0
+offset_bottom = 82.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -378,9 +443,9 @@ vertical_alignment = 1
 [node name="Label8" type="Label" parent="key" index="7"]
 modulate = Color(0, 0, 0, 1)
 offset_left = -32.0
-offset_top = -97.0
+offset_top = 33.0
 offset_right = 33.0
-offset_bottom = -48.0
+offset_bottom = 82.0
 size_flags_horizontal = 4
 text = "K"
 horizontal_alignment = 1
@@ -389,116 +454,6 @@ vertical_alignment = 1
 [node name="Label9" type="Label" parent="key" index="8"]
 modulate = Color(0, 0, 0, 1)
 offset_left = 33.0
-offset_top = -97.0
-offset_right = 98.0
-offset_bottom = -48.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label10" type="Label" parent="key" index="9"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 98.0
-offset_top = -97.0
-offset_right = 163.0
-offset_bottom = -48.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label11" type="Label" parent="key" index="10"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -162.0
-offset_top = -32.0
-offset_right = -97.0
-offset_bottom = 17.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label12" type="Label" parent="key" index="11"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -97.0
-offset_top = -32.0
-offset_right = -32.0
-offset_bottom = 17.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label13" type="Label" parent="key" index="12"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 33.0
-offset_bottom = 17.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label14" type="Label" parent="key" index="13"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 33.0
-offset_top = -32.0
-offset_right = 98.0
-offset_bottom = 17.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label15" type="Label" parent="key" index="14"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 98.0
-offset_top = -32.0
-offset_right = 163.0
-offset_bottom = 17.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label16" type="Label" parent="key" index="15"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -162.0
-offset_top = 33.0
-offset_right = -97.0
-offset_bottom = 82.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label17" type="Label" parent="key" index="16"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -97.0
-offset_top = 33.0
-offset_right = -32.0
-offset_bottom = 82.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label18" type="Label" parent="key" index="17"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -32.0
-offset_top = 33.0
-offset_right = 33.0
-offset_bottom = 82.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label19" type="Label" parent="key" index="18"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 33.0
 offset_top = 33.0
 offset_right = 98.0
 offset_bottom = 82.0
@@ -507,71 +462,9 @@ text = "K"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label20" type="Label" parent="key" index="19"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 98.0
-offset_top = 33.0
-offset_right = 163.0
-offset_bottom = 82.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label21" type="Label" parent="key" index="20"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -162.0
-offset_top = 98.0
-offset_right = -97.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label22" type="Label" parent="key" index="21"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -97.0
-offset_top = 98.0
-offset_right = -32.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label23" type="Label" parent="key" index="22"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -32.0
-offset_top = 98.0
-offset_right = 33.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label24" type="Label" parent="key" index="23"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 33.0
-offset_top = 98.0
-offset_right = 98.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label25" type="Label" parent="key" index="24"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 98.0
-offset_top = 98.0
-offset_right = 163.0
-offset_bottom = 147.0
-size_flags_horizontal = 4
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_cyr2f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 layer = 19
