@@ -24,17 +24,18 @@ var pos_list = []
 var enemies = ENEMIES
 var stage = 0
 var tween: Tween
+var lose: bool
 
 @onready var spawn_timer = $enemiesApeartime
 @onready var progress_timer = $progressTimer
 @onready var bar = $Ontop/TextureProgressBar
 @onready var center_point = $spawnPositions/Marker2D5
 @onready var gameover_scene = $Ontop/GameOver
+@onready var anim = $AnimationPlayer
 
 
 func _ready():
-	# hide game over scene
-	gameover_scene.hide()
+	lose = false
 	
 	spawn_timer.set_wait_time(cst)
 	pos_list = get_tree().get_nodes_in_group('spawn')
@@ -88,10 +89,8 @@ func boss_render():
 			spawn_boss = box_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
-				$spawnPositions/Marker2D2, 
 				$spawnPositions/Marker2D3,  
 				$spawnPositions/Marker2D7,
-				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -99,8 +98,6 @@ func boss_render():
 			spawn_boss = mouse_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
-				$spawnPositions/Marker2D2, 
-				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -110,8 +107,6 @@ func boss_render():
 			spawn_boss = order_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
-				$spawnPositions/Marker2D2, 
-				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -127,9 +122,11 @@ func boss_render():
 	instance.deaded.connect(_on_boss_deaded)
 
 func game_over():
-	spawn_timer.stop()
-	progress_timer.stop()
-	gameover_scene.show()
+	if !lose:
+		lose = true
+		spawn_timer.stop()
+		progress_timer.stop()
+		anim.play("gameover")
 
 func _on_enrmies_apeartime_timeout():
 	var spawn_enermy: PackedScene

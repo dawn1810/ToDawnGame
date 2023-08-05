@@ -13,6 +13,7 @@ var rand_text: String
 @onready var key_board = $CanvasLayer/Control/TextEdit
 @onready var key = $key
 @onready var extra_sprites = $extraSprintes
+@onready var dict = read_json_file("res://sample.json")
 
 func _ready():
 # random text for character:
@@ -34,7 +35,7 @@ func _unhandled_input(event):
 					if face > 9:
 						dead()
 					else:
-						rand_text = generate_word(characters, face);
+						rand_text = generate_word_2(face);
 						# change letter for main sprite
 						change_letter()
 						key.get_child(0).text = rand_text[0]
@@ -61,6 +62,15 @@ func dead():
 		for enemy in enemies_appear:
 			enemy.dead()
 
+func parse_json(text):
+	return JSON.parse_string(text)
+
+func read_json_file(file_path):
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var content_as_text = file.get_as_text()
+	var content_as_dictionary = parse_json(content_as_text)
+	return content_as_dictionary
+
 func change_letter():
 	anim.play("change_letter")
 	await anim.animation_finished
@@ -75,6 +85,9 @@ func generate_word(chars, length):
 	for i in range(length):
 		word += chars[randi()% n_char]
 	return word
+
+func generate_word_2(face):
+	return dict[str(face)].pick_random()
 
 
 

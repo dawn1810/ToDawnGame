@@ -444,8 +444,7 @@ _data = {
 
 [node name="randLetterEnemy" groups=["enemy"] instance=ExtResource("1_dhk5d")]
 script = ExtResource("2_hlnlf")
-power = 0
-speed = 180.0
+speed = 100.0
 attack_amount = 20
 
 [node name="Sprite2D" parent="." index="0"]

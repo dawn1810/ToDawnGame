@@ -15,7 +15,10 @@ var tween: Tween
 
 func _ready():
 # random text for character:
-	label.text = generate_word(characters, 1);
+	if move:
+		label.text = generate_word(characters, 1);
+	else:
+		label.text = key_text
 # make random colar for key:
 	anim.play(colors.pick_random())
 # random timer wait_time

@@ -11,7 +11,10 @@ const colors = ['idle', 'idle_2']
 func _ready():
 	anim.play("RESET")
 # random text for character:
-	label.text = generate_word(characters, 1)
+	if move:
+		label.text = generate_word(characters, 1);
+	else:
+		label.text = key_text
 # random time to appear from 1 to 3 seconds
 	timer.wait_time = randf_range(1.0, 4.0)
 	timer.start()

@@ -12,7 +12,6 @@ var click = false
 
 @onready var keys = $key
 @onready var anim = $AnimationPlayer
-@onready var sprites = $exrtaSprites
 @onready var control_anim = $CanvasLayer/Control/AnimationPlayer
 @onready var key_board = $CanvasLayer/Control/TextEdit
 

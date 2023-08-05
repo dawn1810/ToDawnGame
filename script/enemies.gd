@@ -4,6 +4,8 @@ class_name  ENEMIES
 
 @export var speed = 300.0
 @export var attack_amount = 0
+@export var key_text : String
+@export var kill : bool = true
 
 var move: bool = true
 
