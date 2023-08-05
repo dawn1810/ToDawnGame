@@ -29,9 +29,13 @@ var tween: Tween
 @onready var progress_timer = $progressTimer
 @onready var bar = $Ontop/TextureProgressBar
 @onready var center_point = $spawnPositions/Marker2D5
+@onready var gameover_scene = $Ontop/GameOver
 
 
 func _ready():
+	# hide game over scene
+	gameover_scene.hide()
+	
 	spawn_timer.set_wait_time(cst)
 	pos_list = get_tree().get_nodes_in_group('spawn')
 	if (tween):
@@ -72,7 +76,7 @@ func boss_render():
 	progress_timer.stop()
 	
 	var spawn_boss: PackedScene
-	match randi_range(4, 4):
+	match randi_range(0, 4):
 		0: 
 			spawn_boss = rand_boss
 			pos_list = [
@@ -122,6 +126,11 @@ func boss_render():
 	# connect to dead signal
 	instance.deaded.connect(_on_boss_deaded)
 
+func game_over():
+	spawn_timer.stop()
+	progress_timer.stop()
+	gameover_scene.show()
+
 func _on_enrmies_apeartime_timeout():
 	var spawn_enermy: PackedScene
 	match rand_enemies(freq):
@@ -168,3 +177,7 @@ func _on_boss_deaded():
 	# reset pos_list (position spawn enemies)
 	pos_list = get_tree().get_nodes_in_group('spawn')
 	reset_tween()
+
+
+func _on_tower_game_over():
+	game_over()

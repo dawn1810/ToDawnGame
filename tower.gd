@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_over
+
 @export var max_health = 100
 
 @onready var health = max_health
@@ -7,9 +9,9 @@ extends Node2D
 
 func damnge(amount):
 	health -= amount
-#	print(health)
-#	if health <= 0:
-#		print('game over')
+	print(health)
+	if health <= 0:
+		emit_signal('game_over')
 #	elif health <= 20:
 #		print('dengerous')
 #	elif health <= 50:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnkp07x5ey6n7"]
+[gd_scene load_steps=17 format=3 uid="uid://cnkp07x5ey6n7"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_rid71"]
 [ext_resource type="PackedScene" uid="uid://bdsu0nv0rjwvy" path="res://tower/tower.tscn" id="2_hodn3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://vg868fnif8se" path="res://asset/Tilesets/Wooden House.png" id="6_kk04r"]
 [ext_resource type="Texture2D" uid="uid://b4axik6whyjxy" path="res://asset/processbar/pixil-frame-0.png" id="8_5ufhs"]
 [ext_resource type="Texture2D" uid="uid://dspb05pwdco0x" path="res://asset/processbar/pixil-frame-1.png" id="9_lfrrg"]
+[ext_resource type="PackedScene" uid="uid://c5xyvrf3h2xr2" path="res://Scene/game_over.tscn" id="10_ae1f7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d3rn"]
 texture = ExtResource("3_b4fie")
@@ -312,9 +313,14 @@ texture_over = ExtResource("8_5ufhs")
 texture_progress = ExtResource("9_lfrrg")
 tint_progress = Color(0.929412, 0.87451, 0.290196, 1)
 
+[node name="GameOver" parent="Ontop" instance=ExtResource("10_ae1f7")]
+process_mode = 3
+visible = false
+
 [node name="progressTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
 
 [connection signal="timeout" from="enemiesApeartime" to="." method="_on_enrmies_apeartime_timeout"]
+[connection signal="game_over" from="Tower" to="." method="_on_tower_game_over"]
 [connection signal="timeout" from="progressTimer" to="." method="_on_progress_timer_timeout"]
