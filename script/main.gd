@@ -9,6 +9,7 @@ extends Node2D
 @export var hide = preload("res://enemies/hidden_enemy.tscn")
 @export var hover = preload("res://enemies/hover_enemy.tscn")
 @export var rand = preload("res://enemies/rand_letter_enemy.tscn")
+@export var word = preload("res://enemies/word_enemy.tscn")
 
 # boss
 @export var rand_boss = preload("res://enemies/rand_boss.tscn")
@@ -89,8 +90,10 @@ func boss_render():
 			spawn_boss = box_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
 				$spawnPositions/Marker2D3,  
 				$spawnPositions/Marker2D7,
+				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -98,6 +101,8 @@ func boss_render():
 			spawn_boss = mouse_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -107,6 +112,8 @@ func boss_render():
 			spawn_boss = order_boss
 			pos_list = [
 				$spawnPositions/Marker2D, 
+				$spawnPositions/Marker2D2, 
+				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
 			spawn_timer.start()
@@ -128,23 +135,32 @@ func game_over():
 		progress_timer.stop()
 		anim.play("gameover")
 
+func disable_pos(node: Marker2D, length: int):
+	pos_list.erase(node)
+	await get_tree().create_timer(length).timeout
+	pos_list.append(node)
+
 func _on_enrmies_apeartime_timeout():
 	var spawn_enermy: PackedScene
-	match rand_enemies(freq):
-		0: spawn_enermy = basic
-		1: spawn_enermy = fast
-		2: spawn_enermy = strong
-		3: spawn_enermy = hide
-		4: spawn_enermy = hover
-		5: spawn_enermy = rand
+	var pick_pos = pos_list.pick_random()
+	if randf() > 0.8:
+		match rand_enemies(freq):
+			0: spawn_enermy = basic
+			1: spawn_enermy = fast
+			1: spawn_enermy = strong
+			2: spawn_enermy = hide
+			3: spawn_enermy = hover
+			4: spawn_enermy = rand
+	else:
+		spawn_enermy = word
 	
 	var instance = spawn_enermy.instantiate()
-	var pick_pos = pos_list.pick_random()
 	
-	instance.z_index = pick_pos.get_z_index()
 	instance.global_position = pick_pos.global_position
-	
 	add_child(instance)
+	
+	if spawn_enermy == word:
+		disable_pos(pick_pos, instance.rand_word.length())
 
 func _on_progress_timer_timeout():
 	stage += 1
@@ -174,7 +190,6 @@ func _on_boss_deaded():
 	# reset pos_list (position spawn enemies)
 	pos_list = get_tree().get_nodes_in_group('spawn')
 	reset_tween()
-
 
 func _on_tower_game_over():
 	game_over()

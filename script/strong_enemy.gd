@@ -16,10 +16,7 @@ func _ready():
 # random power of enemy from 2 to 5:
 	power = randi_range(2, 5)
 # random text for character:
-	if move:
-		rand_letter = generate_word(characters, 1);
-	else:
-		rand_letter = key_text
+	rand_letter = generate_word(characters, 1);
 	label.text = rand_letter + ' x ' + str(power)
 
 func _unhandled_input(event):
