@@ -41,6 +41,8 @@ func _unhandled_input(event):
 					# show all keys
 					for i in keys.get_children():
 						i.show()
+					# clear enter text
+					enter_text = ""
 					update_key_board("")
 			elif event.keycode in range(65, 91): # is letter
 				enter_text += OS.get_keycode_string(event.keycode)

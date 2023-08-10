@@ -90,7 +90,7 @@ position = Vector2(426, 318)
 collision_mask = 7
 script = ExtResource("2_7f1px")
 extra_sprite = ExtResource("3_o0tb0")
-speed = 180.0
+speed = 100.0
 attack_amount = 10
 
 [node name="extraSprites" type="Node2D" parent="." index="0"]
@@ -112,7 +112,7 @@ theme_override_constants/separation = 1
 [node name="CollisionShape2D" parent="." index="3"]
 shape = SubResource("RectangleShape2D_cse0v")
 
-[node name="tailCol" type="CollisionShape2D" parent="." index="4" groups=["enemy"]]
+[node name="tailCol" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_q462j")
 debug_color = Color(0.815686, 0.403922, 0, 0.419608)

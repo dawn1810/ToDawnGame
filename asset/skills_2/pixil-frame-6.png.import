@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlxvif7pj2e50"
-path="res://.godot/imported/Bow.png-a52e2b3c462a745622134e3f2e9ad883.ctex"
+uid="uid://ca4jqwjmu6d2l"
+path="res://.godot/imported/pixil-frame-6.png-87ab47a4a8a831256df76764b364b3d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/SimpleCharacter/Bow.png"
-dest_files=["res://.godot/imported/Bow.png-a52e2b3c462a745622134e3f2e9ad883.ctex"]
+source_file="res://asset/skills_2/pixil-frame-6.png"
+dest_files=["res://.godot/imported/pixil-frame-6.png-87ab47a4a8a831256df76764b364b3d9.ctex"]
 
 [params]
 

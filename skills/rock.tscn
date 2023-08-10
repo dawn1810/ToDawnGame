@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bodoqln6cljp7"]
 
-[ext_resource type="Texture2D" uid="uid://b6x6vd1h31jcv" path="res://asset/rocks/rocks_shadow.png" id="1_cps0o"]
 [ext_resource type="Script" path="res://script/rock.gd" id="1_r20h2"]
+[ext_resource type="Texture2D" uid="uid://j3nmls70itan" path="res://asset/taiga_ [resources].png" id="2_igewo"]
 [ext_resource type="Texture2D" uid="uid://d3lrowfnnwyc" path="res://asset/smoke/FX001_02.png" id="3_h6tr6"]
 [ext_resource type="Texture2D" uid="uid://bwhalp1hoyeqh" path="res://asset/smoke/FX001_01.png" id="4_2wwqy"]
 [ext_resource type="Texture2D" uid="uid://c6xto16if3wni" path="res://asset/smoke/FX001_03.png" id="5_emq3t"]
@@ -9,7 +9,34 @@
 [ext_resource type="Texture2D" uid="uid://r50pyetjnory" path="res://asset/smoke/FX001_05.png" id="7_qd64i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arogs"]
-size = Vector2(96, 52)
+size = Vector2(48, 42)
+
+[sub_resource type="Animation" id="Animation_bouo5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_igewo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_cqmk3"]
 resource_name = "disappear"
@@ -27,37 +54,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("4_2wwqy"), ExtResource("3_h6tr6"), ExtResource("5_emq3t"), ExtResource("6_c0cyi"), ExtResource("7_qd64i")]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -65,44 +68,17 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_bouo5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_cps0o")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("Sprite2D:region_enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ey57j"]
@@ -116,12 +92,12 @@ script = ExtResource("1_r20h2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("1_cps0o")
-hframes = 3
-vframes = 2
+texture = ExtResource("2_igewo")
+region_enabled = true
+region_rect = Rect2(66, 27, 12, 18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_arogs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

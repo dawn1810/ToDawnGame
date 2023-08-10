@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du7q3d73m03ol"
-path="res://.godot/imported/Arrow.png-6bd3492abef7c3e24757c5c506d7da0f.ctex"
+uid="uid://b4qom4pnjh8sc"
+path="res://.godot/imported/pixil-frame-1.png-184e4f21d27a8087e7885ab256cb49ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/SimpleCharacter/Arrow.png"
-dest_files=["res://.godot/imported/Arrow.png-6bd3492abef7c3e24757c5c506d7da0f.ctex"]
+source_file="res://asset/skills_2/pixil-frame-1.png"
+dest_files=["res://.godot/imported/pixil-frame-1.png-184e4f21d27a8087e7885ab256cb49ad.ctex"]
 
 [params]
 

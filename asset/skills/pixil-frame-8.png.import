@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csrcasajp7ml"
-path="res://.godot/imported/arrow-rotate-left-solid.svg-2f077b62ae917075dc5b69af9d2fe095.ctex"
+uid="uid://neh5kj3802re"
+path="res://.godot/imported/pixil-frame-8.png-a0cdaf9b81e4dfa78b908f3e212f272d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/arrow-rotate-left-solid.svg"
-dest_files=["res://.godot/imported/arrow-rotate-left-solid.svg-2f077b62ae917075dc5b69af9d2fe095.ctex"]
+source_file="res://asset/skills/pixil-frame-8.png"
+dest_files=["res://.godot/imported/pixil-frame-8.png-a0cdaf9b81e4dfa78b908f3e212f272d.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

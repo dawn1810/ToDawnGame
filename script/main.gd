@@ -20,12 +20,13 @@ extends Node2D
 
 # propability to generate thoes enemies
 var freq = [.7, .4]
-var cst = 2.0
+var cst = 5.0
 var pos_list = []
 var enemies = ENEMIES
 var stage = 0
 var tween: Tween
 var lose: bool
+var enemy_speed: int = 100
 
 @onready var spawn_timer = $enemiesApeartime
 @onready var progress_timer = $progressTimer
@@ -72,8 +73,6 @@ func reset_tween():
 func boss_render():
 	# stop spawn enemies first
 	spawn_timer.stop()
-	# spawn less enemies in boss face: 
-	spawn_timer.set_wait_time(cst * 2)
 	# stop process bar because it make stage + one every boss stage
 	progress_timer.stop()
 	
@@ -96,6 +95,8 @@ func boss_render():
 				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
+			# spawn less enemies in boss face: 
+			spawn_timer.set_wait_time(cst * 1.5)
 			spawn_timer.start()
 		2: 
 			spawn_boss = mouse_boss
@@ -105,6 +106,8 @@ func boss_render():
 				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
+			# spawn less enemies in boss face: 
+			spawn_timer.set_wait_time(cst * 2)
 			spawn_timer.start()
 		3:
 			spawn_boss = path_boss
@@ -116,6 +119,8 @@ func boss_render():
 				$spawnPositions/Marker2D8,
 				$spawnPositions/Marker2D9
 				]
+			# spawn less enemies in boss face: 
+			spawn_timer.set_wait_time(cst * 3)
 			spawn_timer.start()
 	
 	var instance = spawn_boss.instantiate()
@@ -138,29 +143,36 @@ func game_over():
 func disable_pos(node: Marker2D, length: int):
 	pos_list.erase(node)
 	await get_tree().create_timer(length).timeout
-	pos_list.append(node)
+	if !progress_timer.is_stopped():
+		pos_list.append(node)
 
 func _on_enrmies_apeartime_timeout():
-	var spawn_enermy: PackedScene
-	var pick_pos = pos_list.pick_random()
-	if randf() > 0.8:
-		match rand_enemies(freq):
-			0: spawn_enermy = basic
-			1: spawn_enermy = fast
-			1: spawn_enermy = strong
-			2: spawn_enermy = hide
-			3: spawn_enermy = hover
-			4: spawn_enermy = rand
-	else:
-		spawn_enermy = word
-	
-	var instance = spawn_enermy.instantiate()
-	
-	instance.global_position = pick_pos.global_position
-	add_child(instance)
-	
-	if spawn_enermy == word:
-		disable_pos(pick_pos, instance.rand_word.length())
+	if len(pos_list) > 0:
+		var spawn_enermy: PackedScene
+		var pick_pos = pos_list.pick_random()
+		if randf() > 0.7:
+			match rand_enemies(freq):
+				0: spawn_enermy = basic
+				1: spawn_enermy = fast
+				2: spawn_enermy = strong
+				3: spawn_enermy = hide
+				4: spawn_enermy = hover
+				5: spawn_enermy = rand
+		else:
+			spawn_enermy = word
+		
+		var instance = spawn_enermy.instantiate()
+		
+		instance.speed = enemy_speed
+		
+		instance.global_position = pick_pos.global_position
+		add_child(instance)
+		
+		if spawn_enermy == word:
+			# delay time for child to appear all (avoid two enemies stay on another)
+			# delay time base on enemy's length and current spawn time 
+			# (5.0 is start spawn time/ current spawn tiem) = current percent
+			disable_pos(pick_pos, instance.rand_word.length() * (5.0/cst))
 
 func _on_progress_timer_timeout():
 	stage += 1
@@ -169,9 +181,13 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 			freq = [.5, .3, .2, .2]
 		elif stage == 2:
+			# remove all enemies before render boss
+			var enemies_appear = get_tree().get_nodes_in_group('enemy')
+			if (len(enemies_appear) > 0):
+				for enemy in enemies_appear:
+					enemy.dead()
+			# render boss
 			boss_render()
-			cst -= 0.2 # low 0.2 spawn time after boss
-			spawn_timer.set_wait_time(cst)
 		elif  stage == 3:
 			spawn_timer.set_wait_time(cst * 2/3)
 			freq = [.5, .3, .2, .2, .1, .1]
@@ -184,6 +200,10 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 
 func _on_boss_deaded():
+	cst -= 0.2 # low 0.2 spawn time after boss
+	enemy_speed += 5
+	spawn_timer.set_wait_time(cst)
+	
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
 	progress_timer.start()
@@ -192,4 +212,5 @@ func _on_boss_deaded():
 	reset_tween()
 
 func _on_tower_game_over():
-	game_over()
+#	game_over()
+	pass

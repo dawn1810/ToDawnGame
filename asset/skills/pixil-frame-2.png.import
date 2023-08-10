@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t02n3akm2mrp"
-path="res://.godot/imported/Yellow Effect Bullet Impact Explosion 32x32.png-96bcfb572c7a2355da81713480b10937.ctex"
+uid="uid://bgwniyn21pn1f"
+path="res://.godot/imported/pixil-frame-2.png-f4011ee02337ca77a001b863b79c6fd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Yellow Effect Bullet Impact Explosion 32x32.png"
-dest_files=["res://.godot/imported/Yellow Effect Bullet Impact Explosion 32x32.png-96bcfb572c7a2355da81713480b10937.ctex"]
+source_file="res://asset/skills/pixil-frame-2.png"
+dest_files=["res://.godot/imported/pixil-frame-2.png-f4011ee02337ca77a001b863b79c6fd1.ctex"]
 
 [params]
 
