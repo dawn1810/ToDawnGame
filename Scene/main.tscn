@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b4axik6whyjxy" path="res://asset/processbar/pixil-frame-0.png" id="8_5ufhs"]
 [ext_resource type="Texture2D" uid="uid://dspb05pwdco0x" path="res://asset/processbar/pixil-frame-1.png" id="9_lfrrg"]
 [ext_resource type="PackedScene" uid="uid://c5xyvrf3h2xr2" path="res://Scene/game_over.tscn" id="10_ae1f7"]
-[ext_resource type="PackedScene" uid="uid://bsjaqiap6yqs1" path="res://skills/tank.tscn" id="11_05yo4"]
+[ext_resource type="PackedScene" uid="uid://ba5nvocuasfnp" path="res://Scene/lucky_scroll.tscn" id="11_m2dph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d3rn"]
 texture = ExtResource("3_b4fie")
@@ -433,6 +433,8 @@ color = Color(0.615686, 0.615686, 0.615686, 1)
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
 
+[node name="luckyScroll" parent="Ontop" instance=ExtResource("11_m2dph")]
+
 [node name="progressTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
@@ -446,8 +448,6 @@ autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_3io7v")
 }
-
-[node name="tank" parent="." instance=ExtResource("11_05yo4")]
 
 [connection signal="timeout" from="enemiesApeartime" to="." method="_on_enrmies_apeartime_timeout"]
 [connection signal="game_over" from="Tower" to="." method="_on_tower_game_over"]
