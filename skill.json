@@ -1,8 +1,8 @@
 {
-	"0" : "Xác suất (5%) kẻ địch sẽ bốc cháy khi hạ gục một kẻ địch, ngọn lữa sẽ tiêu diệt mọi kẻ địch chạm phải và tan biến sau (2/4/6) lần chạm.",
-	"1" : "Xác suất (5%) kẻ địch sẽ hóa đá khi hạ gục một kẻ địch, đá sẽ chặn đứng kẻ địch và biến mất sau (5s/15s/30s) giây.",
-	"2" : "Xác suất (5%) sinh ra một chiếc xe chạy ngược chiều và tiêu diệt kẻ địch đụng với tốc độ (20/10/5) phải khi tiêu diệt một kẻ đich bất kì.",
-	"3" : "Xác suất (5%) sẽ hồi lại (1/2/3) tim cho bạn khi tiêu diệt một kẻ địch bất kì",
-	"4" : "Xác suất (1%/5%/10%) tiêu diệt tất cả kẻ địch đang tồn tại sau khi hạ gục một kẻ địch bất kì.",
-	"5" : "Xác suất (5%) khiến tất cả kẻ địch không thể di chuyển trong (2s/5s/10s) giây khi hạ gục một kẻ địch bất kì.",
+	"0" : "Xác suất (20%) kẻ địch sẽ bốc cháy khi hạ gục một kẻ địch, ngọn lữa sẽ tiêu diệt mọi kẻ địch chạm phải và tan biến sau (1/2/3) lần chạm.",
+	"1" : "Xác suất (20%) kẻ địch sẽ hóa đá khi hạ gục một kẻ địch, đá sẽ chặn đứng kẻ địch và biến mất sau (15s/30s/60s) giây.",
+	"2" : "Xác suất (20%) sinh ra một chiếc xe chạy ngược chiều và tiêu diệt kẻ địch đụng với tốc độ (20/10/5) phải khi tiêu diệt một kẻ đich bất kì.",
+	"3" : "Xác suất (20%) sẽ hồi lại (1/2/3) tim cho bạn khi tiêu diệt một kẻ địch bất kì",
+	"4" : "Xác suất (5%/10%/20%) tiêu diệt tất cả kẻ địch đang tồn tại sau khi hạ gục một kẻ địch bất kì.",
+	"5" : "Xác suất (10%) khiến tất cả kẻ địch không thể di chuyển trong (2s/5s/10s) giây khi hạ gục một kẻ địch bất kì.",
 }

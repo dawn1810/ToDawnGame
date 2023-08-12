@@ -16,9 +16,11 @@ var region_list = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	match level:
-		1: timer.wait_time = 5
-		2: timer.wait_time = 15
-		3: timer.wait_time = 30
+		1: timer.wait_time = 15
+		2: timer.wait_time = 30
+		3: timer.wait_time = 60
+	
+	timer.start()
 	
 	# random art for rocks
 	var rand_region = region_list.pick_random()

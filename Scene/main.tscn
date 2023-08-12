@@ -381,7 +381,7 @@ z_index = 9
 position = Vector2(1300, 556)
 
 [node name="enemiesApeartime" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="Water" type="TileMap" parent="."]

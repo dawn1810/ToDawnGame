@@ -30,6 +30,8 @@ func _ready():
 	
 	# set tail collision to the end of enemy
 	tail_col.position.x += (rand_word.length() - 1) * 65
+	
+	# set position of sprite to 
 
 func rand_enemies(freq) -> int:
 	var total: float
@@ -82,6 +84,9 @@ func dead():
 	tail_col.set_deferred("disabled", true)
 	speed = 0
 	
+	# random gift:
+	rand_gift()
+	
 	# remove all sprite left before dead
 	for i in range(sprites.get_child_count()):
 		keys.get_child(i).text = ''
@@ -90,7 +95,7 @@ func dead():
 		# only waiting at the final one
 		if i == sprites.get_child_count() - 1:
 			await sprites.get_child(i).anim.animation_finished
-		
+	
 	call_deferred("queue_free")
 
 func parse_json(text):

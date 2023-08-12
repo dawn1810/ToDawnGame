@@ -7,9 +7,9 @@ var health = 3
 
 func _ready():
 	match level:
-		1: health = 2
-		2: health = 4
-		3: health = 6
+		1: health = 1
+		2: health = 2
+		3: health = 3
 	# random color for fire:
 	var values = [0, 0.5, 1]
 	var r = 0

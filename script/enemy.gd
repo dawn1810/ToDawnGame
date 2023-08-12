@@ -20,6 +20,7 @@ func _unhandled_input(event):
 			dead()
 
 func dead():
+	rand_gift()
 	anim.call_deferred('play', 'explose')
 	speed = 0
 

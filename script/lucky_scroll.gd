@@ -11,8 +11,8 @@ extends Control
 var rand_list = range(6)
 
 func _ready():
-	_scrolling()
-#	hide()
+#	_scrolling() # for testing only
+	hide()
 
 func _scrolling() :
 	rand_list.shuffle()

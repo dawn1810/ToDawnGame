@@ -166,7 +166,11 @@ func _on_enrmies_apeartime_timeout():
 		instance.speed = enemy_speed
 		
 		instance.global_position = pick_pos.global_position
+		
 		add_child(instance)
+		
+		# connect to stoptime signal
+		instance.stop_time.connect(_on_time_stop)
 		
 		if spawn_enermy == word:
 			# delay time for child to appear all (avoid two enemies stay on another)
@@ -214,3 +218,33 @@ func _on_boss_deaded():
 func _on_tower_game_over():
 #	game_over()
 	pass
+
+func _on_time_stop():
+	print('stop')
+	var stop_time = 2.0
+	match Global.stop: 
+		2: stop_time = 5.0
+		3: stop_time = 10.0
+	
+	var prev_speeds = []
+	var enemies_appear = get_tree().get_nodes_in_group('enemy')
+	# stop spawm/process enemies
+	spawn_timer.stop()
+	progress_timer.stop()
+	tween.stop()
+	# stop all enemies exist
+	if (len(enemies_appear) > 0):
+		for enemy in enemies_appear:
+			prev_speeds.append(enemy.speed)
+			enemy.speed = 0
+	# timer stop for ...
+	await get_tree().create_timer(stop_time).timeout
+	# respawn enemies and contimue game
+	spawn_timer.start()
+	progress_timer.start()
+	tween.play()
+	# reset speed for all enemies
+	if (len(enemies_appear) > 0):
+		for i in range(len(enemies_appear)):
+			if is_instance_valid(enemies_appear[i]): #Detect if an object reference is Freed?
+				enemies_appear[i].speed = prev_speeds[i]
