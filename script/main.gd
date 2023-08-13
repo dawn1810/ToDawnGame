@@ -34,6 +34,7 @@ var enemy_speed: int = 100
 @onready var center_point = $spawnPositions/Marker2D5
 @onready var gameover_scene = $Ontop/GameOver
 @onready var anim = $AnimationPlayer
+@onready var lucky_scroll = $Ontop/luckyScroll
 
 
 func _ready():
@@ -204,6 +205,10 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 
 func _on_boss_deaded():
+	# start scrolling face to choose skill
+	lucky_scroll._scrolling()
+
+func restart_game_after_scroll():
 	cst -= 0.2 # low 0.2 spawn time after boss
 	enemy_speed += 5
 	spawn_timer.set_wait_time(cst)

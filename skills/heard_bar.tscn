@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5e7qevo1nook"]
+
+[ext_resource type="Texture2D" uid="uid://dbfa8685ym5fy" path="res://asset/heard.png" id="1_ooa38"]
+
+[node name="heardBar" type="VBoxContainer"]
+offset_right = 176.0
+offset_bottom = 68.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="heard1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard5" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="heard1" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard2" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard3" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard4" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")
+
+[node name="heard5" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_ooa38")

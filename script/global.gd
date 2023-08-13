@@ -1,9 +1,9 @@
 extends Node
 
-var fire: int = 1
-var rock: int = 1
-var bomb: int = 1
-var stop: int = 1
-var tank: int = 1
-var heal: int = 1
+var fire: int = 0
+var rock: int = 0
+var bomb: int = 0
+var stop: int = 0
+var tank: int = 0
+var heal: int = 0
 

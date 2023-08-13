@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://neh5kj3802re"
-path="res://.godot/imported/pixil-frame-8.png-a0cdaf9b81e4dfa78b908f3e212f272d.ctex"
+uid="uid://c7wm7pn8yyml7"
+path="res://.godot/imported/skillBox.png-f4f3a18a4f8b6c0377231813cb252393.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/skills/pixil-frame-8.png"
-dest_files=["res://.godot/imported/pixil-frame-8.png-a0cdaf9b81e4dfa78b908f3e212f272d.ctex"]
+source_file="res://asset/skillBox.png"
+dest_files=["res://.godot/imported/skillBox.png-f4f3a18a4f8b6c0377231813cb252393.ctex"]
 
 [params]
 
