@@ -11,7 +11,7 @@ const TANK = preload("res://skills/tank.tscn")
 @export var attack_amount = 0
 
 var move: bool = true
-var default_percent: int = 0.2 # 20%
+var default_percent: float = 0.2 # 20%
 
 func _physics_process(delta):
 	if move:
@@ -42,7 +42,6 @@ func rand_gift(): # current Animation2d of current type of enemies
 			0: 
 				# appear rock gift
 				if (randf() < default_percent): # percent this rock appear
-					print('rock')
 					var rock = ROCK.instantiate()
 					if self.name == 'word_enemy':
 						rock.global_position = self.position + Vector2((self.rand_word.length() - 1) * 65, 0)
@@ -52,8 +51,7 @@ func rand_gift(): # current Animation2d of current type of enemies
 					get_parent().call_deferred('add_child', rock)
 			1: 
 				# appear fire gift
-				if (randf() < default_percent): # percent this fire appear
-					print('fire')
+				if (randf() <= default_percent): # percent this fire appear
 					var fire = FIRE.instantiate()
 					if self.name == 'word_enemy':
 						fire.global_position = self.position + Vector2((self.rand_word.length() - 1) * 65, 0)
@@ -69,7 +67,6 @@ func rand_gift(): # current Animation2d of current type of enemies
 					3: percent = 0.2
 				
 				if (randf() < percent):
-					print('bomb')
 					var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')
 					if (len(enemies_appear) > 0):
 						for enemy in enemies_appear:
@@ -81,7 +78,6 @@ func rand_gift(): # current Animation2d of current type of enemies
 			4: 
 				# appear tank gift
 				if (randf() < default_percent): # percent this tank appear
-					print('tank')
 					var tank = TANK.instantiate()
 					if self.name == 'word_enemy':
 						tank.global_position = self.position + Vector2((self.rand_word.length() - 1) * 65, 0)

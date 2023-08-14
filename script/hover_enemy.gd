@@ -61,4 +61,5 @@ func generate_word(chars, length):
 
 func _on_dead_timer_timeout():
 	running = false
+	rand_gift()
 	dead()

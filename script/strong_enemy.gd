@@ -26,6 +26,7 @@ func _unhandled_input(event):
 			power -= 1
 			label.text = rand_letter + ' x ' + str(power)
 			if power <= 0:
+				rand_gift()
 				dead()
 
 func dead():

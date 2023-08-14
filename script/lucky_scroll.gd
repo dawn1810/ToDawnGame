@@ -12,8 +12,8 @@ var rand_list = range(6)
 var next_slot = 1
 
 func _ready():
-#	_scrolling() # for testing only
-	hide()
+	_scrolling() # for testing only
+#	hide()
 
 func _scrolling() :
 	rand_list.shuffle()
@@ -33,56 +33,30 @@ func _scrolling() :
 	# restart 
 	anim.play("start")
 
+func _update_curr_skill(skill_name: String):
+	if Global.get(skill_name) <= 3: 
+		Global.set(skill_name, Global.get(skill_name) + 1)
+		if (Global.get(skill_name) == 1): 
+			# add new skill to next slot
+			get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill(skill_name)
+			next_slot += 1
+		else: # update current skill
+			get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/' + skill_name).update_skill()
+
 func _update_skills(index):
 	match(index):
 		0: 
-			if Global.fire <= 3: 
-				Global.fire += 1
-				if (Global.fire == 1): # add new skill to next slot
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill('fire')
-					next_slot += 1
-				else: # update current skill
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/fire').update_skill()
+			_update_curr_skill('fire')
 		1: 
-			if Global.rock <= 3: 
-				Global.rock += 1
-				if (Global.rock == 1): # add new skill to next slot
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill('rock')
-					next_slot += 1
-				else: # update current skill
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/rock').update_skill()
+			_update_curr_skill('rock')
 		2: 
-			if Global.tank <= 3: 
-				Global.tank += 1
-				if (Global.tank == 1): # add new skill to next slot
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill('tank')
-					next_slot += 1
-				else: # update current skill
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/tank').update_skill()
+			_update_curr_skill('tank')
 		3: 
-			if Global.heal <= 3: 
-				Global.heal += 1
-				if (Global.heal == 1): # add new skill to next slot
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill('heal')
-					next_slot += 1
-				else: # update current skill
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/heal').update_skill()
+			_update_curr_skill('heal')
 		4: 
-			if Global.bomb <= 3: 
-				Global.bomb += 1
-				if (Global.bomb == 1): # add new skill to next slot
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill('bomb')
-					next_slot += 1
-				else: # update current skill
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/bomb').update_skill()
+			_update_curr_skill('bomb')
 		5: 
-			if Global.stop <= 3: 
-				Global.stop += 1
-				if (Global.stop == 1): # add new skill to next slot
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/slot' + str(next_slot)).new_skill('stop')
-					next_slot += 1
-				else: # update current skill
-					get_parent().get_parent().get_node('Ontop/HBoxContainer/skillsBar/stop').update_skill()
+			_update_curr_skill('stop')
 	
 	# hide lucky scroll
 	anim.call_deferred('play', 'hide')

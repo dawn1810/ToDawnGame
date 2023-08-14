@@ -21,6 +21,7 @@ func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
 		if event.pressed && OS.get_keycode_string(event.keycode) == label.text:
+			rand_gift()
 			dead()
 
 func dead():

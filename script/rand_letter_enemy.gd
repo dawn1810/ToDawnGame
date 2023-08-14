@@ -24,6 +24,7 @@ func _unhandled_input(event):
 		if event.is_released() && OS.get_keycode_string(event.keycode) == label.text:
 			power -= 1
 			if power <= 0:
+				rand_gift()
 				dead()
 			else :
 				anim.play("change_letter")

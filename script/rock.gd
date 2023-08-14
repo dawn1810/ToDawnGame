@@ -16,11 +16,10 @@ var region_list = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	match level:
-		1: timer.wait_time = 15
-		2: timer.wait_time = 30
-		3: timer.wait_time = 60
+		1: timer.wait_time = 5
+		2: timer.wait_time = 10
+		3: timer.wait_time = 20
 	
-	timer.start()
 	
 	# random art for rocks
 	var rand_region = region_list.pick_random()
@@ -28,3 +27,6 @@ func _ready():
 
 func _on_timer_timeout():
 	anim.call_deferred('play', 'disappear')
+
+func _on_area_2d_body_entered(body):
+	timer.start()

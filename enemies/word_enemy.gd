@@ -67,6 +67,8 @@ func _unhandled_input(event):
 			sprites.get_child(curr_letter).anim.call_deferred('play', 'explose_2')
 			curr_letter += 1
 			if curr_letter == rand_word.length():
+				# random gift:
+				rand_gift()
 				dead()
 
 func set_up_new_key(index):
@@ -83,9 +85,6 @@ func dead():
 	buff_col.set_deferred("disabled", true)
 	tail_col.set_deferred("disabled", true)
 	speed = 0
-	
-	# random gift:
-	rand_gift()
 	
 	# remove all sprite left before dead
 	for i in range(sprites.get_child_count()):
