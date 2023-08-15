@@ -13,6 +13,8 @@ const TANK = preload("res://skills/tank.tscn")
 var move: bool = true
 var default_percent: float = 0.2 # 20%
 
+@onready var health_bar = get_parent().get_node('Ontop/HBoxContainer/heardBar')
+
 func _physics_process(delta):
 	if move:
 		velocity = Vector2.LEFT * speed
@@ -87,7 +89,10 @@ func rand_gift(): # current Animation2d of current type of enemies
 					get_parent().call_deferred('add_child', tank)
 			5: 
 				if (randf() < default_percent): # percent this heal appear
-					print('heal roi ne!!!')
+					match Global.heal:
+						1: health_bar._heal(1)
+						2: health_bar._heal(2)
+						3: health_bar._heal(3)
 
 func _on_buff_speed_body_entered(body):
 	if body.is_in_group('enemy') && body != self && body.speed < self.speed:

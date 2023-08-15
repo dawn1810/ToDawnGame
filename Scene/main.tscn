@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnkp07x5ey6n7"]
+[gd_scene load_steps=25 format=3 uid="uid://cnkp07x5ey6n7"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_rid71"]
 [ext_resource type="PackedScene" uid="uid://bdsu0nv0rjwvy" path="res://tower/tower.tscn" id="2_hodn3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ba5nvocuasfnp" path="res://Scene/lucky_scroll.tscn" id="11_m2dph"]
 [ext_resource type="PackedScene" uid="uid://buiwkmpsa58wc" path="res://skills/skillBox.tscn" id="12_6xv8e"]
 [ext_resource type="PackedScene" uid="uid://b5e7qevo1nook" path="res://skills/heard_bar.tscn" id="13_1hcac"]
+[ext_resource type="PackedScene" uid="uid://353vrrro6om3" path="res://Scene/camera_2d.tscn" id="14_5du4g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d3rn"]
 texture = ExtResource("3_b4fie")
@@ -256,31 +257,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/path = NodePath("Ontop/GameOver:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ontop/GameOver:modulate")
+tracks/2/path = NodePath("Ontop/TextureProgressBar:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ontop/TextureProgressBar:modulate")
+tracks/3/path = NodePath("Ontop/HBoxContainer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -292,14 +293,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ontop/HBoxContainer:modulate")
+tracks/4/path = NodePath("Camera2D:zoom")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_4t5a3"]
@@ -347,19 +348,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/path = NodePath("Ontop/TextureProgressBar:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 2.8),
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.8, 0.8)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ontop/TextureProgressBar:modulate")
+tracks/2/path = NodePath("Ontop/HBoxContainer/skillsBar:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -371,7 +372,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ontop/HBoxContainer/skillsBar:modulate")
+tracks/3/path = NodePath("Ontop/HBoxContainer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -383,14 +384,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ontop/HBoxContainer:modulate")
+tracks/4/path = NodePath("Camera2D:zoom")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(0.5, 0.5), Vector2(0.8, 0.8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3io7v"]
@@ -506,6 +507,7 @@ grow_vertical = 0
 alignment = 1
 
 [node name="skillsBar" type="HBoxContainer" parent="Ontop/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="slot1" parent="Ontop/HBoxContainer/skillsBar" instance=ExtResource("12_6xv8e")]
@@ -534,8 +536,7 @@ size_flags_horizontal = 3
 [node name="heardBar" parent="Ontop/HBoxContainer" instance=ExtResource("13_1hcac")]
 layout_mode = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+[node name="Camera2D" parent="." instance=ExtResource("14_5du4g")]
 zoom = Vector2(0.5, 0.5)
 
 [node name="progressTimer" type="Timer" parent="."]

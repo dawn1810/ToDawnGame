@@ -6,9 +6,12 @@ signal game_over
 
 @onready var health = max_health
 @onready var anim = $AnimationPlayer
+@onready var health_bar = get_parent().get_node('Ontop/HBoxContainer/heardBar')
 
 func damnge(amount):
+	get_parent().camera.shake(500, 0.4, 1000)
 	health -= amount
+	health_bar._damage(amount/10)
 	if health <= 0:
 		emit_signal('game_over')
 

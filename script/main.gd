@@ -35,6 +35,7 @@ var enemy_speed: int = 100
 @onready var gameover_scene = $Ontop/GameOver
 @onready var anim = $AnimationPlayer
 @onready var lucky_scroll = $Ontop/luckyScroll
+@onready var camera = $Camera2D
 
 
 func _ready():
@@ -205,6 +206,7 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 
 func _on_boss_deaded():
+	camera.shake(500, 1.0, 1000)
 	# start scrolling face to choose skill
 	lucky_scroll._scrolling()
 

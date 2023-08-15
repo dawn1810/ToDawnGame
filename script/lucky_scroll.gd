@@ -12,8 +12,8 @@ var rand_list = range(6)
 var next_slot = 1
 
 func _ready():
-	_scrolling() # for testing only
-#	hide()
+#	_scrolling() # for testing only
+	hide()
 
 func _scrolling() :
 	rand_list.shuffle()
