@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dng5p3jbdj7yy"]
+
+[ext_resource type="PackedScene" uid="uid://b6gdr40fphg2b" path="res://Scene/menu_button.tscn" id="2_31e6n"]
+
+[sub_resource type="GDScript" id="GDScript_yuwji"]
+script/source = "extends Control
+
+
+func _on_play_pressed():
+	get_tree().change_scene_to_file('res://Scene/main.tscn')
+"
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_yuwji")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.870588, 0.870588, 0.870588, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -134.0
+offset_right = 96.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+
+[node name="options" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+clr = "focus"
+txt = "Options"
+
+[node name="credit" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+txt = "Credit"
+
+[node name="quit" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+clr = "focus"
+txt = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]

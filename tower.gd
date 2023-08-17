@@ -13,6 +13,14 @@ func damnge(amount):
 	health -= amount
 	health_bar._damage(amount/10)
 	if health <= 0:
+		# explose
+		anim.call_deferred('play', 'explose')
+		# clear all enemies on stage
+		var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')
+		if (len(enemies_appear) > 0):
+			for enemy in enemies_appear:
+				enemy.dead()
+		# game_over
 		emit_signal('game_over')
 
 func _on_area_2d_body_entered(body):

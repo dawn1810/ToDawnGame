@@ -140,6 +140,7 @@ func game_over():
 		lose = true
 		spawn_timer.stop()
 		progress_timer.stop()
+		camera.shake(500, 1.0, 1000)
 		anim.play("gameover")
 
 func disable_pos(node: Marker2D, length: int):
@@ -223,11 +224,10 @@ func restart_game_after_scroll():
 	reset_tween()
 
 func _on_tower_game_over():
-#	game_over()
+	game_over()
 	pass
 
 func _on_time_stop():
-	print('stop')
 	var stop_time = 2.0
 	match Global.stop: 
 		2: stop_time = 5.0
