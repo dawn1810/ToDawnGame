@@ -1,14 +1,185 @@
-[gd_scene load_steps=3 format=3 uid="uid://dng5p3jbdj7yy"]
+[gd_scene load_steps=20 format=3 uid="uid://dng5p3jbdj7yy"]
 
+[ext_resource type="FontFile" uid="uid://dwrscdgtyyyoe" path="res://asset/Fonts/m6x11.ttf" id="1_6y7jl"]
+[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="1_vjmmb"]
 [ext_resource type="PackedScene" uid="uid://b6gdr40fphg2b" path="res://Scene/menu_button.tscn" id="2_31e6n"]
 
 [sub_resource type="GDScript" id="GDScript_yuwji"]
 script/source = "extends Control
 
+@onready var main_menu = $mainMenu
+@onready var options = $options
+@onready var video = $video
+@onready var audio = $audio
+@onready var credit = $credit
+
+
+func show_and_hide(show, hide):
+	show.show()
+	hide.hide()
+
+func volume(bus_index, value):
+	AudioServer.set_bus_volume_db(bus_index, value)
 
 func _on_play_pressed():
+	# change scene to main scene (start playing game)
 	get_tree().change_scene_to_file('res://Scene/main.tscn')
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+func _on_options_pressed():
+	# go to options
+	show_and_hide(options, main_menu)
+
+func _on_credit_pressed():
+	# go to credit
+	show_and_hide(credit, main_menu)
+
+func _on_video_pressed():
+	# go to video options:
+	show_and_hide(video, options)
+
+func _on_audio_pressed():
+	# go to audio options:
+	show_and_hide(audio, options)
+
+func _on_back_pressed():
+	# back to mainmenu:
+	show_and_hide(main_menu, options)
+
+func _on_fullscreen_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+func _on_window_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_vback_pressed():
+	# back to options:
+	show_and_hide(options, video)
+
+func _on_aback_pressed():
+	# back to options:
+	show_and_hide(options, audio)
+
+func _on_cback_pressed():
+	# back to mainmenu:
+	show_and_hide(main_menu, credit)
+
+func _on_master_value_changed(value):
+	volume(0, value)
+
+func _on_music_value_changed(value):
+	volume(1, value)
+
+func _on_soundfx_value_changed(value):
+	volume(2, value)
 "
+
+[sub_resource type="Image" id="Image_plij3"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 18, 253, 253, 253, 100, 255, 255, 255, 156, 254, 254, 254, 183, 254, 254, 254, 183, 255, 255, 255, 156, 253, 253, 253, 99, 255, 255, 255, 17, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 65, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 182, 255, 255, 255, 63, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 65, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 63, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 18, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 181, 255, 255, 255, 16, 255, 255, 255, 0, 255, 255, 255, 0, 253, 253, 253, 100, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 156, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 155, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 182, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 181, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 156, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 154, 255, 255, 255, 0, 255, 255, 255, 0, 253, 253, 253, 99, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 253, 253, 253, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 17, 254, 254, 254, 182, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 180, 255, 255, 255, 15, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 63, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 63, 254, 254, 254, 181, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 180, 255, 255, 255, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 16, 255, 255, 255, 97, 254, 254, 254, 155, 254, 254, 254, 182, 254, 254, 254, 181, 254, 254, 254, 154, 253, 253, 253, 97, 255, 255, 255, 15, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rgcn8"]
+image = SubResource("Image_plij3")
+
+[sub_resource type="Image" id="Image_87iut"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 49, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 90, 255, 255, 255, 77, 255, 255, 255, 49, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 77, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 76, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 89, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 8, 255, 255, 255, 48, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 89, 255, 255, 255, 76, 255, 255, 255, 48, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_5nj03"]
+image = SubResource("Image_87iut")
+
+[sub_resource type="Image" id="Image_iiin6"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 23, 254, 254, 254, 133, 254, 254, 254, 209, 254, 254, 254, 244, 254, 254, 254, 244, 254, 254, 254, 209, 254, 254, 254, 132, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 87, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 243, 255, 255, 255, 84, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 87, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 255, 255, 255, 84, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 23, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 242, 255, 255, 255, 21, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 133, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 130, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 209, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 207, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 243, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 242, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 209, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 206, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 132, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 129, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 254, 254, 254, 243, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 241, 255, 255, 255, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 84, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 255, 255, 255, 81, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 84, 254, 254, 254, 242, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 241, 255, 255, 255, 81, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 21, 254, 254, 254, 130, 254, 254, 254, 207, 254, 254, 254, 243, 254, 254, 254, 242, 254, 254, 254, 206, 254, 254, 254, 129, 255, 255, 255, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xkiqr"]
+image = SubResource("Image_iiin6")
+
+[sub_resource type="Image" id="Image_513s4"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_1xu07"]
+image = SubResource("Image_513s4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mawm"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.929412, 0.862745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuvpu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.360784, 0.164706, 0, 0.705882)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1qbc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_88tp0"]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = SubResource("ImageTexture_rgcn8")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_5nj03")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_xkiqr")
+HSlider/icons/tick = SubResource("ImageTexture_1xu07")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3mawm")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_nuvpu")
+HSlider/styles/slider = SubResource("StyleBoxFlat_e1qbc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj8oo"]
+bg_color = Color(0.360784, 0.164706, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwvsn"]
+bg_color = Color(1, 0.929412, 0.862745, 1)
+
+[sub_resource type="Theme" id="Theme_7kno0"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_tj8oo")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_qwvsn")
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -18,6 +189,979 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_yuwji")
+metadata/_edit_vertical_guides_ = [551.0]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D32" type="Sprite2D" parent="Background"]
+position = Vector2(192, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D50" type="Sprite2D" parent="Background"]
+position = Vector2(320, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D60" type="Sprite2D" parent="Background"]
+position = Vector2(384, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D61" type="Sprite2D" parent="Background"]
+position = Vector2(384, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D97" type="Sprite2D" parent="Background"]
+position = Vector2(576, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D98" type="Sprite2D" parent="Background"]
+position = Vector2(640, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D99" type="Sprite2D" parent="Background"]
+position = Vector2(640, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D53" type="Sprite2D" parent="Background"]
+position = Vector2(0, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D51" type="Sprite2D" parent="Background"]
+position = Vector2(256, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D33" type="Sprite2D" parent="Background"]
+position = Vector2(128, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D34" type="Sprite2D" parent="Background"]
+position = Vector2(192, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D35" type="Sprite2D" parent="Background"]
+position = Vector2(128, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D46" type="Sprite2D" parent="Background"]
+position = Vector2(256, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D55" type="Sprite2D" parent="Background"]
+position = Vector2(448, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D62" type="Sprite2D" parent="Background"]
+position = Vector2(448, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D64" type="Sprite2D" parent="Background"]
+position = Vector2(512, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D57" type="Sprite2D" parent="Background"]
+position = Vector2(320, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Background"]
+position = Vector2(256, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D11" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D16" type="Sprite2D" parent="Background"]
+position = Vector2(960, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D41" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D42" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D43" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D20" type="Sprite2D" parent="Background"]
+position = Vector2(768, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D67" type="Sprite2D" parent="Background"]
+position = Vector2(640, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D73" type="Sprite2D" parent="Background"]
+position = Vector2(768, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D74" type="Sprite2D" parent="Background"]
+position = Vector2(576, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D69" type="Sprite2D" parent="Background"]
+position = Vector2(704, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D77" type="Sprite2D" parent="Background"]
+position = Vector2(704, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D88" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D89" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D90" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D91" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D78" type="Sprite2D" parent="Background"]
+position = Vector2(640, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D81" type="Sprite2D" parent="Background"]
+position = Vector2(832, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D94" type="Sprite2D" parent="Background"]
+position = Vector2(896, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D68" type="Sprite2D" parent="Background"]
+position = Vector2(832, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D21" type="Sprite2D" parent="Background"]
+position = Vector2(576, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D26" type="Sprite2D" parent="Background"]
+position = Vector2(640, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D27" type="Sprite2D" parent="Background"]
+position = Vector2(704, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D22" type="Sprite2D" parent="Background"]
+position = Vector2(512, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D23" type="Sprite2D" parent="Background"]
+position = Vector2(512, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+position = Vector2(64, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(24, 8)
+region_enabled = true
+region_rect = Rect2(0, 16, 48, 16)
+
+[node name="Sprite2D25" type="Sprite2D" parent="Background"]
+position = Vector2(576, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(24, 8)
+region_enabled = true
+region_rect = Rect2(0, 16, 48, 16)
+
+[node name="Sprite2D75" type="Sprite2D" parent="Background"]
+position = Vector2(640, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(24, 8)
+region_enabled = true
+region_rect = Rect2(0, 16, 48, 16)
+
+[node name="Sprite2D114" type="Sprite2D" parent="Background"]
+position = Vector2(64, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(24, 8)
+region_enabled = true
+region_rect = Rect2(0, 16, 48, 16)
+
+[node name="Sprite2D96" type="Sprite2D" parent="Background"]
+position = Vector2(384, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(24, 8)
+region_enabled = true
+region_rect = Rect2(0, 16, 48, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background"]
+position = Vector2(512, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D24" type="Sprite2D" parent="Background"]
+position = Vector2(576, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D28" type="Sprite2D" parent="Background"]
+position = Vector2(640, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D29" type="Sprite2D" parent="Background"]
+position = Vector2(704, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D12" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D17" type="Sprite2D" parent="Background"]
+position = Vector2(896, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D18" type="Sprite2D" parent="Background"]
+position = Vector2(832, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D70" type="Sprite2D" parent="Background"]
+position = Vector2(768, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D76" type="Sprite2D" parent="Background"]
+position = Vector2(640, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D79" type="Sprite2D" parent="Background"]
+position = Vector2(704, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D80" type="Sprite2D" parent="Background"]
+position = Vector2(768, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D100" type="Sprite2D" parent="Background"]
+position = Vector2(576, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D101" type="Sprite2D" parent="Background"]
+position = Vector2(640, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D71" type="Sprite2D" parent="Background"]
+position = Vector2(832, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D72" type="Sprite2D" parent="Background"]
+position = Vector2(832, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D82" type="Sprite2D" parent="Background"]
+position = Vector2(896, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D84" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D85" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D92" type="Sprite2D" parent="Background"]
+position = Vector2(896, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D95" type="Sprite2D" parent="Background"]
+position = Vector2(896, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D93" type="Sprite2D" parent="Background"]
+position = Vector2(960, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D86" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D87" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D102" type="Sprite2D" parent="Background"]
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D103" type="Sprite2D" parent="Background"]
+position = Vector2(512, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D104" type="Sprite2D" parent="Background"]
+position = Vector2(576, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D19" type="Sprite2D" parent="Background"]
+position = Vector2(768, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D13" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D14" type="Sprite2D" parent="Background"]
+position = Vector2(960, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Background"]
+position = Vector2(256, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D30" type="Sprite2D" parent="Background"]
+position = Vector2(0, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D31" type="Sprite2D" parent="Background"]
+position = Vector2(0, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D36" type="Sprite2D" parent="Background"]
+position = Vector2(128, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D37" type="Sprite2D" parent="Background"]
+position = Vector2(192, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D47" type="Sprite2D" parent="Background"]
+position = Vector2(256, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D56" type="Sprite2D" parent="Background"]
+position = Vector2(384, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D58" type="Sprite2D" parent="Background"]
+position = Vector2(384, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D63" type="Sprite2D" parent="Background"]
+position = Vector2(512, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D59" type="Sprite2D" parent="Background"]
+position = Vector2(448, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D65" type="Sprite2D" parent="Background"]
+position = Vector2(448, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D66" type="Sprite2D" parent="Background"]
+position = Vector2(512, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D54" type="Sprite2D" parent="Background"]
+position = Vector2(512, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D48" type="Sprite2D" parent="Background"]
+position = Vector2(192, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D49" type="Sprite2D" parent="Background"]
+position = Vector2(256, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D106" type="Sprite2D" parent="Background"]
+position = Vector2(320, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D107" type="Sprite2D" parent="Background"]
+position = Vector2(448, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D108" type="Sprite2D" parent="Background"]
+position = Vector2(384, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D52" type="Sprite2D" parent="Background"]
+position = Vector2(320, 384)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D109" type="Sprite2D" parent="Background"]
+position = Vector2(320, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D110" type="Sprite2D" parent="Background"]
+position = Vector2(192, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D111" type="Sprite2D" parent="Background"]
+position = Vector2(128, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D112" type="Sprite2D" parent="Background"]
+position = Vector2(256, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D115" type="Sprite2D" parent="Background"]
+position = Vector2(192, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D119" type="Sprite2D" parent="Background"]
+position = Vector2(64, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D120" type="Sprite2D" parent="Background"]
+position = Vector2(64, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="Sprite2D116" type="Sprite2D" parent="Background"]
+position = Vector2(128, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D117" type="Sprite2D" parent="Background"]
+position = Vector2(256, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D118" type="Sprite2D" parent="Background"]
+position = Vector2(256, 576)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D38" type="Sprite2D" parent="Background"]
+position = Vector2(192, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background"]
+position = Vector2(896, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 16)
+
+[node name="Sprite2D15" type="Sprite2D" parent="Background"]
+position = Vector2(832, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 16)
+
+[node name="Sprite2D45" type="Sprite2D" parent="Background"]
+position = Vector2(256, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 16)
+
+[node name="Sprite2D105" type="Sprite2D" parent="Background"]
+position = Vector2(384, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Background"]
+position = Vector2(384, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 32, 48, 48)
+
+[node name="Sprite2D39" type="Sprite2D" parent="Background"]
+position = Vector2(768, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 32, 48, 48)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Background"]
+position = Vector2(64, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 80, 48, 48)
+
+[node name="Sprite2D40" type="Sprite2D" parent="Background"]
+position = Vector2(960, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(0, 80, 48, 48)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 80, 16, 48)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Background"]
+position = Vector2(64, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 32, 16, 48)
+
+[node name="Sprite2D44" type="Sprite2D" parent="Background"]
+position = Vector2(576, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 32, 16, 48)
+
+[node name="Sprite2D113" type="Sprite2D" parent="Background"]
+position = Vector2(0, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 32, 16, 48)
+
+[node name="Sprite2D83" type="Sprite2D" parent="Background"]
+position = Vector2(960, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vjmmb")
+offset = Vector2(8, 8)
+region_enabled = true
+region_rect = Rect2(96, 32, 16, 48)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -26,37 +1170,428 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.870588, 0.870588, 0.870588, 1)
+scale = Vector2(1, 1.00983)
+color = Color(0.72549, 0.72549, 0.72549, 0.588235)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="mainMenu" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -134.0
-offset_right = 96.0
-offset_bottom = 134.0
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="play" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+[node name="Label" type="HBoxContainer" parent="mainMenu"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="mainMenu/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "Break"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="mainMenu/Label"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="options" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+[node name="Label2" type="Label" parent="mainMenu/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "Keys"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="mainMenu"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="play" parent="mainMenu/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+
+[node name="options" parent="mainMenu/VBoxContainer" instance=ExtResource("2_31e6n")]
 layout_mode = 2
 clr = "focus"
 txt = "Options"
 
-[node name="credit" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+[node name="credit" parent="mainMenu/VBoxContainer" instance=ExtResource("2_31e6n")]
 layout_mode = 2
 txt = "Credit"
 
-[node name="quit" parent="VBoxContainer" instance=ExtResource("2_31e6n")]
+[node name="quit" parent="mainMenu/VBoxContainer" instance=ExtResource("2_31e6n")]
 layout_mode = 2
 clr = "focus"
 txt = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[node name="options" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="HBoxContainer" parent="options"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="options/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "Opt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="options/Label"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="options/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "ions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="options"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="video" parent="options/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+txt = "Video"
+
+[node name="audio" parent="options/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+clr = "focus"
+txt = "Audio"
+
+[node name="back" parent="options/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+txt = "Back"
+
+[node name="video" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="HBoxContainer" parent="video"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="video/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "Vid"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="video/Label"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="video/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "eo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="video"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="video"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="fullscreen" parent="video/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+txt = "FullScreen"
+
+[node name="window" parent="video/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+clr = "focus"
+txt = "Window"
+
+[node name="vback" parent="video/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+txt = "Back"
+
+[node name="audio" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="HBoxContainer" parent="audio"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="audio/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "Au"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/Label"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="audio/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "dio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="master" type="HBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="audio/VBoxContainer/master"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 28
+text = "Master: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer/master"]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+
+[node name="master" type="HSlider" parent="audio/VBoxContainer/master"]
+custom_minimum_size = Vector2(180, 28)
+layout_mode = 2
+theme = SubResource("Theme_88tp0")
+
+[node name="music" type="HBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="audio/VBoxContainer/music"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 28
+text = "Music: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer/music"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="music" type="HSlider" parent="audio/VBoxContainer/music"]
+custom_minimum_size = Vector2(180, 28)
+layout_mode = 2
+theme = SubResource("Theme_7kno0")
+
+[node name="soundFX" type="HBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="audio/VBoxContainer/soundFX"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 28
+text = "Sound Fx: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer/soundFX"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="soundfx" type="HSlider" parent="audio/VBoxContainer/soundFX"]
+custom_minimum_size = Vector2(180, 28)
+layout_mode = 2
+theme = SubResource("Theme_88tp0")
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="aback" parent="audio/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+txt = "Back"
+
+[node name="credit" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="HBoxContainer" parent="credit"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="credit/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "Cre"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="credit/Label"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="credit/Label"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("1_6y7jl")
+theme_override_font_sizes/font_size = 64
+text = "dit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="credit"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="credit"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="creditcontent" type="RichTextLabel" parent="credit/VBoxContainer"]
+custom_minimum_size = Vector2(400, 180)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/normal_font = ExtResource("1_6y7jl")
+theme_override_font_sizes/normal_font_size = 18
+text = "
+	hello world
+"
+
+[node name="ColorRect" type="ColorRect" parent="credit/VBoxContainer/creditcontent"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.360784, 0.164706, 0, 0.705882)
+
+[node name="gap" type="MarginContainer" parent="credit/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="cback" parent="credit/VBoxContainer" instance=ExtResource("2_31e6n")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+txt = "Back"
+
+[connection signal="pressed" from="mainMenu/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="mainMenu/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="mainMenu/VBoxContainer/credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="mainMenu/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="options/VBoxContainer/video" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="options/VBoxContainer/audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="options/VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="video/VBoxContainer/fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="video/VBoxContainer/window" to="." method="_on_window_pressed"]
+[connection signal="pressed" from="video/VBoxContainer/vback" to="." method="_on_vback_pressed"]
+[connection signal="value_changed" from="audio/VBoxContainer/master/master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="audio/VBoxContainer/music/music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="audio/VBoxContainer/soundFX/soundfx" to="." method="_on_soundfx_value_changed"]
+[connection signal="pressed" from="audio/VBoxContainer/aback" to="." method="_on_aback_pressed"]
+[connection signal="pressed" from="credit/VBoxContainer/cback" to="." method="_on_cback_pressed"]
