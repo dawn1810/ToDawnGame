@@ -85,7 +85,7 @@ _data = {
 "idle": SubResource("Animation_76nc6")
 }
 
-[node name="word_enemy" groups=["enemy"] instance=ExtResource("1_hk2uv")]
+[node name="word_enemy" groups=["enemy", "word_enemy"] instance=ExtResource("1_hk2uv")]
 position = Vector2(426, 318)
 collision_mask = 7
 script = ExtResource("2_7f1px")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsjaqiap6yqs1"]
+[gd_scene load_steps=21 format=3 uid="uid://bsjaqiap6yqs1"]
 
 [ext_resource type="Script" path="res://script/tank.gd" id="1_7wcng"]
 [ext_resource type="Texture2D" uid="uid://8ywpodx0epat" path="res://asset/right_move_blue-Sheet.png" id="1_i2w0d"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bhc54ihp4gyjx" path="res://asset/Explosion/10.png" id="12_ff1i6"]
 [ext_resource type="Texture2D" uid="uid://us1uo5oflqr1" path="res://asset/Explosion/11.png" id="13_liko5"]
 [ext_resource type="Texture2D" uid="uid://cw1syhxyq7sff" path="res://asset/Explosion/12.png" id="14_3vuva"]
+[ext_resource type="AudioStream" uid="uid://o8wfhjapetmb" path="res://audio/car_audio/mixkit-atv-engine-motor-hum-1553 (online-audio-converter.com).mp3" id="15_40668"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lasw4"]
 size = Vector2(73, 27)
@@ -267,6 +268,9 @@ libraries = {
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-59, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_40668")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

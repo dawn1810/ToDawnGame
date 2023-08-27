@@ -58,7 +58,7 @@ func spawn_enemies(pos):
 func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
-		if event.pressed && OS.get_keycode_string(event.keycode) == label.text && self.get_child_count() <= 6:
+		if event.pressed && OS.get_keycode_string(event.keycode) == label.text && self.get_child_count() <= 7:
 			dead()
 
 func dead():
@@ -67,12 +67,8 @@ func dead():
 	anim.call_deferred('play', 'explose')
 	speed = 0
 	
-	# clear all enemies on stage
-	var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')
+	# clear all child enemies on stage
 	var boss_enemies = get_tree().get_nodes_in_group('enemy')
-	if (len(enemies_appear) > 0):
-		for enemy in enemies_appear:
-			enemy.dead()
 	if (len(boss_enemies) > 0):
 		for enemy in boss_enemies:
 			enemy.dead()

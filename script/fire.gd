@@ -1,7 +1,7 @@
 extends Node2D
 
-const  fire_sound1 = preload("res://audio/burn_sudio/mixkit-big-fire-spell-burning-1332 (mp3cut.net).mp3")
-const  fire_sound2 = preload("res://audio/burn_sudio/mixkit-fire-swoosh-burning-1328 (mp3cut.net).mp3")
+const  fire_sound1 = preload("res://audio/burn_audio/mixkit-big-fire-spell-burning-1332 (mp3cut.net).mp3")
+const  fire_sound2 = preload("res://audio/burn_audio/mixkit-fire-swoosh-burning-1328 (mp3cut.net).mp3")
 
 
 var health = 0

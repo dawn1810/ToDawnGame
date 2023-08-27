@@ -489,6 +489,7 @@ grow_vertical = 2
 color = Color(0.870588, 0.870588, 0.870588, 1)
 
 [node name="GameOver" parent="Ontop" instance=ExtResource("10_ae1f7")]
+process_mode = 0
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5

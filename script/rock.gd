@@ -29,4 +29,10 @@ func _on_timer_timeout():
 	anim.call_deferred('play', 'disappear')
 
 func _on_area_2d_body_entered(body):
-	timer.start()
+	if body.is_in_group('enemy'):
+		if body.get_parent().name == 'RandBoss':
+			anim.call_deferred('play', 'disappear')
+		else:
+			timer.start()
+	if body.is_in_group('boss'):
+		anim.call_deferred('play', 'disappear')

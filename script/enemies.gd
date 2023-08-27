@@ -30,11 +30,11 @@ func _physics_process(delta):
 func play_audio():
 	# random audio:
 	match randi_range(0, 4):
-		0: audio.stream = enter_sound1; print(0)
-		1: audio.stream = enter_sound2; print(1)
-		2: audio.stream = enter_sound3; print(2)
-		3: audio.stream = enter_sound4; print(3)
-		4: audio.stream = enter_sound5; print(4)
+		0: audio.stream = enter_sound1
+		1: audio.stream = enter_sound2
+		2: audio.stream = enter_sound3
+		3: audio.stream = enter_sound4
+		4: audio.stream = enter_sound5
 	
 	audio.play()
 
@@ -63,7 +63,7 @@ func rand_gift(): # current Animation2d of current type of enemies
 				# appear rock gift
 				if (randf() < default_percent): # percent this rock appear
 					var rock = ROCK.instantiate()
-					if self.name == 'word_enemy':
+					if self.is_in_group("word_enemy"):
 						rock.global_position = self.position + Vector2((self.rand_word.length() - 1) * 65, 0)
 					else:
 						rock.global_position = self.position
@@ -73,7 +73,7 @@ func rand_gift(): # current Animation2d of current type of enemies
 				# appear fire gift
 				if (randf() <= default_percent): # percent this fire appear
 					var fire = FIRE.instantiate()
-					if self.name == 'word_enemy':
+					if self.is_in_group("word_enemy"):
 						fire.global_position = self.position + Vector2((self.rand_word.length() - 1) * 65, 0)
 					else:
 						fire.global_position = self.position
@@ -99,7 +99,7 @@ func rand_gift(): # current Animation2d of current type of enemies
 				# appear tank gift
 				if (randf() < default_percent): # percent this tank appear
 					var tank = TANK.instantiate()
-					if self.name == 'word_enemy':
+					if self.is_in_group("word_enemy"):
 						tank.global_position = self.position + Vector2((self.rand_word.length() - 1) * 65, 0)
 					else:
 						tank.global_position = self.position

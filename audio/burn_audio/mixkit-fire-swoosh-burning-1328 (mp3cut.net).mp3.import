@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bf8o6t24y0j7o"
+path="res://.godot/imported/mixkit-fire-swoosh-burning-1328 (mp3cut.net).mp3-c19f811194b7f4bcbf68f95a432d8756.mp3str"
+
+[deps]
+
+source_file="res://audio/burn_audio/mixkit-fire-swoosh-burning-1328 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/mixkit-fire-swoosh-burning-1328 (mp3cut.net).mp3-c19f811194b7f4bcbf68f95a432d8756.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

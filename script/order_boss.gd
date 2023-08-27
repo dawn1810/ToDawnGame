@@ -65,12 +65,6 @@ func dead():
 	
 	anim.call_deferred('play', 'explose')
 	speed = 0
-	
-	# clear all enemies on stage
-	var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')
-	if (len(enemies_appear) > 0):
-		for enemy in enemies_appear:
-			enemy.dead()
 
 func array_to_string(arr: Array) -> String:
 	var s = ""

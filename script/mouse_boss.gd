@@ -58,12 +58,6 @@ func dead():
 	anim.call_deferred('play', 'explose')
 	control_anim.call_deferred('play', 'disappear')
 	speed = 0
-	
-	# clear all enemies on stage
-	var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')
-	if (len(enemies_appear) > 0):
-		for enemy in enemies_appear:
-			enemy.dead()
 
 func generate_word(chars, length):
 	var word: String

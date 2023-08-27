@@ -73,6 +73,12 @@ func reset_tween():
 	tween.tween_property(bar, 'value', 100, progress_timer.wait_time * 2)
 
 func boss_render():
+	# clear all enemies on stage
+	var enemies_appear = get_tree().get_nodes_in_group('enemy')
+	if (len(enemies_appear) > 0):
+		for enemy in enemies_appear:
+			enemy.dead()
+	
 	# stop spawn enemies first
 	spawn_timer.stop()
 	# stop process bar because it make stage + one every boss stage
@@ -188,11 +194,6 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 			freq = [.5, .3, .2, .2]
 		elif stage == 2:
-			# remove all enemies before render boss
-			var enemies_appear = get_tree().get_nodes_in_group('enemy')
-			if (len(enemies_appear) > 0):
-				for enemy in enemies_appear:
-					enemy.dead()
 			# render boss
 			boss_render()
 		elif  stage == 3:
@@ -207,8 +208,15 @@ func _on_progress_timer_timeout():
 			spawn_timer.set_wait_time(cst * 2/3)
 
 func _on_boss_deaded():
+	# clear all enemies on stage
+	var enemies_appear = get_tree().get_nodes_in_group('enemy')
+	if (len(enemies_appear) > 0):
+		for enemy in enemies_appear:
+			enemy.dead()
+	
 	camera.shake(500, 1.0, 1000)
 	# start scrolling face to choose skill
+	print('scrolling')
 	lucky_scroll._scrolling()
 
 func restart_game_after_scroll():
@@ -225,7 +233,6 @@ func restart_game_after_scroll():
 
 func _on_tower_game_over():
 	game_over()
-	pass
 
 func _on_time_stop():
 	var stop_time = 2.0

@@ -12,10 +12,15 @@ var rand_list = range(6)
 var next_slot = 1
 
 func _ready():
-#	_scrolling() # for testing only
-	hide()
+	_scrolling()
+#	hide()
 
 func _scrolling() :
+	# make them all able again
+	btn1.disabled = false
+	btn2.disabled = false
+	btn3.disabled = false
+	
 	rand_list.shuffle()
 	# set up buttons normal and hover
 	# button 1:
