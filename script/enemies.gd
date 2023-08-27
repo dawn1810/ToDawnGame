@@ -7,6 +7,12 @@ const FIRE = preload('res://skills/fire.tscn')
 const ROCK = preload('res://skills/rock.tscn')
 const TANK = preload("res://skills/tank.tscn")
 
+const enter_sound1 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (1).mp3")
+const enter_sound2 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (2).mp3")
+const enter_sound3 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net).mp3")
+const enter_sound4 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (4).mp3")
+const enter_sound5 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (5).mp3")
+
 @export var speed = 300.0
 @export var attack_amount = 0
 
@@ -14,11 +20,23 @@ var move: bool = true
 var default_percent: float = 0.2 # 20%
 
 @onready var health_bar = get_parent().get_node('Ontop/HBoxContainer/heardBar')
+@onready var audio = $AudioStreamPlayer2D
 
 func _physics_process(delta):
 	if move:
 		velocity = Vector2.LEFT * speed
 		move_and_slide()
+
+func play_audio():
+	# random audio:
+	match randi_range(0, 4):
+		0: audio.stream = enter_sound1; print(0)
+		1: audio.stream = enter_sound2; print(1)
+		2: audio.stream = enter_sound3; print(2)
+		3: audio.stream = enter_sound4; print(3)
+		4: audio.stream = enter_sound5; print(4)
+	
+	audio.play()
 
 func dead():
 # add dead animation here

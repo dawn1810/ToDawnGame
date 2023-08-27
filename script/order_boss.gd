@@ -27,6 +27,7 @@ func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
 		if event.pressed:
+			play_audio()
 			if event.keycode == 4194308 && enter_text.length() > 0: # Backspace key
 				# appear letter for easier order letters
 				keys.get_child(hide_keys.pop_back()).show()

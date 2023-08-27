@@ -38,6 +38,7 @@ func _unhandled_input(event):
 		if event.is_released() && OS.get_keycode_string(event.keycode) == label.text:
 #			reset timer
 			if running:
+				play_audio()
 				timer.stop()
 				timer.set_wait_time(1.0)
 				running = false

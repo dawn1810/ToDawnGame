@@ -31,6 +31,7 @@ func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
 		if event.is_released() && OS.get_keycode_string(event.keycode) == label.text && !is_hide:
+			play_audio()
 			bar.value += 3
 			if bar.value <= 20:
 				heal = 0.01

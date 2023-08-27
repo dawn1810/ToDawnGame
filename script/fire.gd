@@ -1,12 +1,23 @@
 extends Node2D
 
+const  fire_sound1 = preload("res://audio/burn_sudio/mixkit-big-fire-spell-burning-1332 (mp3cut.net).mp3")
+const  fire_sound2 = preload("res://audio/burn_sudio/mixkit-fire-swoosh-burning-1328 (mp3cut.net).mp3")
+
+
 var health = 0
 
 @onready var anim = $AnimationPlayer
 @onready var level = Global.fire
 @onready var timer = $Timer
+@onready var audio = $AudioStreamPlayer2D
 
 func _ready():
+	# random burn sound:
+	match randi_range(0, 1):
+		0: audio.stream = fire_sound1
+		1: audio.stream = fire_sound2
+	audio.play()
+	
 	match level:
 		1: 
 			timer.wait_time = 10

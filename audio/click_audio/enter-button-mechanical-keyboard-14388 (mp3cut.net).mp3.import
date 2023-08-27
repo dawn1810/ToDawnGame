@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3b4lkxffcks1"
+path="res://.godot/imported/enter-button-mechanical-keyboard-14388 (mp3cut.net).mp3-dcc74e16f06421e8510937e8ec4351dc.mp3str"
+
+[deps]
+
+source_file="res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/enter-button-mechanical-keyboard-14388 (mp3cut.net).mp3-dcc74e16f06421e8510937e8ec4351dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

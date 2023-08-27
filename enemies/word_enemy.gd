@@ -59,6 +59,7 @@ func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey && curr_letter < rand_word.length():
 		if event.is_released() && OS.get_keycode_string(event.keycode) == rand_word[curr_letter]:
+			play_audio()
 			# update collition shape fix enemy
 			collision.position.x += 65
 			buff_col.position.x += 65

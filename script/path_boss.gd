@@ -36,6 +36,8 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		# left
 		if event.pressed:
+			play_audio()
+			
 			if sprites.get_child_count() == 2:
 				dead()
 			
