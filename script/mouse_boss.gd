@@ -49,15 +49,19 @@ func _unhandled_input(event):
 				dead()
 
 func dead():
+	play_boss_explose()
 	emit_signal("deaded")
 	
 	appear.stop()
 	disappear.stop()
 	heal = 0
 	
-	anim.call_deferred('play', 'explose')
 	control_anim.call_deferred('play', 'disappear')
+	anim.call_deferred('play', 'explose')
 	speed = 0
+	# yield for audio finish before queue free
+	await audio.finished
+	call_deferred("queue_free")
 
 func generate_word(chars, length):
 	var word: String

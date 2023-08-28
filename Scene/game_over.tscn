@@ -250,6 +250,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SoundFx"
+area_mask = 0
 
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer/replay" to="." method="_on_replay_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/HBoxContainer/replay" to="." method="_on_replay_focus_exited"]

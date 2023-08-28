@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name  ENEMIES
 
 signal stop_time
+signal healing
+
 
 const FIRE = preload('res://skills/fire.tscn')
 const ROCK = preload('res://skills/rock.tscn')
@@ -11,6 +13,7 @@ const pop_sound1 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net) (1).
 const pop_sound2 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net) (2).mp3")
 const pop_sound3 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net).mp3")
 const pop_sound4 = preload("res://audio/pop_audio/pop-1-101427.mp3")
+const boss_explose_sound = preload("res://audio/explose.mp3")
 
 @export var speed = 300.0
 @export var attack_amount = 0
@@ -18,7 +21,6 @@ const pop_sound4 = preload("res://audio/pop_audio/pop-1-101427.mp3")
 var move: bool = true
 var default_percent: float = 0.2 # 20%
 
-@onready var health_bar = get_parent().call_deferred("get_node", 'Ontop/HBoxContainer/heardBar')
 @onready var audio = $AudioStreamPlayer2D
 
 func _physics_process(delta):
@@ -33,6 +35,11 @@ func play_audio():
 		1: audio.stream = pop_sound2
 		2: audio.stream = pop_sound3
 		3: audio.stream = pop_sound4
+	
+	audio.play()
+
+func play_boss_explose():
+	audio.stream = boss_explose_sound
 	
 	audio.play()
 
@@ -105,10 +112,7 @@ func rand_gift(): # current Animation2d of current type of enemies
 					get_parent().call_deferred('add_child', tank)
 			5: 
 				if (randf() < default_percent): # percent this heal appear
-					match Global.heal:
-						1: health_bar._heal(1)
-						2: health_bar._heal(2)
-						3: health_bar._heal(3)
+					emit_signal('healing')
 
 func _on_buff_speed_body_entered(body):
 	if body.is_in_group('enemy') && body != self && body.speed < self.speed:

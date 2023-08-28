@@ -36,6 +36,7 @@ var enemy_speed: int = 100
 @onready var anim = $AnimationPlayer
 @onready var lucky_scroll = $Ontop/luckyScroll
 @onready var camera = $Camera2D
+@onready var health_bar = $Ontop/HBoxContainer/heardBar
 
 
 func _ready():
@@ -178,8 +179,10 @@ func _on_enrmies_apeartime_timeout():
 		
 		add_child(instance)
 		
-		# connect to stoptime signal
+		# connect to signals to main
 		instance.stop_time.connect(_on_time_stop)
+		instance.healing.connect(_on_healing)
+		
 		
 		if spawn_enermy == word:
 			# delay time for child to appear all (avoid two enemies stay on another)
@@ -261,3 +264,9 @@ func _on_time_stop():
 		for i in range(len(enemies_appear)):
 			if is_instance_valid(enemies_appear[i]): #Detect if an object reference is Freed?
 				enemies_appear[i].speed = prev_speeds[i]
+
+func _on_healing():
+	match Global.heal:
+		1: health_bar._heal(1)
+		2: health_bar._heal(2)
+		3: health_bar._heal(3)

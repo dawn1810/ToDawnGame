@@ -58,10 +58,11 @@ func spawn_enemies(pos):
 func _unhandled_input(event):
 # make enermies be kill by enter a key on them head:
 	if event is InputEventKey:
-		if event.pressed && OS.get_keycode_string(event.keycode) == label.text && self.get_child_count() <= 7:
+		if event.pressed && OS.get_keycode_string(event.keycode) == label.text && len(get_tree().get_nodes_in_group('enemy')) == 0:
 			dead()
 
 func dead():
+	play_boss_explose()
 	emit_signal("deaded")
 	
 	anim.call_deferred('play', 'explose')
@@ -72,6 +73,10 @@ func dead():
 	if (len(boss_enemies) > 0):
 		for enemy in boss_enemies:
 			enemy.dead()
+	
+	# yield for audio finish before queue free
+	await audio.finished
+	call_deferred("queue_free")
 
 func generate_word(chars, length):
 	var word: String

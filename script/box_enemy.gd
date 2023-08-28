@@ -52,10 +52,14 @@ func _unhandled_input(event):
 				update_key_board(enter_text)
 
 func dead():
+	play_boss_explose()
 	emit_signal("deaded")
 	control_anim.play("disappear")
 	anim.call_deferred('play', 'explose')
 	speed = 0
+	# yield for audio finish before queue free
+	await audio.finished
+	call_deferred("queue_free")
 	
 	# clear all enemies on stage
 	var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')

@@ -5,6 +5,7 @@ extends Control
 @onready var btn3 = $VBoxContainer/HBoxContainer/TextureButton3
 @onready var skills_info = $skilInfo
 @onready var anim = $AnimationPlayer
+@onready var audio = $AudioStreamPlayer2D
 
 @onready var dict = read_json_file('res://skill.json')
 
@@ -12,8 +13,8 @@ var rand_list = range(6)
 var next_slot = 1
 
 func _ready():
-#	_scrolling()
-	hide()
+	_scrolling()
+#	hide()
 
 func _scrolling() :
 	# make them all able again
@@ -79,6 +80,8 @@ func read_json_file(file_path):
 	return content_as_dictionary
 
 func _on_texture_button_button_up():
+	audio.play()
+	
 	btn1.disabled = true
 	btn2.disabled = true
 	btn3.disabled = true
@@ -86,6 +89,8 @@ func _on_texture_button_button_up():
 
 
 func _on_texture_button_2_button_up():
+	audio.play()
+	
 	btn1.disabled = true
 	btn2.disabled = true
 	btn3.disabled = true	
@@ -93,6 +98,8 @@ func _on_texture_button_2_button_up():
 
 
 func _on_texture_button_3_button_up():
+	audio.play()
+	
 	btn1.disabled = true
 	btn2.disabled = true
 	btn3.disabled = true

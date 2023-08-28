@@ -59,10 +59,15 @@ func _unhandled_input(event):
 				generate_dir_letter()
 
 func dead():
+	play_boss_explose()
 	emit_signal("deaded")
 	anim.call_deferred('stop')
 	anim.call_deferred('play', 'destroy')
 	speed = 0
+	
+	# yield for audio finish before queue free
+	await audio.finished
+	call_deferred("queue_free")
 
 func spawn_path(index: int):
 	# spawn extra sprite:

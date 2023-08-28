@@ -61,10 +61,14 @@ func _unhandled_input(event):
 						hide_keys.append(-1)
 
 func dead():
+	play_boss_explose()
 	emit_signal("deaded")
 	
 	anim.call_deferred('play', 'explose')
 	speed = 0
+	# yield for audio finish before queue free
+	await audio.finished
+	call_deferred("queue_free")
 
 func array_to_string(arr: Array) -> String:
 	var s = ""

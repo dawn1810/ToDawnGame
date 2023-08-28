@@ -1,9 +1,12 @@
 extends StaticBody2D
 
+const rock_sound = preload("res://audio/rock.mp3")
+
 @onready var timer = $Timer
 @onready var rock = $Sprite2D
 @onready var anim = $AnimationPlayer
 @onready var level = Global.rock
+@onready var audio = $AudioStreamPlayer2D
 
 var region_list = [
 	[66, 49, 12, 12],
@@ -15,6 +18,9 @@ var region_list = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	audio.stream = rock_sound
+	audio.play()
+	
 	match level:
 		1: timer.wait_time = 5
 		2: timer.wait_time = 10
@@ -33,6 +39,7 @@ func _on_area_2d_body_entered(body):
 		if body.get_parent().name == 'RandBoss':
 			anim.call_deferred('play', 'disappear')
 		else:
+			print('start timer')
 			timer.start()
 	if body.is_in_group('boss'):
 		anim.call_deferred('play', 'disappear')

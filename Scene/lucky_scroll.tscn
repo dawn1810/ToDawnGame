@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ba5nvocuasfnp"]
+[gd_scene load_steps=14 format=3 uid="uid://ba5nvocuasfnp"]
 
 [ext_resource type="Script" path="res://script/lucky_scroll.gd" id="1_0ohuo"]
 [ext_resource type="Texture2D" uid="uid://cqd5k73d5m5qn" path="res://asset/skills/pixil-frame-0.png" id="1_d28xv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://y3k5rdds1k21" path="res://asset/skills_2/pixil-frame-2.png" id="3_4pt86"]
 [ext_resource type="Texture2D" uid="uid://b4qom4pnjh8sc" path="res://asset/skills_2/pixil-frame-1.png" id="5_lasrb"]
 [ext_resource type="Texture2D" uid="uid://dap4pmsw7q3pm" path="res://asset/skills/pixil-frame-1.png" id="6_7dd8j"]
+[ext_resource type="AudioStream" uid="uid://cjb2b1ea0xkxd" path="res://audio/bonus.mp3" id="9_ptw06"]
 
 [sub_resource type="Animation" id="Animation_8rwp0"]
 length = 0.001
@@ -375,6 +376,9 @@ autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_e4jqi")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ptw06")
 
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
