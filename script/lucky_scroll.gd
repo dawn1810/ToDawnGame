@@ -12,8 +12,8 @@ var rand_list = range(6)
 var next_slot = 1
 
 func _ready():
-	_scrolling()
-#	hide()
+#	_scrolling()
+	hide()
 
 func _scrolling() :
 	# make them all able again

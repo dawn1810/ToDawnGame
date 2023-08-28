@@ -173,7 +173,6 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SoundFx"

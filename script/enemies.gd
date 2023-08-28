@@ -7,11 +7,10 @@ const FIRE = preload('res://skills/fire.tscn')
 const ROCK = preload('res://skills/rock.tscn')
 const TANK = preload("res://skills/tank.tscn")
 
-const enter_sound1 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (1).mp3")
-const enter_sound2 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (2).mp3")
-const enter_sound3 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net).mp3")
-const enter_sound4 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (4).mp3")
-const enter_sound5 = preload("res://audio/click_audio/enter-button-mechanical-keyboard-14388 (mp3cut.net) (5).mp3")
+const pop_sound1 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net) (1).mp3")
+const pop_sound2 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net) (2).mp3")
+const pop_sound3 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net).mp3")
+const pop_sound4 = preload("res://audio/pop_audio/pop-1-101427.mp3")
 
 @export var speed = 300.0
 @export var attack_amount = 0
@@ -19,7 +18,7 @@ const enter_sound5 = preload("res://audio/click_audio/enter-button-mechanical-ke
 var move: bool = true
 var default_percent: float = 0.2 # 20%
 
-@onready var health_bar = get_parent().get_node('Ontop/HBoxContainer/heardBar')
+@onready var health_bar = get_parent().call_deferred("get_node", 'Ontop/HBoxContainer/heardBar')
 @onready var audio = $AudioStreamPlayer2D
 
 func _physics_process(delta):
@@ -29,12 +28,11 @@ func _physics_process(delta):
 
 func play_audio():
 	# random audio:
-	match randi_range(0, 4):
-		0: audio.stream = enter_sound1
-		1: audio.stream = enter_sound2
-		2: audio.stream = enter_sound3
-		3: audio.stream = enter_sound4
-		4: audio.stream = enter_sound5
+	match randi_range(0, 3):
+		0: audio.stream = pop_sound1
+		1: audio.stream = pop_sound2
+		2: audio.stream = pop_sound3
+		3: audio.stream = pop_sound4
 	
 	audio.play()
 

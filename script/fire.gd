@@ -18,16 +18,18 @@ func _ready():
 		1: audio.stream = fire_sound2
 	audio.play()
 	
+	# health higher than script 1 because it'll collide with themself first
 	match level:
 		1: 
 			timer.wait_time = 10
-			health = 1
+			health = 2
 		2: 
 			timer.wait_time = 20
-			health = 2
+			health = 3
 		3: 
 			timer.wait_time = 30
-			health = 3
+			health = 4
+	
 	# random color for fire:
 	var values = [0, 0.5, 1]
 	var r = 0
@@ -38,9 +40,13 @@ func _ready():
 		g = values.pick_random()
 		b = values.pick_random()
 	self.modulate = Color(r, g, b)
+	
+	# start timer after set up everything
+	timer.start()
 
 func _on_area_2d_body_entered(body):
 	health -= 1
+	print(health)
 	if body.is_in_group('enemy'):
 		# make enemies disappear
 		body.dead()

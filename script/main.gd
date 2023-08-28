@@ -216,7 +216,6 @@ func _on_boss_deaded():
 	
 	camera.shake(500, 1.0, 1000)
 	# start scrolling face to choose skill
-	print('scrolling')
 	lucky_scroll._scrolling()
 
 func restart_game_after_scroll():
