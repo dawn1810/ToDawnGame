@@ -92,6 +92,11 @@ func rand_gift(): # current Animation2d of current type of enemies
 					3: percent = 0.2
 				
 				if (randf() < percent):
+					# play explose audio
+					get_parent().soundfx.stream = boss_explose_sound
+					get_parent().soundfx.play()
+					# shake the screen
+					get_parent().camera.shake(500, 0.4, 1000)
 					var enemies_appear = get_parent().get_tree().get_nodes_in_group('enemy')
 					if (len(enemies_appear) > 0):
 						for enemy in enemies_appear:

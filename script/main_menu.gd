@@ -8,9 +8,9 @@ extends Control
 
 func _ready():
 	# set all bus audio db to 10
-	volume(0, 10)
-	volume(1, 10)
-	volume(2, 10)
+	volume(0, 5)
+	volume(1, 5)
+	volume(2, 5)
 
 func show_and_hide(show, hide):
 	show.show()

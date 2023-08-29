@@ -4,6 +4,7 @@ signal game_over
 
 const damage_sound1 = preload("res://audio/damage_audio/damge_sudio01.mp3")
 const damage_sound2 = preload("res://audio/damage_audio/damge_sudio02.mp3")
+const explose_sound = preload("res://audio/explose.mp3")
 
 
 @export var max_health = 100
@@ -25,6 +26,7 @@ func damnge(amount):
 	health -= amount
 	health_bar._damage(amount/10)
 	if health <= 0:
+		audio.stream = explose_sound
 		# explose
 		anim.call_deferred('play', 'explose')
 		# clear all enemies on stage

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnkp07x5ey6n7"]
+[gd_scene load_steps=27 format=3 uid="uid://cnkp07x5ey6n7"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_rid71"]
 [ext_resource type="PackedScene" uid="uid://bdsu0nv0rjwvy" path="res://tower/tower.tscn" id="2_hodn3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://buiwkmpsa58wc" path="res://skills/skillBox.tscn" id="12_6xv8e"]
 [ext_resource type="PackedScene" uid="uid://b5e7qevo1nook" path="res://skills/heard_bar.tscn" id="13_1hcac"]
 [ext_resource type="PackedScene" uid="uid://353vrrro6om3" path="res://Scene/camera_2d.tscn" id="14_5du4g"]
+[ext_resource type="AudioStream" uid="uid://bbhaebuggc7ga" path="res://audio/heal_audio.mp3" id="15_1mj0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d3rn"]
 texture = ExtResource("3_b4fie")
@@ -394,10 +395,27 @@ tracks/4/keys = {
 "values": [Vector2(0.5, 0.5), Vector2(0.8, 0.8)]
 }
 
+[sub_resource type="Animation" id="Animation_5pdee"]
+resource_name = "healing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ontop/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.258824, 0.431373, 0, 0), Color(0.258824, 0.431373, 0, 0.392157), Color(0.258824, 0.431373, 0, 0), Color(0.258824, 0.431373, 0, 0.392157), Color(0.258824, 0.431373, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3io7v"]
 _data = {
 "RESET": SubResource("Animation_r6xua"),
 "gameover": SubResource("Animation_4t5a3"),
+"healing": SubResource("Animation_5pdee"),
 "start": SubResource("Animation_1j7fk")
 }
 
@@ -556,6 +574,17 @@ autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_3io7v")
 }
+
+[node name="audio" type="Node2D" parent="."]
+
+[node name="soundfx" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource("15_1mj0x")
+bus = &"SoundFx"
+area_mask = 0
+
+[node name="music" type="AudioStreamPlayer2D" parent="audio"]
+bus = &"Music"
+area_mask = 0
 
 [connection signal="timeout" from="enemiesApeartime" to="." method="_on_enrmies_apeartime_timeout"]
 [connection signal="game_over" from="Tower" to="." method="_on_tower_game_over"]

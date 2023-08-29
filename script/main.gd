@@ -2,6 +2,9 @@
 
 extends Node2D
 
+
+const healing_sound = preload("res://audio/heal_audio.mp3")
+
 # enemies
 @export var basic = preload("res://enemies/basic_enemy.tscn")
 @export var fast = preload("res://enemies/fast_enemy.tscn")
@@ -37,6 +40,8 @@ var enemy_speed: int = 100
 @onready var lucky_scroll = $Ontop/luckyScroll
 @onready var camera = $Camera2D
 @onready var health_bar = $Ontop/HBoxContainer/heardBar
+@onready var soundfx = $audio/soundfx
+@onready var music = $audio/music
 
 
 func _ready():
@@ -266,6 +271,11 @@ func _on_time_stop():
 				enemies_appear[i].speed = prev_speeds[i]
 
 func _on_healing():
+	# play healing audio and animation
+	soundfx.stream = healing_sound
+	soundfx.play()
+	anim.play("healing")
+	
 	match Global.heal:
 		1: health_bar._heal(1)
 		2: health_bar._heal(2)
