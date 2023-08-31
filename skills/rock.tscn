@@ -90,7 +90,7 @@ _data = {
 "disappear": SubResource("Animation_cqmk3")
 }
 
-[node name="Rock" type="StaticBody2D"]
+[node name="Rock" type="StaticBody2D" groups=["skill_appear"]]
 collision_mask = 3
 script = ExtResource("1_r20h2")
 

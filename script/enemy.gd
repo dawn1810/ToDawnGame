@@ -22,6 +22,7 @@ func _unhandled_input(event):
 			dead()
 
 func dead():
+	play_audio()
 	anim.call_deferred('play', 'explose')
 	speed = 0
 

@@ -46,7 +46,6 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	health -= 1
-	print(health)
 	if body.is_in_group('enemy'):
 		# make enemies disappear
 		body.dead()

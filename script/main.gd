@@ -4,6 +4,11 @@ extends Node2D
 
 
 const healing_sound = preload("res://audio/heal_audio.mp3")
+const pause_sound1 = preload("res://audio/pause_audio/tictac_audio01.mp3")
+const pause_sound2 = preload("res://audio/pause_audio/tictac_audio02.mp3")
+const pause_sound3 = preload("res://audio/pause_audio/tictac_audio03.mp3")
+
+
 
 # enemies
 @export var basic = preload("res://enemies/basic_enemy.tscn")
@@ -150,11 +155,34 @@ func boss_render():
 func game_over():
 	if !lose:
 		lose = true
+		
+		# clear/remove all map (enemies, bosses, skills)
+		var enemies_appear = get_tree().get_nodes_in_group('enemy')
+		var skills_appear = get_tree().get_nodes_in_group('skill_appear')
+		var bosses_appear = get_tree().get_nodes_in_group('boss')
+		if (len(enemies_appear) > 0):
+			for enemy in enemies_appear:
+				enemy.dead()
+		if (len(skills_appear) > 0):
+			for skill in skills_appear:
+				skill.dead()
+		if (len(bosses_appear) > 0):
+			for boss in bosses_appear:
+				boss.dead()
+		
+		# reset all gameover skills
+		Global.fire = 0
+		Global.rock = 0
+		Global.bomb = 0
+		Global.stop = 0
+		Global.tank = 0
+		Global.heal = 0
+		
 		spawn_timer.stop()
 		progress_timer.stop()
 		camera.shake(500, 1.0, 1000)
 		anim.play("gameover")
-
+		
 func disable_pos(node: Marker2D, length: int):
 	pos_list.erase(node)
 	await get_tree().create_timer(length).timeout
@@ -258,8 +286,23 @@ func _on_time_stop():
 		for enemy in enemies_appear:
 			prev_speeds.append(enemy.speed)
 			enemy.speed = 0
+	
+	# random audio:
+	match randi_range(0, 2):
+		0: soundfx.stream = pause_sound1
+		1: soundfx.stream = pause_sound2
+		2: soundfx.stream = pause_sound3
+	
+	# play tictac audio
+	soundfx.play() 
+	
 	# timer stop for ...
 	await get_tree().create_timer(stop_time).timeout
+	
+	# stop audio
+	soundfx.stop()
+	soundfx.stream = null
+	
 	# respawn enemies and contimue game
 	spawn_timer.start()
 	progress_timer.start()

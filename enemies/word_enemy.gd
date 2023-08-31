@@ -81,6 +81,7 @@ func set_up_new_key(index):
 	keys.get_child(index).text = rand_word[index]
 
 func dead():
+	play_audio()
 	emit_signal("deaded")
 	collision.set_deferred("disabled", true)
 	buff_col.set_deferred("disabled", true)

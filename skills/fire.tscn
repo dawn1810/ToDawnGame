@@ -148,7 +148,7 @@ _data = {
 "fire": SubResource("Animation_poeqh")
 }
 
-[node name="Fire" type="Node2D"]
+[node name="Fire" type="Node2D" groups=["skill_appear"]]
 script = ExtResource("1_sm7t0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

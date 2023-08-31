@@ -380,7 +380,6 @@ _data = {
 }
 
 [node name="RandBoss" groups=["boss"] instance=ExtResource("1_e580t")]
-position = Vector2(872, 282)
 collision_layer = 2
 script = ExtResource("2_bmwvg")
 basic = ExtResource("3_hmdrk")

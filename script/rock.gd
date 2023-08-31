@@ -39,7 +39,6 @@ func _on_area_2d_body_entered(body):
 		if body.get_parent().name == 'RandBoss':
 			anim.call_deferred('play', 'disappear')
 		else:
-			print('start timer')
 			timer.start()
 	if body.is_in_group('boss'):
 		anim.call_deferred('play', 'disappear')
