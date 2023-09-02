@@ -9,10 +9,10 @@ extends Control
 func _ready():
 	# set play as default focus button
 	get_node("mainMenu/VBoxContainer/play").grab_focus()
-	# set all bus audio db to 10
-	volume(0, 0)
-	volume(1, 0)
-	volume(2, 5)
+	# set all bus audio db to Global value
+	volume(0, Global.master)
+	volume(1, Global.music)
+	volume(2, Global.soundfx)
 
 func show_and_hide(show, hide):
 	show.show()
@@ -92,6 +92,7 @@ func _on_master_value_changed(value):
 		AudioServer.set_bus_mute(0, true)
 	else :
 		AudioServer.set_bus_mute(0, false)
+		Global.master = value
 		volume(0, value)
 
 func _on_music_value_changed(value):
@@ -99,6 +100,7 @@ func _on_music_value_changed(value):
 		AudioServer.set_bus_mute(1, true)
 	else :
 		AudioServer.set_bus_mute(1, false)
+		Global.music = value
 		volume(1, value)
 
 func _on_soundfx_value_changed(value):
@@ -106,4 +108,5 @@ func _on_soundfx_value_changed(value):
 		AudioServer.set_bus_mute(2, true)
 	else :
 		AudioServer.set_bus_mute(2, false)
+		Global.soundfx = value
 		volume(2, value)

@@ -47,6 +47,7 @@ var enemy_speed: int = 100
 @onready var health_bar = $Ontop/HBoxContainer/heardBar
 @onready var soundfx = $audio/soundfx
 @onready var music = $audio/music
+@onready var paused_scene = $Ontop/pause_scene
 
 
 func _ready():
@@ -58,6 +59,7 @@ func _ready():
 		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(bar, 'value', 100, progress_timer.wait_time * 2)
+
 
 func rand_enemies(freq) -> int:
 	var total: float
@@ -182,6 +184,8 @@ func game_over():
 		progress_timer.stop()
 		camera.shake(500, 1.0, 1000)
 		anim.play("gameover")
+		# focus on gameover
+		gameover_scene.game_over_focus()
 		
 func disable_pos(node: Marker2D, length: int):
 	pos_list.erase(node)
@@ -323,3 +327,4 @@ func _on_healing():
 		1: health_bar._heal(1)
 		2: health_bar._heal(2)
 		3: health_bar._heal(3)
+

@@ -7,6 +7,7 @@ const rock_sound = preload("res://audio/rock.mp3")
 @onready var anim = $AnimationPlayer
 @onready var level = Global.rock
 @onready var audio = $AudioStreamPlayer2D
+@onready var collision = $Area2D/CollisionShape2D
 
 var region_list = [
 	[66, 49, 12, 12],
@@ -39,6 +40,7 @@ func _on_area_2d_body_entered(body):
 		if body.get_parent().name == 'RandBoss':
 			anim.call_deferred('play', 'disappear')
 		else:
+			collision.disabled = true
 			timer.start()
 	if body.is_in_group('boss'):
 		anim.call_deferred('play', 'disappear')

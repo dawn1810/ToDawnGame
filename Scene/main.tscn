@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cnkp07x5ey6n7"]
+[gd_scene load_steps=30 format=3 uid="uid://cnkp07x5ey6n7"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_rid71"]
 [ext_resource type="PackedScene" uid="uid://bdsu0nv0rjwvy" path="res://tower/tower.tscn" id="2_hodn3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://buiwkmpsa58wc" path="res://skills/skillBox.tscn" id="12_6xv8e"]
 [ext_resource type="PackedScene" uid="uid://b5e7qevo1nook" path="res://skills/heard_bar.tscn" id="13_1hcac"]
 [ext_resource type="PackedScene" uid="uid://353vrrro6om3" path="res://Scene/camera_2d.tscn" id="14_5du4g"]
+[ext_resource type="PackedScene" uid="uid://bunp7ltvpf2k0" path="res://Scene/pause_scene.tscn" id="14_xc63c"]
 [ext_resource type="AudioStream" uid="uid://bbhaebuggc7ga" path="res://audio/heal_audio.mp3" id="15_1mj0x"]
 [ext_resource type="AudioStream" uid="uid://bcc4vek5c2psc" path="res://audio/background_audio.mp3" id="16_xlvs7"]
 
@@ -499,6 +500,7 @@ layer_0/tile_data = PackedInt32Array(17, 131073, 0, 65553, 131073, 1, 131089, 13
 position = Vector2(35, 321)
 
 [node name="Ontop" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 18
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Ontop"]
@@ -579,6 +581,9 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(176, 68)
 layout_mode = 2
 
+[node name="pause_scene" parent="Ontop" instance=ExtResource("14_xc63c")]
+visible = false
+
 [node name="Camera2D" parent="." instance=ExtResource("14_5du4g")]
 process_mode = 3
 zoom = Vector2(0.5, 0.5)
@@ -596,11 +601,13 @@ libraries = {
 [node name="audio" type="Node2D" parent="."]
 
 [node name="soundfx" type="AudioStreamPlayer2D" parent="audio"]
+process_mode = 3
 stream = ExtResource("15_1mj0x")
 bus = &"SoundFx"
 area_mask = 0
 
 [node name="music" type="AudioStreamPlayer2D" parent="audio"]
+process_mode = 3
 stream = ExtResource("16_xlvs7")
 autoplay = true
 bus = &"Music"

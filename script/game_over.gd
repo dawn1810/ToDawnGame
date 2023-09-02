@@ -2,12 +2,9 @@ extends Control
 
 const main_menu = preload("res://Scene/main_menu.tscn")
 
-@onready var anim = $AnimationPlayer
-
-func _ready():
+func game_over_focus():
 	# set play as default replay button
-	get_node("VBoxContainer/HBoxContainer/replay").grab_focus()
-
+	$VBoxContainer/HBoxContainer/replay.grab_focus()
 
 func _on_replay_pressed():
 	# delay for audio

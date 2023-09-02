@@ -1,180 +1,116 @@
-[gd_scene load_steps=9 format=3 uid="uid://bunp7ltvpf2k0"]
+[gd_scene load_steps=19 format=3 uid="uid://bunp7ltvpf2k0"]
 
 [ext_resource type="Script" path="res://script/pause_scene.gd" id="1_ym4u8"]
 [ext_resource type="FontFile" uid="uid://dwrscdgtyyyoe" path="res://asset/Fonts/m6x11.ttf" id="2_mb3wd"]
-[ext_resource type="Texture2D" uid="uid://dfe4itgsxl3rx" path="res://asset/chococake_buttons.png" id="3_i8dkf"]
+[ext_resource type="PackedScene" uid="uid://b6gdr40fphg2b" path="res://Scene/menu_button.tscn" id="3_f8r0s"]
 
-[sub_resource type="Animation" id="Animation_ou5s1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HBoxContainer/sssss/replaySprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(96, 0, 16, 16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/HBoxContainer/sssss/Label:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(64, 57)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/HBoxContainer/menu/replaySprite:region_rect")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(96, 0, 16, 16)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer/HBoxContainer/menu/Label:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(64, 57)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer/HBoxContainer/setting/menuSprite:region_rect")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(96, 16, 16, 16)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("VBoxContainer/HBoxContainer/setting/Label:size")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(64, 57)]
+[sub_resource type="Image" id="Image_wbafr"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 18, 253, 253, 253, 100, 255, 255, 255, 156, 254, 254, 254, 183, 254, 254, 254, 183, 255, 255, 255, 156, 253, 253, 253, 99, 255, 255, 255, 17, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 65, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 182, 255, 255, 255, 63, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 65, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 63, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 18, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 181, 255, 255, 255, 16, 255, 255, 255, 0, 255, 255, 255, 0, 253, 253, 253, 100, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 156, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 155, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 182, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 181, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 156, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 154, 255, 255, 255, 0, 255, 255, 255, 0, 253, 253, 253, 99, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 253, 253, 253, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 17, 254, 254, 254, 182, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 180, 255, 255, 255, 15, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 63, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 63, 254, 254, 254, 181, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 180, 255, 255, 255, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 16, 255, 255, 255, 97, 254, 254, 254, 155, 254, 254, 254, 182, 254, 254, 254, 181, 254, 254, 254, 154, 253, 253, 253, 97, 255, 255, 255, 15, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
 }
 
-[sub_resource type="Animation" id="Animation_djnee"]
-resource_name = "continue_focus"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HBoxContainer/sssss/replaySprite:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Rect2(96, 0, 16, 16), Rect2(112, 0, 16, 16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/HBoxContainer/sssss/Label:size")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(64, 57), Vector2(64, 62)]
+[sub_resource type="ImageTexture" id="ImageTexture_rgcn8"]
+image = SubResource("Image_wbafr")
+
+[sub_resource type="Image" id="Image_avv5l"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 49, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 90, 255, 255, 255, 77, 255, 255, 255, 49, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 77, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 76, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 89, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 8, 255, 255, 255, 48, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 89, 255, 255, 255, 76, 255, 255, 255, 48, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
 }
 
-[sub_resource type="Animation" id="Animation_3n508"]
-resource_name = "menu_focus"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HBoxContainer/menu/replaySprite:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Rect2(96, 0, 16, 16), Rect2(112, 0, 16, 16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/HBoxContainer/menu/Label:size")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(64, 57), Vector2(64, 62)]
+[sub_resource type="ImageTexture" id="ImageTexture_5nj03"]
+image = SubResource("Image_avv5l")
+
+[sub_resource type="Image" id="Image_tqy87"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 23, 254, 254, 254, 133, 254, 254, 254, 209, 254, 254, 254, 244, 254, 254, 254, 244, 254, 254, 254, 209, 254, 254, 254, 132, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 87, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 243, 255, 255, 255, 84, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 87, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 255, 255, 255, 84, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 23, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 242, 255, 255, 255, 21, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 133, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 130, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 209, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 207, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 243, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 244, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 242, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 209, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 206, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 132, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 129, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 254, 254, 254, 243, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 241, 255, 255, 255, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 84, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 255, 255, 255, 81, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 84, 254, 254, 254, 242, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 255, 254, 254, 254, 241, 255, 255, 255, 81, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 21, 254, 254, 254, 130, 254, 254, 254, 207, 254, 254, 254, 243, 254, 254, 254, 242, 254, 254, 254, 206, 254, 254, 254, 129, 255, 255, 255, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
 }
 
-[sub_resource type="Animation" id="Animation_3wry1"]
-resource_name = "setting_focus"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HBoxContainer/setting/menuSprite:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Rect2(96, 16, 16, 16), Rect2(112, 16, 16, 16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/HBoxContainer/setting/Label:size")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(64, 57), Vector2(64, 62)]
+[sub_resource type="ImageTexture" id="ImageTexture_xkiqr"]
+image = SubResource("Image_tqy87")
+
+[sub_resource type="Image" id="Image_60ig5"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6atnk"]
-_data = {
-"RESET": SubResource("Animation_ou5s1"),
-"continue_focus": SubResource("Animation_djnee"),
-"menu_focus": SubResource("Animation_3n508"),
-"setting_focus": SubResource("Animation_3wry1")
-}
+[sub_resource type="ImageTexture" id="ImageTexture_1xu07"]
+image = SubResource("Image_60ig5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mawm"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.929412, 0.862745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuvpu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.360784, 0.164706, 0, 0.705882)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1qbc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_5wxhf"]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = SubResource("ImageTexture_rgcn8")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_5nj03")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_xkiqr")
+HSlider/icons/tick = SubResource("ImageTexture_1xu07")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3mawm")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_nuvpu")
+HSlider/styles/slider = SubResource("StyleBoxFlat_e1qbc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj8oo"]
+bg_color = Color(0.360784, 0.164706, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwvsn"]
+bg_color = Color(1, 0.929412, 0.862745, 1)
+
+[sub_resource type="Theme" id="Theme_b4cny"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_tj8oo")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_qwvsn")
 
 [node name="pause_scene" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,7 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ym4u8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="paused" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -197,7 +133,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="paused"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_mb3wd")
@@ -207,103 +143,40 @@ text = "Pause
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="paused"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="gap" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="gap" type="MarginContainer" parent="paused/HBoxContainer"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 
-[node name="sssss" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="continue" parent="paused/HBoxContainer" instance=ExtResource("3_f8r0s")]
 layout_mode = 2
+clr = "small_focus"
+txt = "C"
 
-[node name="replaySprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer/sssss"]
-position = Vector2(32, 32)
-scale = Vector2(4, 4)
-texture = ExtResource("3_i8dkf")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/sssss"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
-theme_override_fonts/font = ExtResource("2_mb3wd")
-theme_override_font_sizes/font_size = 28
-text = "C"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gap2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="gap2" type="MarginContainer" parent="paused/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="setting" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="setting" parent="paused/HBoxContainer" instance=ExtResource("3_f8r0s")]
 layout_mode = 2
+clr = "small_focus_2"
+txt = "S"
 
-[node name="menuSprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer/setting"]
-position = Vector2(32, 32)
-scale = Vector2(4, 4)
-texture = ExtResource("3_i8dkf")
-region_enabled = true
-region_rect = Rect2(96, 16, 16, 16)
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/setting"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
-theme_override_fonts/font = ExtResource("2_mb3wd")
-theme_override_font_sizes/font_size = 28
-text = "S"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gap3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="gap3" type="MarginContainer" parent="paused/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="menu" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="menu" parent="paused/HBoxContainer" instance=ExtResource("3_f8r0s")]
 layout_mode = 2
+clr = "small_focus"
+txt = "H"
 
-[node name="replaySprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer/menu"]
-position = Vector2(32, 32)
-scale = Vector2(4, 4)
-texture = ExtResource("3_i8dkf")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
-theme_override_fonts/font = ExtResource("2_mb3wd")
-theme_override_font_sizes/font_size = 28
-text = "H"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gap4" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="gap4" type="MarginContainer" parent="paused/HBoxContainer"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 
@@ -340,76 +213,210 @@ layout_mode = 2
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 
-[node name="continue" type="TextureButton" parent="setting/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="video" parent="setting/HBoxContainer" instance=ExtResource("3_f8r0s")]
 layout_mode = 2
-
-[node name="replaySprite" type="Sprite2D" parent="setting/HBoxContainer/continue"]
-position = Vector2(32, 32)
-scale = Vector2(4, 4)
-texture = ExtResource("3_i8dkf")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
-
-[node name="Label" type="Label" parent="setting/HBoxContainer/continue"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 64.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
-theme_override_fonts/font = ExtResource("2_mb3wd")
-theme_override_font_sizes/font_size = 28
-text = "C"
-horizontal_alignment = 1
-vertical_alignment = 1
+clr = "small_focus_2"
+txt = "V"
 
 [node name="gap2" type="MarginContainer" parent="setting/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="setting" type="TextureButton" parent="setting/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="audio" parent="setting/HBoxContainer" instance=ExtResource("3_f8r0s")]
 layout_mode = 2
+clr = "small_focus"
+txt = "A"
 
-[node name="menuSprite" type="Sprite2D" parent="setting/HBoxContainer/setting"]
-position = Vector2(32, 32)
-scale = Vector2(4, 4)
-texture = ExtResource("3_i8dkf")
-region_enabled = true
-region_rect = Rect2(96, 16, 16, 16)
+[node name="gap3" type="MarginContainer" parent="setting/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="setting/HBoxContainer/setting"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 64.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
-theme_override_fonts/font = ExtResource("2_mb3wd")
-theme_override_font_sizes/font_size = 28
-text = "S"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="back" parent="setting/HBoxContainer" instance=ExtResource("3_f8r0s")]
+layout_mode = 2
+clr = "small_focus_2"
+txt = "B"
 
 [node name="gap4" type="MarginContainer" parent="setting/HBoxContainer"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="video" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_6atnk")
-}
+[node name="Video" type="Label" parent="video"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_mb3wd")
+theme_override_font_sizes/font_size = 80
+text = "Video
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/sssss" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/setting" to="." method="_on_setting_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/menu" to="." method="_on_menu_pressed"]
+[node name="gap" type="MarginContainer" parent="video"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="video"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="fullscreen" parent="video/VBoxContainer" instance=ExtResource("3_f8r0s")]
+layout_mode = 2
+txt = "FullScreen"
+
+[node name="window" parent="video/VBoxContainer" instance=ExtResource("3_f8r0s")]
+layout_mode = 2
+clr = "focus"
+txt = "Window"
+
+[node name="vback" parent="video/VBoxContainer" instance=ExtResource("3_f8r0s")]
+layout_mode = 2
+txt = "Back"
+
+[node name="audio" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -185.5
+offset_right = 199.0
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="audio" type="Label" parent="audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_mb3wd")
+theme_override_font_sizes/font_size = 80
+text = "Audio
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="master" type="HBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="audio/VBoxContainer/master"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("2_mb3wd")
+theme_override_font_sizes/font_size = 28
+text = "Master: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer/master"]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+
+[node name="master" type="HSlider" parent="audio/VBoxContainer/master"]
+custom_minimum_size = Vector2(180, 28)
+layout_mode = 2
+theme = SubResource("Theme_5wxhf")
+min_value = -5.0
+max_value = 5.0
+
+[node name="music" type="HBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="audio/VBoxContainer/music"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 1)
+theme_override_fonts/font = ExtResource("2_mb3wd")
+theme_override_font_sizes/font_size = 28
+text = "Music: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer/music"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="music" type="HSlider" parent="audio/VBoxContainer/music"]
+custom_minimum_size = Vector2(180, 28)
+layout_mode = 2
+theme = SubResource("Theme_b4cny")
+max_value = 10.0
+value = 5.0
+
+[node name="soundFX" type="HBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="audio/VBoxContainer/soundFX"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.164706, 0, 1)
+theme_override_fonts/font = ExtResource("2_mb3wd")
+theme_override_font_sizes/font_size = 28
+text = "Sound Fx: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer/soundFX"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="soundfx" type="HSlider" parent="audio/VBoxContainer/soundFX"]
+custom_minimum_size = Vector2(180, 28)
+layout_mode = 2
+theme = SubResource("Theme_5wxhf")
+min_value = -5.0
+max_value = 5.0
+
+[node name="gap" type="MarginContainer" parent="audio/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="aback" parent="audio/VBoxContainer" instance=ExtResource("3_f8r0s")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+txt = "Back"
+
+[connection signal="pressed" from="paused/HBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="paused/HBoxContainer/setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="paused/HBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="setting/HBoxContainer/video" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="setting/HBoxContainer/audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="setting/HBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="video/VBoxContainer/fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="video/VBoxContainer/window" to="." method="_on_window_pressed"]
+[connection signal="pressed" from="video/VBoxContainer/vback" to="." method="_on_vback_pressed"]
+[connection signal="value_changed" from="audio/VBoxContainer/master/master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="audio/VBoxContainer/music/music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="audio/VBoxContainer/soundFX/soundfx" to="." method="_on_soundfx_value_changed"]
+[connection signal="pressed" from="audio/VBoxContainer/aback" to="." method="_on_aback_pressed"]
