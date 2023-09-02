@@ -7,9 +7,11 @@ extends Control
 @onready var credit = $credit
 
 func _ready():
+	# set play as default focus button
+	get_node("mainMenu/VBoxContainer/play").grab_focus()
 	# set all bus audio db to 10
-	volume(0, 5)
-	volume(1, 5)
+	volume(0, 0)
+	volume(1, 0)
 	volume(2, 5)
 
 func show_and_hide(show, hide):
@@ -32,22 +34,32 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_options_pressed():
+	# set focus for video button
+	get_node("options/VBoxContainer/video").grab_focus()
 	# go to options
 	show_and_hide(options, main_menu)
 
 func _on_credit_pressed():
+	# set play as default back button
+	get_node("credit/VBoxContainer/cback").grab_focus()
 	# go to credit
 	show_and_hide(credit, main_menu)
 
 func _on_video_pressed():
+	# set play as default fullscreen button
+	get_node("video/VBoxContainer/fullscreen").grab_focus()
 	# go to video options:
 	show_and_hide(video, options)
 
 func _on_audio_pressed():
+	# set play as default master slider
+	get_node("audio/VBoxContainer/master/master").grab_focus()
 	# go to audio options:
 	show_and_hide(audio, options)
 
 func _on_back_pressed():
+	# set play as default focus button
+	get_node("mainMenu/VBoxContainer/play").grab_focus()
 	# back to mainmenu:
 	show_and_hide(main_menu, options)
 
@@ -58,14 +70,20 @@ func _on_window_pressed():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_vback_pressed():
+	# set focus for video button
+	get_node("options/VBoxContainer/video").grab_focus()
 	# back to options:
 	show_and_hide(options, video)
 
 func _on_aback_pressed():
+	# set focus for video button
+	get_node("options/VBoxContainer/video").grab_focus()
 	# back to options:
 	show_and_hide(options, audio)
 
 func _on_cback_pressed():
+	# set play as default focus button
+	get_node("mainMenu/VBoxContainer/play").grab_focus()
 	# back to mainmenu:
 	show_and_hide(main_menu, credit)
 
