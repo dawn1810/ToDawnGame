@@ -8,7 +8,9 @@ const pause_sound1 = preload("res://audio/pause_audio/tictac_audio01.mp3")
 const pause_sound2 = preload("res://audio/pause_audio/tictac_audio02.mp3")
 const pause_sound3 = preload("res://audio/pause_audio/tictac_audio03.mp3")
 
-
+const background_music1 = preload("res://audio/background_audio.mp3")
+const background_music2 = preload("res://audio/background_audio2.mp3")
+const background_music3 = preload("res://audio/background_audio3.mp3")
 
 # enemies
 @export var basic = preload("res://enemies/basic_enemy.tscn")
@@ -51,6 +53,9 @@ var enemy_speed: int = 100
 
 
 func _ready():
+	# play random music
+	rand_background_music()
+	
 	lose = false
 	
 	spawn_timer.set_wait_time(cst)
@@ -60,6 +65,13 @@ func _ready():
 	tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(bar, 'value', 100, progress_timer.wait_time * 2)
 
+func rand_background_music():
+	match randi_range(0, 2):
+		0: music.stream = background_music1
+		1: music.stream = background_music2
+		2: music.stream = background_music3
+	
+	music.play()
 
 func rand_enemies(freq) -> int:
 	var total: float
@@ -328,3 +340,6 @@ func _on_healing():
 		2: health_bar._heal(2)
 		3: health_bar._heal(3)
 
+func _on_music_finished():
+	# start new random background musics
+	rand_background_music()

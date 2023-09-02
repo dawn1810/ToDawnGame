@@ -9,10 +9,10 @@ const FIRE = preload('res://skills/fire.tscn')
 const ROCK = preload('res://skills/rock.tscn')
 const TANK = preload("res://skills/tank.tscn")
 
-const pop_sound1 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net) (1).mp3")
-const pop_sound2 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net) (2).mp3")
-const pop_sound3 = preload("res://audio/pop_audio/pop-1-101427 (mp3cut.net).mp3")
-const pop_sound4 = preload("res://audio/pop_audio/pop-1-101427.mp3")
+const pop_sound1 = preload("res://audio/pop_audio/pop2.mp3")
+const pop_sound2 = preload("res://audio/pop_audio/pop3.mp3")
+const pop_sound3 = preload("res://audio/pop_audio/pop4.mp3")
+const pop_sound4 = preload("res://audio/pop_audio/pop5.mp3")
 const boss_explose_sound = preload("res://audio/explose.mp3")
 
 @export var speed = 300.0

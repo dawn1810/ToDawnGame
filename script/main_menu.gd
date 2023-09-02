@@ -1,18 +1,33 @@
 extends Control
 
+const background_music1 = preload("res://audio/background_audio.mp3")
+const background_music2 = preload("res://audio/background_audio2.mp3")
+const background_music3 = preload("res://audio/background_audio3.mp3")
+
 @onready var main_menu = $mainMenu
 @onready var options = $options
 @onready var video = $video
 @onready var audio = $audio
 @onready var credit = $credit
+@onready var music = $AudioStreamPlayer2D
 
 func _ready():
+	rand_background_music()
 	# set play as default focus button
 	get_node("mainMenu/VBoxContainer/play").grab_focus()
 	# set all bus audio db to Global value
 	volume(0, Global.master)
 	volume(1, Global.music)
 	volume(2, Global.soundfx)
+
+
+func rand_background_music():
+	match randi_range(0, 2):
+		0: music.stream = background_music1
+		1: music.stream = background_music2
+		2: music.stream = background_music3
+	
+	music.play()
 
 func show_and_hide(show, hide):
 	show.show()
@@ -110,3 +125,6 @@ func _on_soundfx_value_changed(value):
 		AudioServer.set_bus_mute(2, false)
 		Global.soundfx = value
 		volume(2, value)
+
+func _on_audio_stream_player_2d_finished():
+	rand_background_music()
