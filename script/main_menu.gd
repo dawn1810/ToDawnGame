@@ -14,12 +14,14 @@ const background_music3 = preload("res://audio/background_audio3.mp3")
 func _ready():
 	rand_background_music()
 	# set play as default focus button
-	get_node("mainMenu/VBoxContainer/play").grab_focus()
+	defalt_focus($mainMenu/VBoxContainer/play)
 	# set all bus audio db to Global value
 	volume(0, Global.master)
 	volume(1, Global.music)
 	volume(2, Global.soundfx)
 
+func defalt_focus(node):
+	node.grab_focus()
 
 func rand_background_music():
 	match randi_range(0, 2):
@@ -50,19 +52,19 @@ func _on_quit_pressed():
 
 func _on_options_pressed():
 	# set focus for video button
-	get_node("options/VBoxContainer/video").grab_focus()
+	defalt_focus($options/VBoxContainer/video)
 	# go to options
 	show_and_hide(options, main_menu)
 
 func _on_credit_pressed():
 	# set play as default back button
-	get_node("credit/VBoxContainer/cback").grab_focus()
+	defalt_focus($credit/VBoxContainer/cback)
 	# go to credit
 	show_and_hide(credit, main_menu)
 
 func _on_video_pressed():
 	# set play as default fullscreen button
-	get_node("video/VBoxContainer/fullscreen").grab_focus()
+	defalt_focus($video/VBoxContainer/fullscreen)
 	# go to video options:
 	show_and_hide(video, options)
 
@@ -74,7 +76,7 @@ func _on_audio_pressed():
 
 func _on_back_pressed():
 	# set play as default focus button
-	get_node("mainMenu/VBoxContainer/play").grab_focus()
+	defalt_focus($mainMenu/VBoxContainer/play)
 	# back to mainmenu:
 	show_and_hide(main_menu, options)
 
@@ -86,19 +88,19 @@ func _on_window_pressed():
 
 func _on_vback_pressed():
 	# set focus for video button
-	get_node("options/VBoxContainer/video").grab_focus()
+	defalt_focus($options/VBoxContainer/video)
 	# back to options:
 	show_and_hide(options, video)
 
 func _on_aback_pressed():
 	# set focus for video button
-	get_node("options/VBoxContainer/video").grab_focus()
+	defalt_focus($options/VBoxContainer/video)
 	# back to options:
 	show_and_hide(options, audio)
 
 func _on_cback_pressed():
 	# set play as default focus button
-	get_node("mainMenu/VBoxContainer/play").grab_focus()
+	defalt_focus($mainMenu/VBoxContainer/play)
 	# back to mainmenu:
 	show_and_hide(main_menu, credit)
 
