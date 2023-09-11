@@ -13,8 +13,8 @@ var rand_list = range(6)
 var next_slot = 1
 
 func _ready():
-	_scrolling()
-#	hide()
+#	_scrolling() # for testing
+	hide()
 
 func defalt_focus(node):
 	node.grab_focus()

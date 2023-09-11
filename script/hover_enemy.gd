@@ -16,8 +16,14 @@ var tween: Tween
 func _ready():
 # random text for character:
 	label.text = generate_word(characters, 1)
-# make random colar for key:
-	anim.play(colors.pick_random())
+# make random color for key:
+	match colors.pick_random():
+		'idle':
+			label.modulate = '5c2a00'
+			anim.play('idle')
+		'idle_2':
+			label.modulate = 'ffeddc'
+			anim.play('idle_2')
 # random timer wait_time
 	timer.wait_time = randf_range(0.5, 1.0)
 # make deadBar unvisible

@@ -20,7 +20,7 @@ func _ready():
 	bar.value = 0
 	# random text for character:
 	label.text = generate_word(characters, 1)
-	# make random colar for key:
+	# make random color for key:
 	anim.play(colors.pick_random())
 
 func _process(delta):

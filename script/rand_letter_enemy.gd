@@ -13,8 +13,14 @@ var curr_letter = 0
 @onready var power = rand_letter.length()
 
 func _ready():
-# make random colar for key:
-	anim.play(colors.pick_random())
+# make random color for key:
+	match colors.pick_random():
+		'idle':
+			label.modulate = '5c2a00'
+			anim.play('idle')
+		'idle_2':
+			label.modulate = 'ffeddc'
+			anim.play('idle_2')
 # random text for character:
 	label.text = rand_letter[curr_letter]
 
@@ -29,11 +35,17 @@ func _unhandled_input(event):
 				dead()
 			else :
 				anim.play("change_letter")
-				# change to next letter
+				# change to next letter (change color randomly)
 				curr_letter += 1
 				label.text = rand_letter[curr_letter]
 				await anim.animation_finished
-				anim.play(colors.pick_random())
+				match colors.pick_random():
+					'idle':
+						label.modulate = '5c2a00'
+						anim.play('idle')
+					'idle_2':
+						label.modulate = 'ffeddc'
+						anim.play('idle_2')
 
 func dead():
 	play_audio()

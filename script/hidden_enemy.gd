@@ -40,5 +40,11 @@ func generate_word(chars, length):
 func _on_timer_timeout():
 	anim.play("change_letter")
 	await anim.animation_finished
-	# make random colar for key:
-	anim.play(colors.pick_random())
+	# make random color for key:
+	match colors.pick_random():
+		'idle':
+			label.modulate = '5c2a00'
+			anim.play('idle')
+		'idle_2':
+			label.modulate = 'ffeddc'
+			anim.play('idle_2')

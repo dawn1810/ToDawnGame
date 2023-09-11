@@ -44,6 +44,12 @@ func _unhandled_input(event):
 							extra_sprites.get_child(i-1).visible = true
 							extra_sprites.get_child(i-1).change_letter()
 							key.get_child(i).text = rand_text[i]
+							# change letter color base on sprite's color
+							match extra_sprites.get_child(i-1).rand_color:
+								'idle':
+									key.get_child(i).modulate = '5c2a00'
+								'idle_2':
+									key.get_child(i).modulate = 'ffeddc'
 							
 				enter_text = ""
 				update_key_board(enter_text)

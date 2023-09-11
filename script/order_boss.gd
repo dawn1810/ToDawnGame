@@ -14,13 +14,21 @@ var click = false
 @onready var anim = $AnimationPlayer
 @onready var control_anim = $CanvasLayer/Control/AnimationPlayer
 @onready var key_board = $CanvasLayer/Control/TextEdit
+@onready var extra_sprites = $exrtaSprites
+
 
 func _ready():
-	for i in keys.get_children():
-		i.text = generate_word(characters, 1)
-		answer_text.append(i.text)
+	for i in range(keys.get_child_count()):
+		keys.get_child(i).text = generate_word(characters, 1)
+		answer_text.append(keys.get_child(i).text)
 		answer_text.sort()
-		
+		# change letter color base on sprite's color
+		match extra_sprites.get_child(i).rand_color:
+			'idle':
+				keys.get_child(i).modulate = '5c2a00'
+			'idle_2':
+				keys.get_child(i).modulate = 'ffeddc'
+	
 	update_key_board("Type all letters that sort by alphabet")
 
 func _unhandled_input(event):

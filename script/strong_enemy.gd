@@ -12,7 +12,13 @@ var rand_letter = generate_word(characters, 1)
 
 func _ready():
 # make random colar for key:
-	anim.play(colors.pick_random())
+	match colors.pick_random():
+		'idle':
+			label.modulate = '5c2a00'
+			anim.play('idle')
+		'idle_2':
+			label.modulate = 'ffeddc'
+			anim.play('idle_2')
 # random power of enemy from 2 to 5:
 	power = randi_range(2, 5)
 # random text for character:

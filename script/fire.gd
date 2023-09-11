@@ -22,13 +22,13 @@ func _ready():
 	match level:
 		1: 
 			timer.wait_time = 10
-			health = 2
+			health = 1
 		2: 
 			timer.wait_time = 20
-			health = 3
+			health = 2
 		3: 
 			timer.wait_time = 30
-			health = 4
+			health = 3
 	
 	# random color for fire:
 	var values = [0, 0.5, 1]

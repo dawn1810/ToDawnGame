@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://btwh46jx7fadn"]
 
 [ext_resource type="PackedScene" uid="uid://d2mkvwln7q1vs" path="res://enemies/enemy.tscn" id="1_hk2uv"]
-[ext_resource type="Script" path="res://enemies/word_enemy.gd" id="2_7f1px"]
+[ext_resource type="Script" path="res://script/word_enemy.gd" id="2_woc5j"]
 [ext_resource type="PackedScene" uid="uid://1t6sjarkayia" path="res://Scene/extra_sprite.tscn" id="3_o0tb0"]
 [ext_resource type="Texture2D" uid="uid://byp2udshquwv" path="res://asset/Nuclear_explosion/Nuclear_explosion1.png" id="4_4d71c"]
 
@@ -88,10 +88,8 @@ _data = {
 [node name="word_enemy" groups=["enemy", "word_enemy"] instance=ExtResource("1_hk2uv")]
 position = Vector2(426, 318)
 collision_mask = 7
-script = ExtResource("2_7f1px")
+script = ExtResource("2_woc5j")
 extra_sprite = ExtResource("3_o0tb0")
-speed = 100.0
-attack_amount = 10
 
 [node name="extraSprites" type="Node2D" parent="." index="0"]
 

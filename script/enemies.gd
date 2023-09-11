@@ -4,7 +4,6 @@ class_name  ENEMIES
 signal stop_time
 signal healing
 
-
 const FIRE = preload('res://skills/fire.tscn')
 const ROCK = preload('res://skills/rock.tscn')
 const TANK = preload("res://skills/tank.tscn")

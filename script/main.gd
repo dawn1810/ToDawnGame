@@ -110,7 +110,7 @@ func boss_render():
 	progress_timer.stop()
 	
 	var spawn_boss: PackedScene
-	match randi_range(0, 4):
+	match randi_range(4, 4):
 		0: 
 			spawn_boss = rand_boss
 			pos_list = [
@@ -129,7 +129,7 @@ func boss_render():
 				$spawnPositions/Marker2D9
 				]
 			# spawn less enemies in boss face: 
-			spawn_timer.set_wait_time(cst * 1.5)
+			spawn_timer.set_wait_time(cst)
 			spawn_timer.start()
 		2: 
 			spawn_boss = mouse_boss
