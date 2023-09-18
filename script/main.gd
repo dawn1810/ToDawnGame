@@ -110,7 +110,7 @@ func boss_render():
 	progress_timer.stop()
 	
 	var spawn_boss: PackedScene
-	match randi_range(4, 4):
+	match randi_range(0, 4):
 		0: 
 			spawn_boss = rand_boss
 			pos_list = [

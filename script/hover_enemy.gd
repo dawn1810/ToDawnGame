@@ -19,10 +19,10 @@ func _ready():
 # make random color for key:
 	match colors.pick_random():
 		'idle':
-			label.modulate = '5c2a00'
+			label.modulate = 'ffeddc'
 			anim.play('idle')
 		'idle_2':
-			label.modulate = 'ffeddc'
+			label.modulate = '5c2a00'
 			anim.play('idle_2')
 # random timer wait_time
 	timer.wait_time = randf_range(0.5, 1.0)
