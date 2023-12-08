@@ -15,7 +15,7 @@
 
 **Available on itch.io:**
 
-[Insert link to your game on itch.io]
+[[Insert link to your game on itch.io](https://dawn19112003.itch.io/break-keys)]
 
 **What are you waiting for? Start typing your way to victory today!**
 
