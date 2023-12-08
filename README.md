@@ -26,11 +26,7 @@
 * **Engine:** Godot
 * **Programming Language:** GDscript
 * **Features:** Unique enemies, randomized skills, boss fights
-* **Platforms:** Windows, Mac, Linux
-
-**Contact:**
-
-[Your email address or social media links]
+* **Platforms:** Web Browser
 
 **Feel free to provide any other relevant information, such as:**
 
