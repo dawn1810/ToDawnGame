@@ -4,7 +4,7 @@
 
 [Image showcasing the colorful and cute art style of the game]
 
-**Tired of ordinary typing games?** Immerse yourself in the vibrant and adorable world of [Your Game Name], a typing game unlike any other!
+**Tired of ordinary typing games?** Immerse yourself in the vibrant and adorable world of [BREAK KEYS], a typing game unlike any other!
 
 **Key Features:**
 
