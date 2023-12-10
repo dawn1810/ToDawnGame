@@ -1,10 +1,10 @@
-## [BREAK KEYS]
+## BREAK KEYS
 
-**[A Bright and Cute Typing Game with a Twist]**
+**A Bright and Cute Typing Game with a Twist**
 
-[Image showcasing the colorful and cute art style of the game]
+Image showcasing the colorful and cute art style of the game
 
-**Tired of ordinary typing games?** Immerse yourself in the vibrant and adorable world of [BREAK KEYS], a typing game unlike any other!
+**Tired of ordinary typing games?** Immerse yourself in the vibrant and adorable world of BREAK KEYS, a typing game unlike any other!
 
 **Key Features:**
 
@@ -15,7 +15,7 @@
 
 **Available on itch.io:**
 
-[[Game's link](https://dawn19112003.itch.io/break-keys)]
+[Game's link](https://dawn19112003.itch.io/break-keys)
 
 **What are you waiting for? Start typing your way to victory today!**
 
